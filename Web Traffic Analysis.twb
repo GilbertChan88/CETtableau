@@ -1406,6 +1406,9 @@
       <column caption='True Avg Session Duration' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='SUM([Average session duration] * [Sessions]) / SUM([Sessions])' />
       </column>
+      <column caption='In Campaign Period' datatype='boolean' name='[Calculation_D1CAMPPERIOD01]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='[Date] &gt;= [Start Date] AND [Date] &lt;= [End Date]' />
+      </column>
       <column caption='Campaign Name for UTM (Mock Campaign Master.csv)' datatype='string' name='[Campaign Name for UTM (Mock_Campaign_Master.csv)]' role='dimension' type='nominal' />
       <column datatype='integer' name='[Total users]' role='measure' type='quantitative' />
       <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
@@ -3945,6 +3948,269 @@
       </table>
       <simple-id uuid='{124AD0CD-B967-4F80-808B-BBDE98CDBF94}' />
     </worksheet>
+    <worksheet name='D1 | Traffic - All CET Pages'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Graph 1: Traffic Over Time - All CET Pages&#10;</run>
+            <run fontsize='9'>Weekly Total Page Views &amp; Total Unique Users. Shaded band = selected campaign period.</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Web Traffic Analysis' name='federated.0bkpira1pza2b3133tu8b1gkoqit' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bkpira1pza2b3133tu8b1gkoqit'>
+            <column datatype='string' name='[Campaign ID]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Campaign Name]' role='dimension' type='nominal' />
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Dept/Sch/Institute]' role='dimension' type='nominal' />
+            <column datatype='date' name='[End Date]' role='dimension' type='ordinal' />
+            <column datatype='date' name='[Start Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Total users]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
+            <column-instance column='[Campaign ID]' derivation='None' name='[none:Campaign ID:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Dept/Sch/Institute]' derivation='None' name='[none:Dept/Sch/Institute:nk]' pivot='key' type='nominal' />
+            <column-instance column='[End Date]' derivation='None' name='[none:End Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Start Date]' derivation='None' name='[none:Start Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Week-Trunc' name='[twk:Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]'>
+            <groupfilter function='level-members' level='[none:Campaign ID:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]'>
+            <groupfilter function='level-members' level='[none:Campaign Name:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]'>
+            <groupfilter function='level-members' level='[none:Dept/Sch/Institute:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='refband'>
+            <format attr='fill-color' id='refline1' value='#fff2cc' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' value='Legend'>
+              <formatted-text>
+                <run>Metric</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' />
+              <lod column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Start Date:qk]' />
+              <lod column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:End Date:qk]' />
+              <tooltip column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]' />
+              <tooltip column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]' />
+            </encodings>
+            <reference-line axis-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[twk:Date:qk]' enable-instant-analytics='true' formula='min' id='refline1' label-type='none' paired-id='refline2' scope='per-table' symmetric='false' value-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Start Date:qk]' z-order='2' />
+            <reference-line axis-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[twk:Date:qk]' enable-instant-analytics='true' formula='max' id='refline2' label-type='automatic' paired-id='refline1' scope='per-table' symmetric='false' value-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:End Date:qk]' z-order='2' />
+          </pane>
+        </panes>
+        <rows>([federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk] + [federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk])</rows>
+        <cols>[federated.0bkpira1pza2b3133tu8b1gkoqit].[twk:Date:qk]</cols>
+      </table>
+      <simple-id uuid='{A1D10001-0001-4000-8000-000000000001}' />
+    </worksheet>
+    <worksheet name='D1 | Traffic - Selected Pages'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Graph 2: Traffic Over Time - Selected Pages&#10;</run>
+            <run fontsize='9'>Weekly Total Page Views by page. Use the Page filter to select pages.</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Web Traffic Analysis' name='federated.0bkpira1pza2b3133tu8b1gkoqit' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bkpira1pza2b3133tu8b1gkoqit'>
+            <column datatype='string' name='[Campaign ID]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Campaign Name]' role='dimension' type='nominal' />
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Dept/Sch/Institute]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Page path and screen class]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[Total users]' role='measure' type='quantitative' />
+            <column-instance column='[Campaign ID]' derivation='None' name='[none:Campaign ID:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Dept/Sch/Institute]' derivation='None' name='[none:Dept/Sch/Institute:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Page path and screen class]' derivation='None' name='[none:Page path and screen class:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Week-Trunc' name='[twk:Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]'>
+            <groupfilter function='level-members' level='[none:Campaign ID:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]'>
+            <groupfilter function='level-members' level='[none:Campaign Name:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]'>
+            <groupfilter function='level-members' level='[none:Dept/Sch/Institute:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]'>
+            <groupfilter function='level-members' level='[none:Page path and screen class:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' value='Page'>
+              <formatted-text>
+                <run>Page</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' />
+              <tooltip column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]' />
+              <tooltip column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]</rows>
+        <cols>[federated.0bkpira1pza2b3133tu8b1gkoqit].[twk:Date:qk]</cols>
+      </table>
+      <simple-id uuid='{A1D10001-0002-4000-8000-000000000002}' />
+    </worksheet>
+    <worksheet name='D1 | Key Metrics'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Key Metrics by Page&#10;</run>
+            <run fontsize='9'>Total Page Views, Total Unique Users &amp; Average Session Duration per page.</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Web Traffic Analysis' name='federated.0bkpira1pza2b3133tu8b1gkoqit' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bkpira1pza2b3133tu8b1gkoqit'>
+            <column datatype='real' name='[Average session duration]' role='measure' type='quantitative' />
+            <column caption='True Avg Session Duration' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([Average session duration] * [Sessions]) / SUM([Sessions])' />
+            </column>
+            <column datatype='string' name='[Campaign ID]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Campaign Name]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Dept/Sch/Institute]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Page path and screen class]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Sessions]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[Total users]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
+            <column-instance column='[Campaign ID]' derivation='None' name='[none:Campaign ID:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Dept/Sch/Institute]' derivation='None' name='[none:Dept/Sch/Institute:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Page path and screen class]' derivation='None' name='[none:Page path and screen class:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_3296071987586428928]' derivation='User' name='[usr:Calculation_3296071987586428928:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_3296071987586428928:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_3296071987586428928:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]'>
+            <groupfilter function='level-members' level='[none:Campaign ID:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]'>
+            <groupfilter function='level-members' level='[none:Campaign Name:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]'>
+            <groupfilter function='level-members' level='[none:Dept/Sch/Institute:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' value='120' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' value='360' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[Multiple Values]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]</rows>
+        <cols>[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]</cols>
+      </table>
+      <simple-id uuid='{A1D10001-0003-4000-8000-000000000003}' />
+    </worksheet>
   </worksheets>
   <dashboards>
     <dashboard enable-sort-zone-taborder='true' name='Campaign Spending - Financial Overview'>
@@ -4761,6 +5027,119 @@
       </devicelayouts>
       <simple-id uuid='{46D0505C-E250-47D5-9A76-DC1880A20C90}' />
     </dashboard>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard 1 - Total Web Traffic'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='14'>Total Web Traffic</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style />
+      <size sizing-mode='automatic' />
+      <datasources>
+        <datasource caption='Web Traffic Analysis' name='federated.0bkpira1pza2b3133tu8b1gkoqit' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0bkpira1pza2b3133tu8b1gkoqit'>
+        <column datatype='string' name='[Campaign ID]' role='dimension' type='nominal' />
+        <column datatype='string' name='[Campaign Name]' role='dimension' type='nominal' />
+        <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+        <column datatype='string' name='[Dept/Sch/Institute]' role='dimension' type='nominal' />
+        <column datatype='string' name='[Page path and screen class]' role='dimension' type='nominal' />
+        <column-instance column='[Campaign ID]' derivation='None' name='[none:Campaign ID:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
+        <column-instance column='[Dept/Sch/Institute]' derivation='None' name='[none:Dept/Sch/Institute:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Page path and screen class]' derivation='None' name='[none:Page path and screen class:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='200' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98116' id='201' param='vert' type-v2='layout-flow' w='98870' x='565' y='942'>
+            <zone h='4947' id='202' type-v2='title' w='98870' x='565' y='942'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='8220' id='203' param='horz' type-v2='layout-flow' w='98870' x='565' y='5889'>
+              <zone h='8220' id='204' mode='checkdropdown' name='D1 | Traffic - All CET Pages' param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]' type-v2='filter' w='24717' x='565' y='5889'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='8220' id='205' mode='checkdropdown' name='D1 | Traffic - All CET Pages' param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]' type-v2='filter' w='24717' x='25282' y='5889'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='8220' id='206' mode='checkdropdown' name='D1 | Traffic - All CET Pages' param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]' type-v2='filter' w='24718' x='49999' y='5889'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='8220' id='207' name='D1 | Traffic - All CET Pages' param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Date:qk]' show-domain='false' show-null-ctrls='false' type-v2='filter' w='24718' x='74717' y='5889'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone h='30000' id='208' name='D1 | Traffic - All CET Pages' w='98870' x='565' y='14109'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='6713' id='209' mode='checkdropdown' name='D1 | Traffic - Selected Pages' param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' type-v2='filter' values='database' w='98870' x='565' y='44109'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='26000' id='210' name='D1 | Traffic - Selected Pages' w='98870' x='565' y='50822'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+            <zone h='22236' id='211' name='D1 | Key Metrics' w='98870' x='565' y='76822'>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='4' />
+              </zone-style>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{A1D10001-0100-4000-8000-000000000100}' />
+    </dashboard>
   </dashboards>
   <windows saved-dpi-scale-factor='1.5' source-height='193'>
     <window class='worksheet' name='Traffic Trend'>
@@ -5343,6 +5722,109 @@
       </viewpoints>
       <active id='5' />
       <simple-id uuid='{2DB8CA48-AE96-46BD-B27B-9F61FC7977C5}' />
+    </window>
+    <window class='worksheet' name='D1 | Traffic - All CET Pages'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' type='color' />
+            <card param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]' type='filter' />
+            <card param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]' type='filter' />
+            <card param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]' type='filter' />
+            <card param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Date:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A1D10002-0001-4000-8000-000000000001}' />
+    </window>
+    <window class='worksheet' name='D1 | Traffic - Selected Pages'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' type='color' />
+            <card mode='checkdropdown' param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' type='filter' values='database' />
+            <card param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]' type='filter' />
+            <card param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]' type='filter' />
+            <card param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A1D10002-0002-4000-8000-000000000002}' />
+    </window>
+    <window class='worksheet' name='D1 | Key Metrics'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]' type='filter' />
+            <card param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]' type='filter' />
+            <card param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A1D10002-0003-4000-8000-000000000003}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1 - Total Web Traffic'>
+      <viewpoints>
+        <viewpoint name='D1 | Traffic - All CET Pages' />
+        <viewpoint name='D1 | Traffic - Selected Pages' />
+        <viewpoint name='D1 | Key Metrics' />
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{A1D10002-0100-4000-8000-000000000100}' />
     </window>
   </windows>
   <thumbnails>
