@@ -1,0 +1,74 @@
+Dept/Sch/Institute,Campaign ID,Campaign Name,Campaign Name for UTM,Campaign Type,Campaign Objective,Start Date,End Date,Marketing Channel,Marketing Platform,Remarks,Agency Rate,Media Cost,Production Cost,Calculated Agency Fee,Total Campaign Spend
+NACE,NYP2025-001,NACE CET - B2B Campaign - Q1 2025,nace-cet-b2b-q4,CET - B2B,Conversion,2024-03-01 00:00:00,2024-03-29 00:00:00,Others,Print,Mock Data Row,0.0,22905.27,0.0,0.0,22905.27
+NACE,NYP2025-001,NACE CET - B2B Campaign - Q1 2025,nace-cet-b2b-q4,CET - B2B,Conversion,2024-03-01 00:00:00,2024-03-29 00:00:00,Digital Ads,LinkedIn,Mock Data Row,0.0,12838.67,14376.91,0.0,27215.58
+SBM,NYP2025-002,SBM PET Campaign - Q3 2025,sbm-pet-q2,PET,Awareness,2024-02-17 00:00:00,2024-04-04 00:00:00,Digital Ads,Google Search,Mock Data Row,0.05,29563.38,5526.67,1478.169,36568.219000000005
+SIT,NYP2025-003,SIT CET - B2B Campaign - Q2 2025,sit-cet-b2b-q4,CET - B2B,Lead Generation,2024-07-02 00:00:00,2024-08-07 00:00:00,Out-of-Home Ads,MRT Platform Screen Door Concept,Mock Data Row,0.0,45603.47,10283.86,0.0,55887.33
+SIT,NYP2025-003,SIT CET - B2B Campaign - Q2 2025,sit-cet-b2b-q4,CET - B2B,Lead Generation,2024-07-02 00:00:00,2024-08-07 00:00:00,Digital Ads,Google Search,Mock Data Row,0.0,17833.24,0.0,0.0,17833.24
+SIT,NYP2025-003,SIT CET - B2B Campaign - Q2 2025,sit-cet-b2b-q4,CET - B2B,Lead Generation,2024-07-02 00:00:00,2024-08-07 00:00:00,Others,Admail,Mock Data Row,0.0,8784.16,0.0,0.0,8784.16
+SIT,NYP2025-004,SIT CET - B2B Campaign - Q3 2025,sit-cet-b2b-q1,CET - B2B,Conversion,2024-08-20 00:00:00,2024-10-16 00:00:00,Others,Admail,Mock Data Row,0.018,32223.08,0.0,580.01544,32803.095440000005
+SIT,NYP2025-004,SIT CET - B2B Campaign - Q3 2025,sit-cet-b2b-q1,CET - B2B,Conversion,2024-08-20 00:00:00,2024-10-16 00:00:00,Out-of-Home Ads,Bus Shelter Posters,Mock Data Row,0.05,44398.49,0.0,2219.9245,46618.4145
+SIT,NYP2025-004,SIT CET - B2B Campaign - Q3 2025,sit-cet-b2b-q1,CET - B2B,Conversion,2024-08-20 00:00:00,2024-10-16 00:00:00,Digital Ads,TikTok,Mock Data Row,0.018,43550.6,5296.15,783.9107999999999,49630.6608
+SHSS,NYP2025-005,SHSS CET - B2B Campaign - Q4 2025,shss-cet-b2b-q4,CET - B2B,Awareness,2024-05-12 00:00:00,2024-06-16 00:00:00,Out-of-Home Ads,Bus Shelter Posters,Mock Data Row,0.05,12385.2,0.0,619.2600000000001,13004.460000000001
+SHSS,NYP2025-005,SHSS CET - B2B Campaign - Q4 2025,shss-cet-b2b-q4,CET - B2B,Awareness,2024-05-12 00:00:00,2024-06-16 00:00:00,Digital Ads,Instagram,Mock Data Row,0.035,5904.2,0.0,206.64700000000002,6110.847
+SIT,NYP2025-006,SIT PET Campaign - Q2 2025,sit-pet-q4,PET,Awareness,45445,45476,Out-of-Home Ads,Bus Shelter Posters,Mock Data Row,0.018,7689.33,11346.81,138.40794,19174.54794
+SIT,NYP2025-006,SIT PET Campaign - Q2 2025,sit-pet-q4,PET,Awareness,45445,45476,Out-of-Home Ads,HDB Digital Display Panels,Mock Data Row,0.05,38356.46,2258.9,1917.823,42533.183
+NACE,NYP2025-007,NACE CET - B2C Campaign - Q2 2025,nace-cet-b2c-q1,CET - B2C,Lead Generation,45452,45467,Content Marketing,The Straits Times,Mock Data Row,0.018,44141.32,0.0,794.5437599999999,44935.86376
+ACI,NYP2025-008,ACI PET Campaign - Q2 2025,aci-pet-q3,PET,Awareness,45435,45483,Others,Print,Mock Data Row,0.0,27378.45,11670.34,0.0,39048.79
+ACI,NYP2025-008,ACI PET Campaign - Q2 2025,aci-pet-q3,PET,Awareness,45435,45483,Digital Ads,TikTok,Mock Data Row,0.0,40947.7,0.0,0.0,40947.7
+NACE,NYP2025-009,NACE PET Campaign - Q3 2025,nace-pet-q1,PET,Lead Generation,45538,45565,Content Marketing,Mothership,Mock Data Row,0.0,9936.35,0.0,0.0,9936.35
+SHSS,NYP2025-010,SHSS PET Campaign - Q3 2025,shss-pet-q2,PET,Lead Generation,45295,45310,Others,Admail,Mock Data Row,0.0,36736.13,0.0,0.0,36736.13
+SHSS,NYP2025-010,SHSS PET Campaign - Q3 2025,shss-pet-q2,PET,Lead Generation,45295,45310,Content Marketing,The Straits Times,Mock Data Row,0.05,22969.12,10523.06,1148.456,34640.636
+C&O,NYP2025-001,CET B2C Campaign - Q1 2025,cet-q1-2025,CET - B2C,Awareness,2025-01-08 00:00:00,2025-02-04 00:00:00,Out-of-Home Ads,MRT Platform Screen Door Concept,Hougang MRT Station,0.018,27115.0,15500.0,488.06999999999994,43103.07
+C&O,NYP2025-001,CET B2C Campaign - Q1 2025,cet-q1-2025,CET - B2C,Awareness,2025-01-30 00:00:00,2025-02-26 00:00:00,Out-of-Home Ads,MRT Platform Screen Door Concept,Punggol MRT Station,0.018,27115.0,15500.0,488.06999999999994,43103.07
+C&O,NYP2025-001,CET B2C Campaign - Q1 2025,cet-q1-2025,CET - B2C,Awareness,2025-01-08 00:00:00,2025-02-21 00:00:00,Out-of-Home Ads,HDB Digital Display Panels,Burst 1,0.035,11789.5,0.0,412.63250000000005,12202.1325
+C&O,NYP2025-001,CET B2C Campaign - Q1 2025,cet-q1-2025,CET - B2C,Awareness,2025-02-19 00:00:00,2025-03-04 00:00:00,Out-of-Home Ads,HDB Digital Display Panels,Burst 2,0.035,11789.5,0.0,412.63250000000005,12202.1325
+C&O,NYP2025-001,CET B2C Campaign - Q1 2025,cet-q1-2025,CET - B2C,Awareness,2025-02-18 00:00:00,2025-02-24 00:00:00,Others,Admail,,0.0,15467.28,0.0,0.0,15467.28
+C&O,NYP2025-001,CET B2C Campaign - Q1 2025,cet-q1-2025,CET - B2C,Awareness,2025-01-15 00:00:00,2025-02-11 00:00:00,Digital Ads,Meta (FB + IG),,0.07,8499.97,0.0,594.9979,9094.9679
+C&O,NYP2025-001,CET B2C Campaign - Q1 2025,cet-q1-2025,CET - B2C,Awareness,2025-01-15 00:00:00,2025-02-11 00:00:00,Digital Ads,LinkedIn,,0.07,2000.01,0.0,140.00070000000002,2140.0107
+C&O,NYP2025-001,CET B2C Campaign - Q1 2025,cet-q1-2025,CET - B2C,Awareness,2025-01-15 00:00:00,2025-02-11 00:00:00,Digital Ads,YouTube,,0.07,5000.0,0.0,350.00000000000006,5350.0
+C&O,NYP2025-001,CET B2C Campaign - Q1 2025,cet-q1-2025,CET - B2C,Conversion,2025-02-27 00:00:00,2025-03-21 00:00:00,Digital Ads,Meta (FB + IG),,0.07,19989.52,0.0,1399.2664000000002,21388.7864
+C&O,NYP2025-001,CET B2C Campaign - Q1 2025,cet-q1-2025,CET - B2C,Conversion,2025-02-28 00:00:00,2025-03-21 00:00:00,Digital Ads,LinkedIn,,0.07,3999.96,0.0,279.9972,4279.9572
+C&O,NYP2025-001,CET B2C Campaign - Q1 2025,cet-q1-2025,CET - B2C,Conversion,2025-01-29 00:00:00,2025-03-21 00:00:00,Digital Ads,Google Search,,0.07,25684.2,0.0,1797.8940000000002,27482.094
+SAS,NYPSAS2025-001,SAS B2C Campaign - Q1 2025,sas-cet-b2c-q1-2025,CET - B2C,Awareness,2025-01-10 00:00:00,2025-03-20 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,8000.0,0.0,800.0,8800.0
+SAS,NYPSAS2025-001,SAS B2C Campaign - Q1 2025,sas-cet-b2c-q1-2025,CET - B2C,Awareness,2025-01-10 00:00:00,2025-03-20 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,8000.0,0.0,800.0,8800.0
+SAS,NYPSAS2025-001,SAS B2C Campaign - Q1 2025,sas-cet-b2c-q1-2025,CET - B2C,Awareness,2025-01-10 00:00:00,2025-03-20 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,8000.0,0.0,800.0,8800.0
+SAS,NYPSAS2025-002,SAS B2C Campaign - Q3 2025,sas-cet-b2c-q3-2025,CET - B2C,Conversion,2025-07-01 00:00:00,2025-09-28 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,8000.0,0.0,800.0,8800.0
+SAS,NYPSAS2025-002,SAS B2C Campaign - Q3 2025,sas-cet-b2c-q3-2025,CET - B2C,Conversion,2025-07-01 00:00:00,2025-09-28 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,8000.0,0.0,800.0,8800.0
+SAS,NYPSAS2025-002,SAS B2C Campaign - Q3 2025,sas-cet-b2c-q3-2025,CET - B2C,Conversion,2025-07-01 00:00:00,2025-09-28 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,8000.0,0.0,800.0,8800.0
+SAS,NYPSAS2025-002,SAS B2C Campaign - Q3 2025,sas-cet-b2c-q3-2025,CET - B2C,Conversion,2025-07-01 00:00:00,2025-09-28 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,8000.0,0.0,800.0,8800.0
+SBM,NYPSBM2025-001,SBM B2C Campaign - Q1 2025,sbm-2025S1-acet,CET - B2C,Conversion,2025-01-10 00:00:00,2025-03-20 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,15000.0,0.0,1500.0,16500.0
+SBM,NYPSBM2025-001,SBM B2C Campaign - Q1 2025,sbm-2025S1-acet,CET - B2C,Conversion,2025-01-10 00:00:00,2025-03-20 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,15000.0,0.0,1500.0,16500.0
+SBM,NYPSBM2025-001,SBM B2C Campaign - Q1 2025,sbm-2025S1-acet,CET - B2C,Conversion,2025-01-10 00:00:00,2025-03-20 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,15000.0,0.0,1500.0,16500.0
+SDM,NYPSDM2025-001,SDM B2B Campaign - Q1 2025,sdm-cet-b2b-q1-2025,CET - B2B,Conversion,2025-01-05 00:00:00,2025-03-25 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,10000.0,0.0,1000.0,11000.0
+SDM,NYPSDM2025-001,SDM B2B Campaign - Q1 2025,sdm-cet-b2b-q1-2025,CET - B2B,Conversion,2025-01-05 00:00:00,2025-03-25 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,10000.0,0.0,1000.0,11000.0
+SDM,NYPSDM2025-001,SDM B2B Campaign - Q1 2025,sdm-cet-b2b-q1-2025,CET - B2B,Conversion,2025-01-05 00:00:00,2025-03-25 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,10000.0,0.0,1000.0,11000.0
+SEG,NYPSEG2025-001,SEG B2B Campaign - Q2 2025,seg-cet-b2b-q2-2025,CET - B2B,Conversion,2025-04-15 00:00:00,2025-06-30 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,16000.0,0.0,1600.0,17600.0
+SEG,NYPSEG2025-001,SEG B2B Campaign - Q2 2025,seg-cet-b2b-q2-2025,CET - B2B,Conversion,2025-04-15 00:00:00,2025-06-30 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,16000.0,0.0,1600.0,17600.0
+SEG,NYPSEG2025-001,SEG B2B Campaign - Q2 2025,seg-cet-b2b-q2-2025,CET - B2B,Conversion,2025-04-15 00:00:00,2025-06-30 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,16000.0,0.0,1600.0,17600.0
+SEG,NYPSEG2025-001,SEG B2B Campaign - Q2 2025,seg-cet-b2b-q2-2025,CET - B2B,Conversion,2025-04-15 00:00:00,2025-06-30 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,16000.0,0.0,1600.0,17600.0
+SEG,NYPSEG2025-002,SEG B2C Campaign - Q3 2025,seg-cet-b2c-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,8000.0,0.0,800.0,8800.0
+SEG,NYPSEG2025-002,SEG B2C Campaign - Q3 2025,seg-cet-b2c-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,8000.0,0.0,800.0,8800.0
+SEG,NYPSEG2025-002,SEG B2C Campaign - Q3 2025,seg-cet-b2c-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Facebook,Mock Data Row,0.1,8000.0,0.0,800.0,8800.0
+SHSS,NYPSHSS2025-001,SHSS Social Work Campaign - Q2 2025,shss-cet-b2c-q2-2025,CET - B2C,Awareness,2025-04-01 00:00:00,2025-06-01 00:00:00,Digital Ads,Facebook,Mock Data Row,0.12,5000.0,0.0,600.0,5600.0
+SHSS,NYPSHSS2025-001,SHSS Social Work Campaign - Q2 2025,shss-cet-b2c-q2-2025,CET - B2C,Awareness,2025-04-01 00:00:00,2025-06-01 00:00:00,Digital Ads,Facebook,Mock Data Row,0.12,5000.0,0.0,600.0,5600.0
+SHSS,NYPSHSS2025-001,SHSS Social Work Campaign - Q2 2025,shss-cet-b2c-q2-2025,CET - B2C,Awareness,2025-04-01 00:00:00,2025-06-01 00:00:00,Digital Ads,Facebook,Mock Data Row,0.12,5000.0,0.0,600.0,5600.0
+SHSS,NYPSHSS2025-001,SHSS Social Work Campaign - Q2 2025,shss-cet-b2c-q2-2025,CET - B2C,Awareness,2025-04-01 00:00:00,2025-06-01 00:00:00,Digital Ads,Facebook,Mock Data Row,0.12,5000.0,0.0,600.0,5600.0
+SHSS,NYPSHSS2025-001,SHSS Social Work Campaign - Q2 2025,shss-cet-b2c-q2-2025,CET - B2C,Awareness,2025-04-01 00:00:00,2025-06-01 00:00:00,Digital Ads,Facebook,Mock Data Row,0.12,5000.0,0.0,600.0,5600.0
+SIT,NYPSIT2025-001,SIT B2B Campaign - Q2 2025,sit-cet-b2b-q2-2025,CET - B2B,Conversion,2025-04-01 00:00:00,2025-06-30 00:00:00,Digital Ads,Facebook,Mock Data Row,0.12,16000.0,0.0,1920.0,17920.0
+SIT,NYPSIT2025-001,SIT B2B Campaign - Q2 2025,sit-cet-b2b-q2-2025,CET - B2B,Conversion,2025-04-01 00:00:00,2025-06-30 00:00:00,Digital Ads,Facebook,Mock Data Row,0.12,16000.0,0.0,1920.0,17920.0
+SIT,NYPSIT2025-001,SIT B2B Campaign - Q2 2025,sit-cet-b2b-q2-2025,CET - B2B,Conversion,2025-04-01 00:00:00,2025-06-30 00:00:00,Digital Ads,Facebook,Mock Data Row,0.12,16000.0,0.0,1920.0,17920.0
+SIT,NYPSIT2025-001,SIT B2B Campaign - Q2 2025,sit-cet-b2b-q2-2025,CET - B2B,Conversion,2025-04-01 00:00:00,2025-06-30 00:00:00,Digital Ads,Facebook,Mock Data Row,0.12,16000.0,0.0,1920.0,17920.0
+ACI,NYPACI2025-001,ACI SCTP Course Campaign - Q3 2025,aci-sctp-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Meta (FB + IG),Mock Data Row,0.08,10000.0,0.0,800.0,10800.0
+ACI,NYPACI2025-001,ACI SCTP Course Campaign - Q3 2025,aci-sctp-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Meta (FB + IG),Mock Data Row,0.08,10000.0,0.0,800.0,10800.0
+ACI,NYPACI2025-001,ACI SCTP Course Campaign - Q3 2025,aci-sctp-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Meta (FB + IG),Mock Data Row,0.08,10000.0,0.0,800.0,10800.0
+ACI,NYPACI2025-001,ACI SCTP Course Campaign - Q3 2025,aci-sctp-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Meta (FB + IG),Mock Data Row,0.08,10000.0,0.0,800.0,10800.0
+SIRS,NYPSIRS2025-001,SIRS Lifelong Learning Campaign - Q3 2025,sirs-ll-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Meta (FB + IG),Mock Data Row,0.1,12000.0,0.0,1200.0,13200.0
+SIRS,NYPSIRS2025-001,SIRS Lifelong Learning Campaign - Q3 2025,sirs-ll-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Meta (FB + IG),Mock Data Row,0.1,12000.0,0.0,1200.0,13200.0
+SIRS,NYPSIRS2025-001,SIRS Lifelong Learning Campaign - Q3 2025,sirs-ll-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Meta (FB + IG),Mock Data Row,0.1,12000.0,0.0,1200.0,13200.0
+SIRS,NYPSIRS2025-001,SIRS Lifelong Learning Campaign - Q3 2025,sirs-ll-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Meta (FB + IG),Mock Data Row,0.1,12000.0,0.0,1200.0,13200.0
+SIRS,NYPSIRS2025-001,SIRS Lifelong Learning Campaign - Q3 2025,sirs-ll-q3-2025,CET - B2C,Conversion,2025-08-01 00:00:00,2025-09-30 00:00:00,Digital Ads,Meta (FB + IG),Mock Data Row,0.1,12000.0,0.0,1200.0,13200.0
+NACE,NYPNACE2025-001,NACE NWpL Campaign - Q4 2025,nace-nwpl-q4-2025,CET - B2B,Awareness,2025-10-01 00:00:00,2025-12-20 00:00:00,Digital Ads,LinkedIn,Mock Data Row,0.1,12000.0,0.0,1200.0,13200.0
+NACE,NYPNACE2025-001,NACE NWpL Campaign - Q4 2025,nace-nwpl-q4-2025,CET - B2B,Awareness,2025-10-01 00:00:00,2025-12-20 00:00:00,Digital Ads,LinkedIn,Mock Data Row,0.1,12000.0,0.0,1200.0,13200.0
+NACE,NYPNACE2025-001,NACE NWpL Campaign - Q4 2025,nace-nwpl-q4-2025,CET - B2B,Awareness,2025-10-01 00:00:00,2025-12-20 00:00:00,Digital Ads,LinkedIn,Mock Data Row,0.1,12000.0,0.0,1200.0,13200.0
+NACE,NYPNACE2025-001,NACE NWpL Campaign - Q4 2025,nace-nwpl-q4-2025,CET - B2B,Conversion,2025-10-01 00:00:00,2025-12-20 00:00:00,Digital Ads,LinkedIn,Mock Data Row,0.1,12000.0,0.0,1200.0,13200.0
+NACE,NYPNACE2025-001,NACE NWpL Campaign - Q4 2025,nace-nwpl-q4-2025,CET - B2B,Conversion,2025-10-01 00:00:00,2025-12-20 00:00:00,Digital Ads,LinkedIn,Mock Data Row,0.1,12000.0,0.0,1200.0,13200.0
