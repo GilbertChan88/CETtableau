@@ -93,3 +93,35 @@ These are quick clicks that are best done in the Tableau UI (they cannot be reli
 ## 6. Validation
 - The workbook XML was checked and is **well-formed** after every edit.
 - All 12 original worksheets and all 4 original dashboards remain unchanged; only additions were made.
+
+
+## 7. Update — Date-axis alignment & date-filter sync (Graph 1 ↔ Graph 2)
+
+**Goal:** the dashboard Date (Duration) filter should update *both* time-series charts together, and
+the two charts should share the same week/date axis so they line up when stacked.
+
+**Date filter sync (both graphs):**
+Both `D1 | Traffic - All CET Pages` and `D1 | Traffic - Selected Pages` sit on the same
+`Web Traffic Analysis` datasource. The Date filter is a **global (data-source-scoped) filter** stored
+in the workbook's `<shared-views>` block, so it is automatically applied to *every* worksheet on that
+datasource — including both graphs. The dashboard's Date range control is bound to that global filter,
+so dragging it re-filters both charts at once. This is the same mechanism the original
+`Web Traffic & Campaign Dashboard` used, so behaviour is consistent.
+
+**Axis alignment fix:**
+Previously only Graph 1 carried the campaign-period reference band (built from `Start Date` → `End Date`).
+A reference band extends a continuous axis to include its endpoints, so Graph 1's week-axis stretched to
+the campaign start/end while Graph 2's only spanned its own data — the two axes did not line up.
+Graph 2 now carries the **same** campaign-period drivers:
+- `Start Date` / `End Date` columns and their continuous instances were added to Graph 2.
+- Two `lod` encodings (Start Date, End Date) and two paired reference lines (min Start → max End) form
+  the same shaded band, with the identical `#fff2cc` fill.
+
+With both charts using the same continuous `WEEK(Date)` axis, the same global Date filter, and the same
+campaign-period band, their date axes now cover the same range and align vertically on the dashboard.
+
+**Note on remaining pixel-level alignment:** if the left edges of the two plots still look slightly
+offset on the dashboard, it is because each chart's y-axis label column can be a different width. In
+Tableau Desktop this is a one-off tidy-up: select both zones and use *Distribute/!* or set a fixed
+y-axis width, or simply widen the left margin of the narrower chart. It does not affect the data or the
+date sync.

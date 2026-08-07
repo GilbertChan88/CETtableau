@@ -4050,13 +4050,17 @@
             <column datatype='string' name='[Campaign Name]' role='dimension' type='nominal' />
             <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
             <column datatype='string' name='[Dept/Sch/Institute]' role='dimension' type='nominal' />
+            <column datatype='date' name='[End Date]' role='dimension' type='ordinal' />
             <column datatype='string' name='[Page path and screen class]' role='dimension' type='nominal' />
+            <column datatype='date' name='[Start Date]' role='dimension' type='ordinal' />
             <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Total users]' role='measure' type='quantitative' />
             <column-instance column='[Campaign ID]' derivation='None' name='[none:Campaign ID:nk]' pivot='key' type='nominal' />
             <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Dept/Sch/Institute]' derivation='None' name='[none:Dept/Sch/Institute:nk]' pivot='key' type='nominal' />
+            <column-instance column='[End Date]' derivation='None' name='[none:End Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Start Date]' derivation='None' name='[none:Start Date:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Page path and screen class]' derivation='None' name='[none:Page path and screen class:nk]' pivot='key' type='nominal' />
             <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
@@ -4083,6 +4087,9 @@
           <aggregation value='true' />
         </view>
         <style>
+          <style-rule element='refband'>
+            <format attr='fill-color' id='refline1' value='#fff2cc' />
+          </style-rule>
           <style-rule element='legend-title-text'>
             <format attr='color' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' value='Page'>
               <formatted-text>
@@ -4099,9 +4106,13 @@
             <mark class='Line' />
             <encodings>
               <color column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' />
+              <lod column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Start Date:qk]' />
+              <lod column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:End Date:qk]' />
               <tooltip column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]' />
               <tooltip column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]' />
             </encodings>
+            <reference-line axis-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[twk:Date:qk]' enable-instant-analytics='true' formula='min' id='refline1' label-type='none' paired-id='refline2' scope='per-table' symmetric='false' value-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Start Date:qk]' z-order='2' />
+            <reference-line axis-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[twk:Date:qk]' enable-instant-analytics='true' formula='max' id='refline2' label-type='automatic' paired-id='refline1' scope='per-table' symmetric='false' value-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:End Date:qk]' z-order='2' />
           </pane>
         </panes>
         <rows>[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]</rows>
