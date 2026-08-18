@@ -125,3 +125,60 @@ offset on the dashboard, it is because each chart's y-axis label column can be a
 Tableau Desktop this is a one-off tidy-up: select both zones and use *Distribute/!* or set a fixed
 y-axis width, or simply widen the left margin of the narrower chart. It does not affect the data or the
 date sync.
+
+
+---
+
+# Dashboard 2 — Total Campaign Spends
+
+Built on the existing `Final_Campaign_Spend_Data` datasource (which already powers the
+`Campaign Spending - Financial Overview` dashboard). **No existing sheets or dashboards were
+changed** — everything new is prefixed with `D2 |`.
+
+## Requirement (from `Dashboard 2 - Total Campaign Spends.png`)
+
+| Section | Detail |
+|---|---|
+| Filters (single/multi) | Campaign ID, Campaign Name, Duration (start–end date), Department/School/Institute |
+| Spending by Marketing Objective | Awareness, Conversion, Lead Generation |
+| Spending by Marketing Channel | Digital Ads, Content Marketing, Out-of-Home (OOH) Ads, Others |
+| Spends by Digital Ads | by platform (Meta, Facebook, Instagram, TikTok, LinkedIn, …) |
+| Spends by Content Marketing | by platform (Mothership, The Straits Times, CNA, AsiaOne, …) |
+| Spends by OOH Ads | by platform (MRT PSDC, Bus Shelter, HDB DDP, …) |
+| Spends by Others | by platform (Admail, Print, …) |
+| Present in chart | bar charts |
+
+## New calculated fields (on `Final_Campaign_Spend_Data`)
+`Start Date` / `End Date` are stored as **text** in the CSV, so two date calcs were added to power
+the Duration filter:
+- **`Campaign Start Date`** = `DATE(DATEPARSE("yyyy-MM-dd HH:mm:ss", [Start Date]))`
+- **`Campaign End Date`** = `DATE(DATEPARSE("yyyy-MM-dd HH:mm:ss", [End Date]))`
+
+## New worksheets (all bar charts of `SUM([Total Campaign Spend])`, currency-formatted, sorted desc)
+1. **`D2 | Spend by Objective`** — spend by `Campaign Objective`.
+2. **`D2 | Spend by Channel`** — spend by `Marketing Channel`.
+3. **`D2 | Spend - Digital Ads`** — spend by `Marketing Platform`, pre-filtered to `Marketing Channel = Digital Ads`.
+4. **`D2 | Spend - Content Marketing`** — platform spend, `Marketing Channel = Content Marketing`.
+5. **`D2 | Spend - OOH Ads`** — platform spend, `Marketing Channel = Out-of-Home Ads`.
+6. **`D2 | Spend - Others`** — platform spend, `Marketing Channel = Others`.
+
+Each sheet carries open (`All`) interactive filters for Campaign ID, Campaign Name, Department, and a
+Duration (Campaign Start Date) range filter.
+
+## New dashboard — `Dashboard 2 - Total Campaign Spends`
+Top to bottom: title → filter row (Campaign ID, Campaign Name, Duration, Department) → Spend by
+Objective → Spend by Channel → a row of the four channel-specific platform charts (Digital Ads,
+Content Marketing, OOH Ads, Others).
+
+## Recommended manual follow-ups in Tableau Desktop
+- **Scope the four shared filters to Dashboard 2's charts:** right-click each filter (Campaign ID /
+  Campaign Name / Duration / Department) → *Apply to Worksheets → Selected Worksheets* and tick the six
+  `D2 |` sheets. (Deliberately **not** "All Using This Data Source", so the existing
+  `Campaign Spending - Financial Overview` dashboard is left untouched.)
+- Verify the `Campaign Start Date` / `Campaign End Date` calcs parsed correctly (they should; the source
+  format is `yyyy-MM-dd HH:mm:ss`). If your data uses a different format, adjust the `DATEPARSE` pattern.
+- Optionally add data labels/percent-of-total and tidy colours per channel.
+
+## Validation
+- Workbook XML validated **well-formed** after every edit.
+- All pre-existing worksheets and dashboards remain intact; only additions were made.
