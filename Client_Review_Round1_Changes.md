@@ -140,3 +140,29 @@ the workbook:
 
 I'm happy to pair on #8 or take another pass if you'd like me to attempt specific parts (e.g. just the
 Channel Mix-left layout) despite the risks above.
+
+
+---
+
+# Round 3 — #8 partial (done in file)
+
+Two of the #8 asks were safe to implement in-file and are now done:
+- **Campaign Objective filter** — added as a workbook-wide (data-source) filter and placed as a
+  **checkbox** card on the Campaign Spending dashboard's right filter strip. It drives all spend charts.
+- **Campaign Type → checkbox** — added as a workbook-wide filter with a **checkbox (Multiple Values
+  dropdown)** card on the dashboard.
+
+These were safe because Dashboard 2's sheets don't filter on Objective or Type, so there's no collision.
+
+Still to do in Tableau (unchanged reasons):
+- **Campaign ID and Date/Duration filters** — these fields are already filtered locally on Dashboard 2's
+  sheets (same data source), so a workbook-wide version would collide. Add them per-sheet in Tableau and
+  *Apply to Worksheets → Selected Worksheets* (the spend sheets).
+- **Layout** (Channel Mix left/main; Spend by Dept & Cost Details right; filters top-right) — needs the
+  visual editor; the dashboard's auto-generated Phone layout reuses zone IDs, which makes blind
+  repositioning unsafe.
+
+Note: the Objective/Type filter cards land in the existing right-hand strip. Because they're workbook-wide,
+selecting a value will also flow through to Dashboard 2 (defaults are "All", so no change unless used).
+The spend sheets other than Spend by Dept still carry the earlier saved NACE/CET filter action — clear it
+if you want these filters to span all campaigns.

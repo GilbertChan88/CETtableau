@@ -2006,6 +2006,23 @@
         <max>#2025-03-31#</max>
       </filter>
     </shared-view>
+    <shared-view name='federated.0315qxo1p3wpht0znbanp1o2j6sz'>
+      <datasources>
+        <datasource caption='Final_Campaign_Spend_Data' name='federated.0315qxo1p3wpht0znbanp1o2j6sz' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0315qxo1p3wpht0znbanp1o2j6sz'>
+        <column datatype='string' name='[Campaign Objective]' role='dimension' type='nominal' />
+        <column datatype='string' name='[Campaign Type]' role='dimension' type='nominal' />
+        <column-instance column='[Campaign Objective]' derivation='None' name='[none:Campaign Objective:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Campaign Type]' derivation='None' name='[none:Campaign Type:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <filter class='categorical' column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign Objective:nk]'>
+        <groupfilter function='level-members' level='[none:Campaign Objective:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+      <filter class='categorical' column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign Type:nk]'>
+        <groupfilter function='level-members' level='[none:Campaign Type:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+    </shared-view>
   </shared-views>
   <actions>
     <action caption='Filter 1 (generated)' name='[Action1_73CFF7509BFA4B39BE6FA7C121425AA4]'>
@@ -2470,9 +2487,11 @@
             <datasource caption='Final_Campaign_Spend_Data' name='federated.0315qxo1p3wpht0znbanp1o2j6sz' />
           </datasources>
           <datasource-dependencies datasource='federated.0315qxo1p3wpht0znbanp1o2j6sz'>
+            <column datatype='string' name='[Campaign Objective]' role='dimension' type='nominal' />
             <column datatype='string' name='[Campaign Type]' role='dimension' type='nominal' />
             <column datatype='string' name='[Dept/Sch/Institute]' role='dimension' type='nominal' />
             <column datatype='real' name='[Total Campaign Spend]' role='measure' type='quantitative' />
+            <column-instance column='[Campaign Objective]' derivation='None' name='[none:Campaign Objective:nk]' pivot='key' type='nominal' />
             <column-instance column='[Campaign Type]' derivation='None' name='[none:Campaign Type:nk]' pivot='key' type='nominal' />
             <column-instance column='[Dept/Sch/Institute]' derivation='None' name='[none:Dept/Sch/Institute:nk]' pivot='key' type='nominal' />
             <column-instance column='[Total Campaign Spend]' derivation='Sum' name='[sum:Total Campaign Spend:qk]' pivot='key' type='quantitative' />
@@ -4886,7 +4905,11 @@
       </datasources>
       <datasource-dependencies datasource='federated.0315qxo1p3wpht0znbanp1o2j6sz'>
         <column datatype='string' name='[Campaign Name]' role='dimension' type='nominal' />
+        <column datatype='string' name='[Campaign Objective]' role='dimension' type='nominal' />
+        <column datatype='string' name='[Campaign Type]' role='dimension' type='nominal' />
         <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Campaign Objective]' derivation='None' name='[none:Campaign Objective:nk]' pivot='key' type='nominal' />
+        <column-instance column='[Campaign Type]' derivation='None' name='[none:Campaign Type:nk]' pivot='key' type='nominal' />
       </datasource-dependencies>
       <zones>
         <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
@@ -4937,6 +4960,22 @@
                     </zone-style>
                   </zone>
                   <zone h='6713' id='20' mode='checkdropdown' name='Cost Details' param='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign Name:nk]' type-v2='filter' values='database' w='11291' x='88144' y='28278'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='6713' id='30' mode='checkdropdown' name='Spend by Dept' param='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign Objective:nk]' type-v2='filter' w='11291' x='88144' y='35000'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='6713' id='31' mode='checkdropdown' name='Spend by Dept' param='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign Type:nk]' type-v2='filter' w='11291' x='88144' y='41713'>
                     <zone-style>
                       <format attr='border-color' value='#000000' />
                       <format attr='border-style' value='none' />
