@@ -1409,6 +1409,9 @@
       <column caption='In Campaign Period' datatype='boolean' name='[Calculation_D1CAMPPERIOD01]' role='dimension' type='ordinal'>
         <calculation class='tableau' formula='[Date] &gt;= [Start Date] AND [Date] &lt;= [End Date]' />
       </column>
+      <column caption='Avg Session Duration (min sec)' datatype='string' name='[Calculation_D1DURSTR01]' role='measure' type='nominal'>
+        <calculation class='tableau' formula='STR(INT([Calculation_3296071987586428928] / 60)) + &quot;min &quot; + STR(INT([Calculation_3296071987586428928]) % 60) + &quot;s&quot;' />
+      </column>
       <column caption='Campaign Name for UTM (Mock Campaign Master.csv)' datatype='string' name='[Campaign Name for UTM (Mock_Campaign_Master.csv)]' role='dimension' type='nominal' />
       <column datatype='integer' name='[Total users]' role='measure' type='quantitative' />
       <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
@@ -1907,6 +1910,20 @@
       <column caption='Campaign End Date' datatype='date' name='[Calculation_D2END01]' role='dimension' type='ordinal'>
         <calculation class='tableau' formula='DATE(DATEPARSE(&quot;yyyy-MM-dd HH:mm:ss&quot;, [End Date]))' />
       </column>
+      <column datatype='string' name='[Marketing Platform]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;Print&quot;' value='Brochures' />
+        </aliases>
+      </column>
+      <column caption='% of Total Spend' datatype='real' name='[Calculation_D2PCTTOTAL01]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([Total Campaign Spend]) / TOTAL(SUM([Total Campaign Spend]))' />
+      </column>
+      <column caption='Total Spend' datatype='real' name='[Calculation_D2TOTALSPEND01]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Total Campaign Spend]' />
+      </column>
+      <column caption='Campaign Duration (Days)' datatype='integer' name='[Calculation_D2DUR01]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [Calculation_D2START01], [Calculation_D2END01])' />
+      </column>
       <column caption='Final_Campaign_Spend_Data.csv' datatype='table' name='[__tableau_internal_object_id__].[Final_Campaign_Spend_Data.csv_FC9FB67C2D7349A2A8FA19C943E47135]' role='measure' type='quantitative' />
       <group caption='Action (Campaign Type,Dept/Sch/Institute)' hidden='true' name='[Action (Campaign Type,Dept/Sch/Institute)]' name-style='unqualified' user:auto-column='sheet_link'>
         <groupfilter function='crossjoin'>
@@ -2087,9 +2104,13 @@
             <column datatype='string' name='[Marketing Channel]' role='dimension' type='nominal' />
             <column datatype='string' name='[Marketing Platform]' role='dimension' type='nominal' />
             <column datatype='real' name='[Total Campaign Spend]' role='measure' type='quantitative' />
+            <column caption='% of Total Spend' datatype='real' name='[Calculation_D2PCTTOTAL01]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([Total Campaign Spend]) / TOTAL(SUM([Total Campaign Spend]))' />
+            </column>
             <column-instance column='[Marketing Channel]' derivation='None' name='[none:Marketing Channel:nk]' pivot='key' type='nominal' />
             <column-instance column='[Marketing Platform]' derivation='None' name='[none:Marketing Platform:nk]' pivot='key' type='nominal' />
             <column-instance column='[Total Campaign Spend]' derivation='Sum' name='[sum:Total Campaign Spend:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_D2PCTTOTAL01]' derivation='User' name='[usr:Calculation_D2PCTTOTAL01:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[Action (Campaign Type,Dept/Sch/Institute)]'>
             <groupfilter function='reorder-dimensionality' user:ui-action-filter='[Action2_CD2830E0ED994C3081E8A94A0DCDD687]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
@@ -2114,6 +2135,7 @@
         <style>
           <style-rule element='cell'>
             <format attr='text-format' field='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[sum:Total Campaign Spend:qk]' value='c&quot;$&quot;#,##0,.00K;(&quot;$&quot;#,##0,.00K)' />
+            <format attr='text-format' field='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[usr:Calculation_D2PCTTOTAL01:qk]' value='0.0%' />
           </style-rule>
         </style>
         <panes>
@@ -2130,6 +2152,7 @@
               <text column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Marketing Channel:nk]' />
               <text column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Marketing Platform:nk]' />
               <text column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[sum:Total Campaign Spend:qk]' />
+              <text column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[usr:Calculation_D2PCTTOTAL01:qk]' />
             </encodings>
             <style>
               <style-rule element='mark'>
@@ -2167,6 +2190,9 @@
             <column datatype='real' name='[Media Cost]' role='measure' type='quantitative' />
             <column datatype='real' name='[Production Cost]' role='measure' type='quantitative' />
             <column datatype='real' name='[Total Campaign Spend]' role='measure' type='quantitative' />
+            <column caption='Total Spend' datatype='real' name='[Calculation_D2TOTALSPEND01]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Total Campaign Spend]' />
+            </column>
             <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Marketing Channel]' derivation='None' name='[none:Marketing Channel:nk]' pivot='key' type='nominal' />
             <column-instance column='[Marketing Platform]' derivation='None' name='[none:Marketing Platform:nk]' pivot='key' type='nominal' />
@@ -2174,13 +2200,11 @@
             <column-instance column='[Media Cost]' derivation='Sum' name='[sum:Media Cost:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Production Cost]' derivation='Sum' name='[sum:Production Cost:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Total Campaign Spend]' derivation='Sum' name='[sum:Total Campaign Spend:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_D2TOTALSPEND01]' derivation='Sum' name='[sum:Calculation_D2TOTALSPEND01:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[:Measure Names]'>
             <groupfilter function='union' user:op='manual'>
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0315qxo1p3wpht0znbanp1o2j6sz].[sum:Calculated Agency Fee:qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0315qxo1p3wpht0znbanp1o2j6sz].[sum:Media Cost:qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0315qxo1p3wpht0znbanp1o2j6sz].[sum:Production Cost:qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0315qxo1p3wpht0znbanp1o2j6sz].[sum:Total Campaign Spend:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0315qxo1p3wpht0znbanp1o2j6sz].[sum:Calculation_D2TOTALSPEND01:qk]&quot;' />
             </groupfilter>
           </filter>
           <filter class='categorical' column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[Action (Campaign Type,Dept/Sch/Institute)]'>
@@ -2370,7 +2394,7 @@
             <groupfilter function='member' level='[none:Campaign Name:nk]' member='%null%' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]'>
-            <groupfilter function='member' level='[none:Page path and screen class:nk]' member='&quot;/l_adult-learner&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+            <groupfilter function='level-members' level='[none:Page path and screen class:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <shelf-sorts>
             <shelf-sort-v2 dimension-to-sort='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]' shelf='rows' />
@@ -4750,6 +4774,90 @@
       </table>
       <simple-id uuid='{A1D20001-0006-4000-8000-000000000006}' />
     </worksheet>
+    <worksheet name='Campaign Schedule by Platform'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Campaign Schedule (by Marketing Platform)&#10;</run>
+            <run fontsize='9'>Dynamic timeline; one bar per Marketing Platform within each campaign period.</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Final_Campaign_Spend_Data' name='federated.0315qxo1p3wpht0znbanp1o2j6sz' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0315qxo1p3wpht0znbanp1o2j6sz'>
+            <column datatype='string' name='[Start Date]' role='dimension' type='nominal' />
+            <column datatype='string' name='[End Date]' role='dimension' type='nominal' />
+            <column caption='Campaign Start Date' datatype='date' name='[Calculation_D2START01]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEPARSE(&quot;yyyy-MM-dd HH:mm:ss&quot;, [Start Date]))' />
+            </column>
+            <column caption='Campaign End Date' datatype='date' name='[Calculation_D2END01]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(DATEPARSE(&quot;yyyy-MM-dd HH:mm:ss&quot;, [End Date]))' />
+            </column>
+            <column caption='Campaign Duration (Days)' datatype='integer' name='[Calculation_D2DUR01]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [Calculation_D2START01], [Calculation_D2END01])' />
+            </column>
+            <column datatype='string' name='[Campaign ID]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Campaign Name]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Dept/Sch/Institute]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Marketing Platform]' role='dimension' type='nominal' />
+            <column-instance column='[Campaign ID]' derivation='None' name='[none:Campaign ID:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Dept/Sch/Institute]' derivation='None' name='[none:Dept/Sch/Institute:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Marketing Platform]' derivation='None' name='[none:Marketing Platform:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_D2START01]' derivation='None' name='[none:Calculation_D2START01:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_D2DUR01]' derivation='Sum' name='[sum:Calculation_D2DUR01:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign ID:nk]'>
+            <groupfilter function='level-members' level='[none:Campaign ID:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign Name:nk]'>
+            <groupfilter function='level-members' level='[none:Campaign Name:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Dept/Sch/Institute:nk]'>
+            <groupfilter function='level-members' level='[none:Dept/Sch/Institute:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Calculation_D2START01:qk]' included-values='in-range'>
+            <min>#2024-01-01#</min>
+            <max>#2025-12-31#</max>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign Name:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Calculation_D2START01:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign ID:nk]</column>
+            <column>[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign Name:nk]</column>
+            <column>[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Dept/Sch/Institute:nk]</column>
+            <column>[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Marketing Platform:nk]</column>
+            <column>[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Calculation_D2START01:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign Name:nk]' value='200' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='GanttBar' />
+            <encodings>
+              <color column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Marketing Platform:nk]' />
+              <size column='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[sum:Calculation_D2DUR01:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign Name:nk] / [federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Marketing Platform:nk])</rows>
+        <cols>[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Calculation_D2START01:qk]</cols>
+      </table>
+      <simple-id uuid='{A1D20003-0001-4000-8000-000000000001}' />
+    </worksheet>
   </worksheets>
   <dashboards>
     <dashboard enable-sort-zone-taborder='true' name='Campaign Spending - Financial Overview'>
@@ -6700,6 +6808,38 @@
       </viewpoints>
       <active id='-1' />
       <simple-id uuid='{A1D20002-0100-4000-8000-000000000100}' />
+    </window>
+    <window class='worksheet' name='Campaign Schedule by Platform'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Marketing Platform:nk]' type='color' />
+            <card mode='checkdropdown' param='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign ID:nk]' type='filter' />
+            <card mode='checkdropdown' param='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Campaign Name:nk]' type='filter' />
+            <card param='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Calculation_D2START01:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card mode='checkdropdown' param='[federated.0315qxo1p3wpht0znbanp1o2j6sz].[none:Dept/Sch/Institute:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A1D20003-0002-4000-8000-000000000002}' />
     </window>
   </windows>
   <thumbnails>
