@@ -91,3 +91,52 @@ built and visually verified** are provided as precise Tableau steps rather than 
   matches Tris's "Don't see this on Tableau".
 - Because I can't open the workbook in Tableau here, please open it and confirm the changed sheets render
   as expected; I can adjust anything that looks off.
+
+
+---
+
+# Round 2 (in-file attempt of #7 and #8)
+
+## #7 Traffic "Total Web Traffic Over Time" — DONE in file
+- **Month / Week / Day toggle (the priority):** added a **`Date Granularity`** parameter (Day/Week/Month,
+  default Month) and a calc **`Date (by Granularity)`** = `DATETRUNC([Date Granularity], [Date])`, and put
+  that field on the Columns shelf of `Traffic Trend Analysis` in place of the fixed weekly axis. A
+  **radio control** for the parameter was added to the Web Traffic Dashboard's filter row, so you can
+  switch the whole trend between day/week/month live. (Day is available too, per the request.)
+- **MMM-YY labels:** with the toggle on Month, the axis is monthly. The exact `mmm-yy` label mask is a
+  one-click format (right-click the date axis → *Format → Dates → mmm-yy*) — I left the mask to Tableau
+  because there was no existing date-format pattern in the file to copy safely.
+- **Tooltip-as-a-table:** still recommended as a UI step (turn on bar labels for Views + Total users, or
+  drop a small companion crosstab beneath the chart). Tell me the exact look and I'll build it.
+
+> If the radio control doesn't appear after opening, just drag the `Date Granularity` parameter onto the
+> dashboard — the underlying calc/axis are already wired.
+
+## #8 Campaign Spending – Financial Overview — must be finished in Tableau (here's why)
+I attempted this in-file and stopped because it can't be done reliably without a high risk of breaking
+the workbook:
+
+1. **Shared data source with Dashboard 2.** The spend sheets and all six `D2 |` sheets use the **same**
+   `Final_Campaign_Spend_Data` source. `Campaign ID` and the date/`Duration` are **already filtered
+   locally on the Dashboard 2 sheets**. A workbook-wide (global) filter for those fields would collide
+   with Dashboard 2's existing filters — Tableau would have two conflicting filters on the same field.
+2. **Filter scoping needs the UI.** Making one dashboard control drive several sheets requires
+   *Apply to Worksheets → Selected Worksheets*, which isn't safely expressible in the raw file.
+3. **Duplicated phone-layout zone IDs.** This dashboard has an auto-generated Phone layout that reuses
+   the same zone IDs, so hand-editing zone positions blind is error-prone.
+4. **A saved filter action** currently scopes the spend sheets to NACE / CET campaigns; new filters
+   interact with it, which needs to be seen live.
+
+### Exact Tableau steps for #8 (≈5–10 min)
+- **Add filters:** on each spend sheet drag `Campaign ID`, `Campaign Objective`, and a `Campaign Start
+  Date` **range** to Filters; also add `Campaign Type` and `Campaign Name`. Right-click each →
+  *Apply to Worksheets → Selected Worksheets* → tick the spend sheets → *Show Filter*.
+- **Checkboxes:** on each shown filter card, dropdown → *Multiple Values (dropdown)* (or *list*).
+- **Placement:** float/anchor the filter cards **top-right** and align.
+- **Layout:** drag **Channel Mix** to the left and enlarge it (main focus); move **Spend by Department**
+  and **Cost Details** to the right.
+- **(Optional) remove the NACE/CET restriction:** if the spend views look limited to NACE CET campaigns,
+  clear the saved filter (right-click the pill → Remove) so the new filters span all campaigns.
+
+I'm happy to pair on #8 or take another pass if you'd like me to attempt specific parts (e.g. just the
+Channel Mix-left layout) despite the risks above.

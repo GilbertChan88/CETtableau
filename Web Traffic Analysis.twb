@@ -23,6 +23,17 @@
     <preference name='ui.shelf.height' value='26' />
   </preferences>
   <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='18.1'>
+      <aliases enabled='yes' />
+      <column caption='Date Granularity' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;month&quot;'>
+        <calculation class='tableau' formula='&quot;month&quot;' />
+        <members>
+          <member alias='Day' value='&quot;day&quot;' />
+          <member alias='Week' value='&quot;week&quot;' />
+          <member alias='Month' value='&quot;month&quot;' />
+        </members>
+      </column>
+    </datasource>
     <datasource caption='Mock + Live Data' inline='true' name='federated.1ndc0xs0yux68k1e2bmmz07xy1lf' version='18.1'>
       <connection class='federated'>
         <named-connections>
@@ -413,6 +424,9 @@
       <aliases enabled='yes' />
       <column caption='Duration (Days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [Start Date], [End Date])' />
+      </column>
+      <column caption='Date (by Granularity)' datatype='date' name='[Calculation_D3GRAN01]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='DATETRUNC([Parameters].[Parameter 1], [Date])' />
       </column>
       <column caption='Gantt Position (Top)' datatype='real' name='[Calculation_3296071988386656259]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='WINDOW_MAX(SUM([Views])) * 1.1'>
@@ -3531,6 +3545,9 @@
             <column datatype='string' name='[Dept/Sch/Institute]' role='dimension' type='nominal' />
             <column datatype='integer' name='[Total users]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
+            <column caption='Date (by Granularity)' datatype='date' name='[Calculation_D3GRAN01]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATETRUNC([Parameters].[Parameter 1], [Date])' />
+            </column>
             <column-instance column='[Campaign ID]' derivation='None' name='[none:Campaign ID:nk]' pivot='key' type='nominal' />
             <column-instance column='[Campaign Name for UTM]' derivation='None' name='[none:Campaign Name for UTM:nk]' pivot='key' type='nominal' />
             <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
@@ -3538,6 +3555,7 @@
             <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Date]' derivation='Week-Trunc' name='[twk:Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_D3GRAN01]' derivation='None' name='[none:Calculation_D3GRAN01:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Campaign ID:nk]'>
             <groupfilter function='level-members' level='[none:Campaign ID:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -3625,7 +3643,7 @@
           </pane>
         </panes>
         <rows>([federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[sum:Views:qk] + [federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[sum:Total users:qk])</rows>
-        <cols>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[twk:Date:qk]</cols>
+        <cols>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3GRAN01:qk]</cols>
       </table>
       <simple-id uuid='{72EE6632-CA7E-41B4-BCE0-77B50A0E5E37}' />
     </worksheet>
@@ -5507,6 +5525,14 @@
               </zone>
               <zone h='8890' id='14' param='horz' type-v2='layout-flow' w='98834' x='583' y='5774'>
                 <zone h='8890' id='8' name='Traffic Trend Analysis' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Date:qk]' show-domain='false' show-null-ctrls='false' type-v2='filter' w='26239' x='583' y='5774'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='8890' id='23' param='[Parameters].[Parameter 1]' type-v2='paramctrl' mode='radio' w='13192' x='26822' y='5774'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
