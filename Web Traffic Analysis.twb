@@ -5571,7 +5571,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='8890' id='23' param='[Parameters].[Parameter 1]' type-v2='paramctrl' mode='radio' w='13192' x='26822' y='5774'>
+                <zone h='8890' id='23' param='[Parameters].[Parameter 1]' type-v2='paramctrl' mode='compact' w='13192' x='26822' y='5774'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
