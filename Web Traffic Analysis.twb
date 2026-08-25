@@ -33,11 +33,13 @@
           <member alias='Month' value='&quot;month&quot;' />
         </members>
       </column>
-      <column caption='Date From' datatype='date' name='[Parameter 2]' param-domain-type='all' role='measure' type='quantitative' value='#2024-01-01#'>
+      <column caption='Date From' datatype='date' name='[Parameter 2]' param-domain-type='range' role='measure' type='quantitative' value='#2024-01-01#'>
         <calculation class='tableau' formula='#2024-01-01#' />
+        <range max='#2025-12-31#' min='#2024-01-01#' />
       </column>
-      <column caption='Date To' datatype='date' name='[Parameter 3]' param-domain-type='all' role='measure' type='quantitative' value='#2025-03-31#'>
+      <column caption='Date To' datatype='date' name='[Parameter 3]' param-domain-type='range' role='measure' type='quantitative' value='#2025-03-31#'>
         <calculation class='tableau' formula='#2025-03-31#' />
+        <range max='#2025-12-31#' min='#2024-01-01#' />
       </column>
     </datasource>
     <datasource caption='Mock + Live Data' inline='true' name='federated.1ndc0xs0yux68k1e2bmmz07xy1lf' version='18.1'>
