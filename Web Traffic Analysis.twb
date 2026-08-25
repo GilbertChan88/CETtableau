@@ -4063,6 +4063,7 @@
             <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
             <column datatype='string' name='[Dept/Sch/Institute]' role='dimension' type='nominal' />
             <column datatype='date' name='[End Date]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Page path and screen class]' role='dimension' type='nominal' />
             <column datatype='date' name='[Start Date]' role='dimension' type='ordinal' />
             <column datatype='integer' name='[Total users]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
@@ -4072,6 +4073,7 @@
             <column-instance column='[Dept/Sch/Institute]' derivation='None' name='[none:Dept/Sch/Institute:nk]' pivot='key' type='nominal' />
             <column-instance column='[End Date]' derivation='None' name='[none:End Date:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Start Date]' derivation='None' name='[none:Start Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Page path and screen class]' derivation='None' name='[none:Page path and screen class:nk]' pivot='key' type='nominal' />
             <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Date]' derivation='Week-Trunc' name='[twk:Date:qk]' pivot='key' type='quantitative' />
@@ -4085,10 +4087,14 @@
           <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]'>
             <groupfilter function='level-members' level='[none:Dept/Sch/Institute:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]'>
+            <groupfilter function='level-members' level='[none:Page path and screen class:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
           <slices>
             <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]</column>
             <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]</column>
             <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Dept/Sch/Institute:nk]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -4105,7 +4111,7 @@
           </style-rule>
         </style>
         <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
@@ -4114,11 +4120,46 @@
               <color column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' />
               <lod column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Start Date:qk]' />
               <lod column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:End Date:qk]' />
-              <tooltip column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]' />
-              <tooltip column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]' />
             </encodings>
             <reference-line axis-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[twk:Date:qk]' enable-instant-analytics='true' formula='min' id='refline1' label-type='none' paired-id='refline2' scope='per-table' symmetric='false' value-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Start Date:qk]' z-order='2' />
             <reference-line axis-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[twk:Date:qk]' enable-instant-analytics='true' formula='max' id='refline2' label-type='automatic' paired-id='refline1' scope='per-table' symmetric='false' value-column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:End Date:qk]' z-order='2' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing custom-mark-size-in-axis-units='1.0' mark-alignment='mark-alignment-left' mark-sizing-setting='marks-scaling-on' use-custom-mark-size='false' />
+            <encodings>
+              <color column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' />
+              <text column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]' />
+              <tooltip column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]' />
+              <tooltip column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
           </pane>
         </panes>
         <rows>([federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk] + [federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk])</rows>
@@ -5837,6 +5878,14 @@
                 </zone-style>
               </zone>
               <zone h='8220' id='207' name='D1 | Traffic - All CET Pages' param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Date:qk]' show-domain='false' show-null-ctrls='false' type-v2='filter' w='24718' x='74717' y='5889'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='8220' id='212' mode='checkdropdown' name='D1 | Traffic - All CET Pages' param='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' type-v2='filter' values='database' w='24718' x='99435' y='5889'>
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
