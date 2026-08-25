@@ -33,6 +33,12 @@
           <member alias='Month' value='&quot;month&quot;' />
         </members>
       </column>
+      <column caption='Date From' datatype='date' name='[Parameter 2]' param-domain-type='all' role='measure' type='quantitative' value='#2024-01-01#'>
+        <calculation class='tableau' formula='#2024-01-01#' />
+      </column>
+      <column caption='Date To' datatype='date' name='[Parameter 3]' param-domain-type='all' role='measure' type='quantitative' value='#2025-03-31#'>
+        <calculation class='tableau' formula='#2025-03-31#' />
+      </column>
     </datasource>
     <datasource caption='Mock + Live Data' inline='true' name='federated.1ndc0xs0yux68k1e2bmmz07xy1lf' version='18.1'>
       <connection class='federated'>
@@ -427,6 +433,12 @@
       </column>
       <column caption='Date (by Granularity)' datatype='date' name='[Calculation_D3GRAN01]' role='dimension' type='ordinal'>
         <calculation class='tableau' formula='DATETRUNC([Parameters].[Parameter 1], [Date])' />
+      </column>
+      <column caption='In Range (Traffic)' datatype='boolean' name='[Calculation_D3RANGET01]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='[Date] &gt;= [Parameters].[Parameter 2] AND [Date] &lt;= [Parameters].[Parameter 3]' />
+      </column>
+      <column caption='In Range (Campaign)' datatype='boolean' name='[Calculation_D3RANGEC01]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='[Start Date] &lt;= [Parameters].[Parameter 3] AND [End Date] &gt;= [Parameters].[Parameter 2]' />
       </column>
       <column caption='Gantt Position (Top)' datatype='real' name='[Calculation_3296071988386656259]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='WINDOW_MAX(SUM([Views])) * 1.1'>
@@ -2058,14 +2070,21 @@
             <column datatype='date' name='[End Date]' role='dimension' type='ordinal' />
             <column datatype='string' name='[Marketing Channel]' role='dimension' type='nominal' />
             <column datatype='date' name='[Start Date]' role='dimension' type='ordinal' />
+            <column caption='In Range (Campaign)' datatype='boolean' name='[Calculation_D3RANGEC01]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='[Start Date] &lt;= [Parameters].[Parameter 3] AND [End Date] &gt;= [Parameters].[Parameter 2]' />
+            </column>
             <column-instance column='[Calculation_3296071987911081986]' derivation='Avg' name='[avg:Calculation_3296071987911081986:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Marketing Channel]' derivation='None' name='[none:Marketing Channel:nk]' pivot='key' type='nominal' />
             <column-instance column='[Start Date]' derivation='None' name='[none:Start Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_D3RANGEC01]' derivation='None' name='[none:Calculation_D3RANGEC01:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Channel:nk]'>
             <groupfilter function='level-members' level='[none:Marketing Channel:nk]' />
+          </filter>
+          <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3RANGEC01:ok]'>
+            <groupfilter function='member' level='[none:Calculation_D3RANGEC01:ok]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <shelf-sorts>
             <shelf-sort-v2 dimension-to-sort='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Campaign Name:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[avg:Calculation_3296071987911081986:qk]' shelf='rows' />
@@ -3567,6 +3586,9 @@
             <column caption='Date (by Granularity)' datatype='date' name='[Calculation_D3GRAN01]' role='dimension' type='ordinal'>
               <calculation class='tableau' formula='DATETRUNC([Parameters].[Parameter 1], [Date])' />
             </column>
+            <column caption='In Range (Traffic)' datatype='boolean' name='[Calculation_D3RANGET01]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='[Date] &gt;= [Parameters].[Parameter 2] AND [Date] &lt;= [Parameters].[Parameter 3]' />
+            </column>
             <column-instance column='[Campaign ID]' derivation='None' name='[none:Campaign ID:nk]' pivot='key' type='nominal' />
             <column-instance column='[Campaign Name for UTM]' derivation='None' name='[none:Campaign Name for UTM:nk]' pivot='key' type='nominal' />
             <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
@@ -3575,7 +3597,11 @@
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Date]' derivation='Week-Trunc' name='[twk:Date:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_D3GRAN01]' derivation='None' name='[none:Calculation_D3GRAN01:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_D3RANGET01]' derivation='None' name='[none:Calculation_D3RANGET01:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3RANGET01:ok]'>
+            <groupfilter function='member' level='[none:Calculation_D3RANGET01:ok]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
           <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Campaign ID:nk]'>
             <groupfilter function='level-members' level='[none:Campaign ID:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
@@ -5563,7 +5589,15 @@
                 </zone>
               </zone>
               <zone h='8890' id='14' param='horz' type-v2='layout-flow' w='98834' x='583' y='5774'>
-                <zone h='8890' id='8' name='Traffic Trend Analysis' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Date:qk]' show-domain='false' show-null-ctrls='false' type-v2='filter' w='26239' x='583' y='5774'>
+                <zone h='8890' id='8' param='[Parameters].[Parameter 2]' type-v2='paramctrl' w='13192' x='583' y='5774'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='8890' id='24' param='[Parameters].[Parameter 3]' type-v2='paramctrl' w='13192' x='13775' y='5774'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
