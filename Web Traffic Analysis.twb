@@ -2083,7 +2083,7 @@
             <column-instance column='[Calculation_D3RANGEC01]' derivation='None' name='[none:Calculation_D3RANGEC01:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Channel:nk]'>
-            <groupfilter function='level-members' level='[none:Marketing Channel:nk]' />
+            <groupfilter function='level-members' level='[none:Marketing Channel:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3RANGEC01:ok]'>
             <groupfilter function='member' level='[none:Calculation_D3RANGEC01:ok]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
