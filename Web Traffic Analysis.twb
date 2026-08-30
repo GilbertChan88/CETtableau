@@ -5717,6 +5717,14 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
+                <zone h='8890' id='26' mode='checkdropdown' name='Campaign Schedule' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Platform:nk]' type-v2='filter' w='12245' x='64504' y='5774'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
                 <zone fixed-size='142' h='8890' id='12' is-fixed='true' name='Traffic Trend Analysis' pane-specification-id='3' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[:Measure Names]' type-v2='color' w='10933' x='64504' y='5774'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
