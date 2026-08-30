@@ -41,6 +41,13 @@
         <calculation class='tableau' formula='#2025-03-31#' />
         <range max='#2025-12-31#' min='#2024-01-01#' />
       </column>
+      <column caption='Schedule View' datatype='string' name='[Parameter 4]' param-domain-type='list' role='measure' type='nominal' value='&quot;Individual&quot;'>
+        <calculation class='tableau' formula='&quot;Individual&quot;' />
+        <members>
+          <member alias='Individual (bar per platform)' value='&quot;Individual&quot;' />
+          <member alias='Overlap (combined)' value='&quot;Overlap&quot;' />
+        </members>
+      </column>
     </datasource>
     <datasource caption='Mock + Live Data' inline='true' name='federated.1ndc0xs0yux68k1e2bmmz07xy1lf' version='18.1'>
       <connection class='federated'>
@@ -441,6 +448,9 @@
       </column>
       <column caption='In Range (Campaign)' datatype='boolean' name='[Calculation_D3RANGEC01]' role='dimension' type='ordinal'>
         <calculation class='tableau' formula='[Start Date] &lt;= [Parameters].[Parameter 3] AND [End Date] &gt;= [Parameters].[Parameter 2]' />
+      </column>
+      <column caption='Platform (View)' datatype='string' name='[Calculation_D4PLATVIEW01]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [Parameters].[Parameter 4] = &quot;Individual&quot; THEN [Marketing Platform] ELSE &quot;&quot; END' />
       </column>
       <column caption='Gantt Position (Top)' datatype='real' name='[Calculation_3296071988386656259]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='WINDOW_MAX(SUM([Views])) * 1.1'>
@@ -2071,19 +2081,25 @@
             <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
             <column datatype='date' name='[End Date]' role='dimension' type='ordinal' />
             <column datatype='string' name='[Marketing Channel]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Marketing Platform]' role='dimension' type='nominal' />
             <column datatype='date' name='[Start Date]' role='dimension' type='ordinal' />
             <column caption='In Range (Campaign)' datatype='boolean' name='[Calculation_D3RANGEC01]' role='dimension' type='ordinal'>
               <calculation class='tableau' formula='[Start Date] &lt;= [Parameters].[Parameter 3] AND [End Date] &gt;= [Parameters].[Parameter 2]' />
+            </column>
+            <column caption='Platform (View)' datatype='string' name='[Calculation_D4PLATVIEW01]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Parameters].[Parameter 4] = &quot;Individual&quot; THEN [Marketing Platform] ELSE &quot;&quot; END' />
             </column>
             <column-instance column='[Calculation_3296071987911081986]' derivation='Avg' name='[avg:Calculation_3296071987911081986:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Marketing Channel]' derivation='None' name='[none:Marketing Channel:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Marketing Platform]' derivation='None' name='[none:Marketing Platform:nk]' pivot='key' type='nominal' />
             <column-instance column='[Start Date]' derivation='None' name='[none:Start Date:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_D3RANGEC01]' derivation='None' name='[none:Calculation_D3RANGEC01:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_D4PLATVIEW01]' derivation='None' name='[none:Calculation_D4PLATVIEW01:nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
-          <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Channel:nk]'>
-            <groupfilter function='level-members' level='[none:Marketing Channel:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Platform:nk]'>
+            <groupfilter function='level-members' level='[none:Marketing Platform:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3RANGEC01:ok]'>
             <groupfilter function='member' level='[none:Calculation_D3RANGEC01:ok]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
@@ -2093,7 +2109,8 @@
           </shelf-sorts>
           <slices>
             <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Date:qk]</column>
-            <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Channel:nk]</column>
+            <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Platform:nk]</column>
+            <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D4PLATVIEW01:nk]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -2112,7 +2129,7 @@
             </view>
             <mark class='GanttBar' />
             <encodings>
-              <color column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Channel:nk]' />
+              <color column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Platform:nk]' />
               <size column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[avg:Calculation_3296071987911081986:qk]' />
             </encodings>
             <style>
@@ -2122,7 +2139,7 @@
             </style>
           </pane>
         </panes>
-        <rows>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Campaign Name:nk]</rows>
+        <rows>([federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Campaign Name:nk] / [federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D4PLATVIEW01:nk])</rows>
         <cols>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Start Date:qk]</cols>
       </table>
       <simple-id uuid='{C2748171-F82D-4DB1-A95E-49A2B4D1F3EC}' />
@@ -5668,6 +5685,14 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
+                <zone h='8890' id='25' param='[Parameters].[Parameter 4]' type-v2='paramctrl' mode='compact' w='13192' x='40014' y='5774'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
                 <zone fixed-size='173' h='8890' id='9' is-fixed='true' mode='checkdropdown' name='Traffic Trend Analysis' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Campaign Name for UTM:nk]' type-v2='filter' w='13192' x='26822' y='5774'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -5700,7 +5725,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='321' h='8890' id='22' is-fixed='true' name='Campaign Schedule' pane-specification-id='0' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Channel:nk]' type-v2='color' w='23980' x='75437' y='5774'>
+                <zone fixed-size='321' h='8890' id='22' is-fixed='true' name='Campaign Schedule' pane-specification-id='0' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Platform:nk]' type-v2='color' w='23980' x='75437' y='5774'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -5797,7 +5822,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='321' h='8890' id='22' name='Campaign Schedule' pane-specification-id='0' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Channel:nk]' type-v2='color' w='23980' x='75437' y='5774'>
+                <zone fixed-size='321' h='8890' id='22' name='Campaign Schedule' pane-specification-id='0' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Platform:nk]' type-v2='color' w='23980' x='75437' y='5774'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -6251,7 +6276,7 @@
         <edge name='right'>
           <strip size='106'>
             <card pane-specification-id='1' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[:Measure Names]' type='color' />
-            <card pane-specification-id='3' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Channel:nk]' type='color' />
+            <card pane-specification-id='3' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Platform:nk]' type='color' />
           </strip>
         </edge>
       </cards>
@@ -6376,9 +6401,9 @@
         </edge>
         <edge name='right'>
           <strip size='106'>
-            <card mode='checkdropdown' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Channel:nk]' type='filter' />
+            <card mode='checkdropdown' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Platform:nk]' type='filter' />
             <card param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Date:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
-            <card pane-specification-id='0' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Channel:nk]' type='color' />
+            <card pane-specification-id='0' param='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Marketing Platform:nk]' type='color' />
           </strip>
         </edge>
       </cards>
