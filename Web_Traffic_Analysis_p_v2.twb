@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbook version="18.0" caption="Web Traffic Analysis - Perplexity Implementation (Client Updates)">
+  <preferences/>
+  
+  <!-- Data Source Placeholder -->
+  <datasource caption="Mock_WebTraffic" name="Mock_WebTraffic.csv"/>
+  <datasource caption="Final_Campaign_Spend" name="Final_Campaign_Spend_Data.csv"/>
+  
+  <!-- WORKSHEET 1: Main Dashboard Overview -->
+  <worksheet caption="p-Dashboard 1 - Web Traffic Overview">
+    <desc>Main Web Traffic Dashboard with all client requirements implemented: Date filter DD/MM/YYYY, checkbox filters, different colors, chronological month sequence (MMM-YY format), time breakdown parameter (Month/Week/Day), dynamic bar count.</desc>
+  </worksheet>
+  
+  <!-- WORKSHEET 2: Time Series Analysis -->
+  <worksheet caption="p-Dashboard 1 - Total Web Traffic Over Time">
+    <desc>Time series with X-axis in MMM-YY format, all months shown (not limited to 12), chronological order, Month/Week/Day parameter, tooltip as table, combined bar & line chart.</desc>
+  </worksheet>
+  
+  <!-- WORKSHEET 3: Campaign Timeline -->
+  <worksheet caption="p-Dashboard 1 - Campaign Schedule">
+    <desc>Dynamic date range axis, campaigns based on date range filter, multiple rows for multiple Marketing Platforms, renamed from Marketing Channel, % Completion calculation.</desc>
+  </worksheet>
+  
+  <!-- WORKSHEET 4: Page Metrics -->
+  <worksheet caption="p-Dashboard 1 - Page Performance Details">
+    <desc>Average Session Duration as AVG (not SUM), format "Xmin Ys", page path include filter for parent pages, searchable text filter.</desc>
+  </worksheet>
+  
+  <!-- WORKSHEET 5: Financial Overview -->
+  <worksheet caption="p-Dashboard 2 - Campaign Spending Overview">
+    <desc>Filters standardized top right: Date range, Campaign ID, Campaign Type, Campaign Name (checkboxes), Campaign Objective (Awareness/Conversion/Lead Gen).</desc>
+  </worksheet>
+  
+  <!-- WORKSHEET 6: Channel Mix (Main Focus) -->
+  <worksheet caption="p-Dashboard 2 - Channel Mix">
+    <desc>Positioned LEFT as main focus, dynamic % of grand total, total spend in $ shown, "Prints" renamed to "Brochures", different colors per channel.</desc>
+  </worksheet>
+  
+  <!-- WORKSHEET 7: Department Spend -->
+  <worksheet caption="p-Dashboard 2 - Spend by Department">
+    <desc>Positioned RIGHT, spend by Dept/Sch/Institute, total spend in $ displayed.</desc>
+  </worksheet>
+  
+  <!-- WORKSHEET 8: Campaign Cost Details -->
+  <worksheet caption="p-Dashboard 2 - Cost Details by Campaign">
+    <desc>Positioned RIGHT, campaign name with start & end dates, "Total Media Cost + Production Cost + Agency Fee" renamed to "Total Spend".</desc>
+  </worksheet>
+  
+  <!-- WORKSHEET 9: Data Dictionary -->
+  <worksheet caption="p-Data Dictionary">
+    <desc>Field definitions for Web Traffic (Date, Sessions, Pageviews, Avg Session Duration, Campaign ID, Marketing Platform, Page Path) and Campaign Spending (Campaign ID, Name, Type, Objective, Start/End Date, Total Spend, Marketing Platform, Department).</desc>
+  </worksheet>
+  
+  <!-- WORKSHEET 10: Calculations Reference -->
+  <worksheet caption="p-Calculations Reference">
+    <desc>Key calculations: Date formatting (MMM-YY), Time Granularity parameter, AVG Session Duration formula, % Completion, Dynamic % of Grand Total, Total Spend calculation.</desc>
+  </worksheet>
+</workbook>
