@@ -452,6 +452,9 @@
       <column caption='Platform (View)' datatype='string' name='[Calculation_D4PLATVIEW01]' role='dimension' type='nominal'>
         <calculation class='tableau' formula='IF [Parameters].[Parameter 4] = &quot;Individual&quot; THEN [Marketing Platform] ELSE &quot;&quot; END' />
       </column>
+      <column caption='Period' datatype='string' name='[Calculation_D3TBLPER01]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='STR(YEAR([Calculation_D3GRAN01])) + &quot;-&quot; + RIGHT(&quot;0&quot; + STR(MONTH([Calculation_D3GRAN01])), 2) + &quot;-&quot; + RIGHT(&quot;0&quot; + STR(DAY([Calculation_D3GRAN01])), 2)' />
+      </column>
       <column caption='Gantt Position (Top)' datatype='real' name='[Calculation_3296071988386656259]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='WINDOW_MAX(SUM([Views])) * 1.1'>
           <table-calc ordering-type='Rows' />
@@ -3743,13 +3746,16 @@
             <column caption='In Range (Traffic)' datatype='boolean' name='[Calculation_D3RANGET01]' role='dimension' type='ordinal'>
               <calculation class='tableau' formula='[Date] &gt;= [Parameters].[Parameter 2] AND [Date] &lt;= [Parameters].[Parameter 3]' />
             </column>
+            <column caption='Period' datatype='string' name='[Calculation_D3TBLPER01]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR(YEAR([Calculation_D3GRAN01])) + &quot;-&quot; + RIGHT(&quot;0&quot; + STR(MONTH([Calculation_D3GRAN01])), 2) + &quot;-&quot; + RIGHT(&quot;0&quot; + STR(DAY([Calculation_D3GRAN01])), 2)' />
+            </column>
             <column-instance column='[Campaign ID]' derivation='None' name='[none:Campaign ID:nk]' pivot='key' type='nominal' />
             <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Dept/Sch/Institute]' derivation='None' name='[none:Dept/Sch/Institute:nk]' pivot='key' type='nominal' />
             <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_D3GRAN01]' derivation='None' name='[none:Calculation_D3GRAN01:ok]' pivot='key' type='ordinal' />
             <column-instance column='[Calculation_D3RANGET01]' derivation='None' name='[none:Calculation_D3RANGET01:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_D3TBLPER01]' derivation='None' name='[none:Calculation_D3TBLPER01:nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[:Measure Names]'>
             <groupfilter function='union' user:op='manual'>
@@ -3768,17 +3774,13 @@
           </filter>
           <slices>
             <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[:Measure Names]</column>
-            <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3GRAN01:ok]</column>
+            <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3TBLPER01:nk]</column>
             <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Campaign ID:nk]</column>
             <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Dept/Sch/Institute:nk]</column>
           </slices>
           <aggregation value='true' />
         </view>
-        <style>
-          <style-rule element='cell'>
-            <format attr='text-format' field='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3GRAN01:ok]' value='mmm yy' />
-          </style-rule>
-        </style>
+        <style />
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
@@ -3796,7 +3798,7 @@
             </style>
           </pane>
         </panes>
-        <rows total='true'>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3GRAN01:ok]</rows>
+        <rows total='true'>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3TBLPER01:nk]</rows>
         <cols>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[:Measure Names]</cols>
       </table>
       <simple-id uuid='{A1B2C3D4-E5F6-4A1B-9C2D-3E4F5A6B7C81}' />
