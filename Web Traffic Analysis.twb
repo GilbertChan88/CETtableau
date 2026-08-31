@@ -1447,6 +1447,9 @@
       <column caption='In Campaign Period' datatype='boolean' name='[Calculation_D1CAMPPERIOD01]' role='dimension' type='ordinal'>
         <calculation class='tableau' formula='[Date] &gt;= [Start Date] AND [Date] &lt;= [End Date]' />
       </column>
+      <column caption='In Range (Traffic)' datatype='boolean' name='[Calculation_D1RANGET01]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='[Date] &gt;= [Parameters].[Parameter 2] AND [Date] &lt;= [Parameters].[Parameter 3]' />
+      </column>
       <column caption='Avg Session Duration (min sec)' datatype='string' name='[Calculation_D1DURSTR01]' role='measure' type='nominal'>
         <calculation class='tableau' formula='STR(INT([Calculation_3296071987586428928] / 60)) + &quot;min &quot; + STR(INT([Calculation_3296071987586428928]) % 60) + &quot;s&quot;' />
       </column>
@@ -2539,10 +2542,14 @@
             <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
             <column datatype='integer' name='[Total users]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
+            <column caption='In Range (Traffic)' datatype='boolean' name='[Calculation_D1RANGET01]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='[Date] &gt;= [Parameters].[Parameter 2] AND [Date] &lt;= [Parameters].[Parameter 3]' />
+            </column>
             <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
             <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
             <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_D1RANGET01]' derivation='None' name='[none:Calculation_D1RANGET01:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]'>
             <groupfilter function='union' user:op='manual'>
@@ -2556,10 +2563,14 @@
               <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]&quot;</bucket>
             </dictionary>
           </manual-sort>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Calculation_D1RANGET01:ok]'>
+            <groupfilter function='member' level='[none:Calculation_D1RANGET01:ok]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
           <slices>
             <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]</column>
             <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[yr:Date:ok]</column>
             <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[mn:Date:ok]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Calculation_D1RANGET01:ok]</column>
           </slices>
           <aggregation value='true' />
         </view>
