@@ -2521,6 +2521,78 @@
       </table>
       <simple-id uuid='{59F9A7EE-ADC2-4E5A-96E9-564E91287C35}' />
     </worksheet>
+    <worksheet name='Traffic Trend Table'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>&lt;Sheet Name&gt;&#10;</run>
+            <run fontsize='10'>Total Views &amp; Users by Month</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Web Traffic Analysis' name='federated.0bkpira1pza2b3133tu8b1gkoqit' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0bkpira1pza2b3133tu8b1gkoqit'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Total users]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <slices>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[yr:Date:ok]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[mn:Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' value='110' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[Multiple Values]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0bkpira1pza2b3133tu8b1gkoqit].[yr:Date:ok] / [federated.0bkpira1pza2b3133tu8b1gkoqit].[mn:Date:ok])</rows>
+        <cols>[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]</cols>
+      </table>
+      <simple-id uuid='{7A1B2C3D-4E5F-4A6B-8C9D-0E1F2A3B4C5D}' />
+    </worksheet>
     <worksheet name='Spend by Dept'>
       <table>
         <view>
@@ -6386,6 +6458,30 @@
         </highlight>
       </viewpoint>
       <simple-id uuid='{4C2EDBCA-E9B6-4731-8992-9147104E5A87}' />
+    </window>
+    <window class='worksheet' name='Traffic Trend Table'>
+      <cards>
+        <edge name='left'>
+          <strip size='106'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='20'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{8B2C3D4E-5F6A-4B7C-9D8E-1F2A3B4C5D6E}' />
     </window>
     <window class='worksheet' name='Campaign Schedule'>
       <cards>
