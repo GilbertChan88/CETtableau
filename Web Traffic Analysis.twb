@@ -2440,16 +2440,24 @@
             <column datatype='integer' name='[Sessions]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Total users]' role='measure' type='quantitative' />
             <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
+            <column caption='In Range (Traffic)' datatype='boolean' name='[Calculation_D1RANGET01]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='[Date] &gt;= [Parameters].[Parameter 2] AND [Date] &lt;= [Parameters].[Parameter 3]' />
+            </column>
             <column-instance column='[Campaign ID]' derivation='None' name='[none:Campaign ID:nk]' pivot='key' type='nominal' />
             <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Min' name='[min:Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Max' name='[max:Date:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Page path and screen class]' derivation='None' name='[none:Page path and screen class:nk]' pivot='key' type='nominal' />
             <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Calculation_3296071987586428928]' derivation='User' name='[usr:Calculation_3296071987586428928:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_D1RANGET01]' derivation='None' name='[none:Calculation_D1RANGET01:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]'>
             <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[min:Date:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[max:Date:qk]&quot;' />
               <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]&quot;' />
               <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]&quot;' />
               <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_3296071987586428928:qk]&quot;' />
@@ -2457,6 +2465,8 @@
           </filter>
           <manual-sort column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' direction='ASC'>
             <dictionary>
+              <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[min:Date:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[max:Date:qk]&quot;</bucket>
               <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]&quot;</bucket>
               <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]&quot;</bucket>
               <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_3296071987586428928:qk]&quot;</bucket>
@@ -2471,6 +2481,9 @@
           <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]'>
             <groupfilter function='level-members' level='[none:Page path and screen class:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
+          <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Calculation_D1RANGET01:ok]'>
+            <groupfilter function='member' level='[none:Calculation_D1RANGET01:ok]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
           <shelf-sorts>
             <shelf-sort-v2 dimension-to-sort='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]' shelf='rows' />
           </shelf-sorts>
@@ -2480,12 +2493,15 @@
             <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Date:qk]</column>
             <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign Name:nk]</column>
             <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Campaign ID:nk]</column>
+            <column>[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Calculation_D1RANGET01:ok]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
           <style-rule element='cell'>
             <format attr='width' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' value='110' />
+            <format attr='text-format' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[min:Date:qk]' value='dd/mm/yyyy' />
+            <format attr='text-format' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[max:Date:qk]' value='dd/mm/yyyy' />
           </style-rule>
           <style-rule element='header'>
             <format attr='font-weight' data-class='subtotal' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' value='bold' />
