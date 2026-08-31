@@ -3,12 +3,10 @@
 // ----------------------------------------------------------------------------
 // Create this as a Power Query *parameter* (Home > Manage Parameters > New) of
 // type Text. Set its Current Value to the folder that contains the source
-// files, WITH a trailing backslash, e.g.:
+// files, WITH a trailing backslash.
 //
-//     C:\Users\<you>\CETtableau\
-//
-// Every table query below references [SourceFolder] so the project stays
-// portable — you only change the path in one place.
+// Current default value:
+//     C:\Work\CETMarketingKiro\
 //
 // Files expected in that folder:
 //   - Mock_WebTraffic.csv
@@ -17,4 +15,4 @@
 //   - Mock_NYP2025-001_Campaign_Master.xlsx   (optional; "Master" sheet)
 // ============================================================================
 
-"C:\Users\CHANGE_ME\CETtableau\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+"C:\Work\CETMarketingKiro\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
