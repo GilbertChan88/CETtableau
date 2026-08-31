@@ -6,12 +6,12 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-	annotation PBI_QueryOrder = ["SourceFolder","WebTraffic","CampaignSpend","Campaign","Calendar","FactActualSpend"]
+annotation PBI_QueryOrder = ["SourceFolder","WebTraffic","CampaignSpend","Campaign","Calendar","FactActualSpend"]
 
-	ref table WebTraffic
-	ref table CampaignSpend
-	ref table Campaign
-	ref table Calendar
-	ref table FactActualSpend
+annotation __PBI_TimeIntelligenceEnabled = 0
 
-	ref cultureInfo en-US
+ref table WebTraffic
+ref table CampaignSpend
+ref table Campaign
+ref table Calendar
+ref table FactActualSpend
