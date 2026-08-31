@@ -3763,6 +3763,12 @@
               <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[sum:Total users:qk]&quot;' />
             </groupfilter>
           </filter>
+          <manual-sort column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[sum:Views:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[sum:Total users:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
           <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3RANGET01:ok]'>
             <groupfilter function='member' level='[none:Calculation_D3RANGET01:ok]' member='true' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
@@ -3789,7 +3795,6 @@
             <mark class='Automatic' />
             <encodings>
               <text column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[Multiple Values]' />
-              <lod column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[:Measure Names]' />
             </encodings>
             <style>
               <style-rule element='mark'>
