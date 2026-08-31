@@ -3,7 +3,7 @@ table WebTraffic
 	measure 'Total Views' = SUM(WebTraffic[Views])
 		formatString: #,0
 
-	measure 'Total Users' = SUM(WebTraffic[Total users])
+	measure 'Total Users' = SUM(WebTraffic[Users])
 		formatString: #,0
 
 	measure 'Total Sessions' = SUM(WebTraffic[Sessions])
@@ -41,9 +41,9 @@ table WebTraffic
 		sourceColumn: Views
 		summarizeBy: sum
 
-	column 'Total users'
+	column Users
 		dataType: int64
-		sourceColumn: Total users
+		sourceColumn: Users
 		summarizeBy: sum
 
 	column Sessions
@@ -63,6 +63,7 @@ table WebTraffic
 				    Source = Csv.Document(File.Contents(SourceFolder & "Mock_WebTraffic.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    Typed = Table.TransformColumnTypes(Promoted, {{"Date", type date}, {"Page path and screen class", type text}, {"Campaign Name for UTM", type text}, {"Views", Int64.Type}, {"Total users", Int64.Type}, {"Sessions", Int64.Type}, {"Average session duration", type number}}, "en-US"),
-				    Cleaned = Table.SelectRows(Typed, each [Date] <> null)
+				    Renamed = Table.RenameColumns(Typed, {{"Total users", "Users"}}),
+				    Cleaned = Table.SelectRows(Renamed, each [Date] <> null)
 				in
 				    Cleaned

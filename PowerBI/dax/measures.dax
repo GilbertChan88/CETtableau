@@ -7,7 +7,7 @@
 
 Total Views = SUM ( WebTraffic[Views] )
 
-Total Users = SUM ( WebTraffic[Total users] )
+Total Users = SUM ( WebTraffic[Users] )   // column renamed from "Total users" -> "Users" to avoid a measure/column name clash
 
 Total Sessions = SUM ( WebTraffic[Sessions] )
 
