@@ -3748,7 +3748,7 @@
             <column-instance column='[Dept/Sch/Institute]' derivation='None' name='[none:Dept/Sch/Institute:nk]' pivot='key' type='nominal' />
             <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_D3GRAN01]' derivation='None' name='[none:Calculation_D3GRAN01:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_D3GRAN01]' derivation='None' name='[none:Calculation_D3GRAN01:ok]' pivot='key' type='ordinal' />
             <column-instance column='[Calculation_D3RANGET01]' derivation='None' name='[none:Calculation_D3RANGET01:ok]' pivot='key' type='ordinal' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[:Measure Names]'>
@@ -3768,7 +3768,7 @@
           </filter>
           <slices>
             <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[:Measure Names]</column>
-            <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Date:qk]</column>
+            <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3GRAN01:ok]</column>
             <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Campaign ID:nk]</column>
             <column>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Dept/Sch/Institute:nk]</column>
           </slices>
@@ -3776,7 +3776,7 @@
         </view>
         <style>
           <style-rule element='cell'>
-            <format attr='text-format' field='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3GRAN01:qk]' value='mmm yy' />
+            <format attr='text-format' field='[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3GRAN01:ok]' value='mmm yy' />
           </style-rule>
         </style>
         <panes>
@@ -3796,7 +3796,7 @@
             </style>
           </pane>
         </panes>
-        <rows total='true'>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3GRAN01:qk]</rows>
+        <rows total='true'>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[none:Calculation_D3GRAN01:ok]</rows>
         <cols>[federated.1ndc0xs0yux68k1e2bmmz07xy1lf].[:Measure Names]</cols>
       </table>
       <simple-id uuid='{A1B2C3D4-E5F6-4A1B-9C2D-3E4F5A6B7C81}' />
