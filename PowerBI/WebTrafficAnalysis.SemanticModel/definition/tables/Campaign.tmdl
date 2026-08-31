@@ -1,0 +1,53 @@
+table Campaign
+
+	column 'Campaign Name for UTM'
+		dataType: string
+		sourceColumn: Campaign Name for UTM
+		summarizeBy: none
+
+	column 'Campaign ID'
+		dataType: string
+		sourceColumn: Campaign ID
+		summarizeBy: none
+
+	column 'Campaign Name'
+		dataType: string
+		sourceColumn: Campaign Name
+		summarizeBy: none
+
+	column 'Dept/Sch/Institute'
+		dataType: string
+		sourceColumn: Dept/Sch/Institute
+		summarizeBy: none
+
+	column 'Campaign Type'
+		dataType: string
+		sourceColumn: Campaign Type
+		summarizeBy: none
+
+	column 'Campaign Objective'
+		dataType: string
+		sourceColumn: Campaign Objective
+		summarizeBy: none
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		sourceColumn: Start Date
+		summarizeBy: none
+
+	column 'End Date'
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		sourceColumn: End Date
+		summarizeBy: none
+
+	partition Campaign = m
+		mode: import
+		source =
+				let
+				    Source = CampaignSpend,
+				    Kept = Table.SelectColumns(Source, {"Campaign Name for UTM", "Campaign ID", "Campaign Name", "Dept/Sch/Institute", "Campaign Type", "Campaign Objective", "Start Date", "End Date"}),
+				    Grouped = Table.Group(Kept, {"Campaign Name for UTM"}, {{"Campaign ID", each List.First([Campaign ID]), type text}, {"Campaign Name", each List.First([Campaign Name]), type text}, {"Dept/Sch/Institute", each List.First([#"Dept/Sch/Institute"]), type text}, {"Campaign Type", each List.First([Campaign Type]), type text}, {"Campaign Objective", each List.First([Campaign Objective]), type text}, {"Start Date", each List.Min([Start Date]), type date}, {"End Date", each List.Max([End Date]), type date}})
+				in
+				    Grouped

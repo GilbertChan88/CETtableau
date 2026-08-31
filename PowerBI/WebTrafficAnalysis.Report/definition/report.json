@@ -1,0 +1,11 @@
+{
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU10"
+    }
+  },
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "defaultDrillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "pageOrder": [
+    "webtrafficdashboard",
+    "dashboard1totalwebtraffic",
+    "dashboard2campaignspends",
+    "financialoverview"
+  ],
+  "activePageName": "webtrafficdashboard"
+}

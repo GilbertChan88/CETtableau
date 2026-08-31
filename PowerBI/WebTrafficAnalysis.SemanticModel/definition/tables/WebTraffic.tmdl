@@ -1,0 +1,68 @@
+table WebTraffic
+
+	measure 'Total Views' = SUM(WebTraffic[Views])
+		formatString: #,0
+
+	measure 'Total Users' = SUM(WebTraffic[Total users])
+		formatString: #,0
+
+	measure 'Total Sessions' = SUM(WebTraffic[Sessions])
+		formatString: #,0
+
+	measure 'Weighted Avg Session Duration (s)' = DIVIDE(SUMX(WebTraffic, WebTraffic[Average session duration] * WebTraffic[Sessions]), SUM(WebTraffic[Sessions]))
+		formatString: #,0.0
+
+	measure 'Avg Session Duration (min sec)' = ```
+			VAR SecondsTotal = [Weighted Avg Session Duration (s)]
+			VAR Mins = INT ( DIVIDE ( SecondsTotal, 60 ) )
+			VAR Secs = INT ( MOD ( SecondsTotal, 60 ) )
+			RETURN
+			    IF ( ISBLANK ( SecondsTotal ), BLANK (), FORMAT ( Mins, "0" ) & "min " & FORMAT ( Secs, "00" ) & "s" )
+			```
+
+	column Date
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		sourceColumn: Date
+		summarizeBy: none
+
+	column 'Page path and screen class'
+		dataType: string
+		sourceColumn: Page path and screen class
+		summarizeBy: none
+
+	column 'Campaign Name for UTM'
+		dataType: string
+		sourceColumn: Campaign Name for UTM
+		summarizeBy: none
+
+	column Views
+		dataType: int64
+		sourceColumn: Views
+		summarizeBy: sum
+
+	column 'Total users'
+		dataType: int64
+		sourceColumn: Total users
+		summarizeBy: sum
+
+	column Sessions
+		dataType: int64
+		sourceColumn: Sessions
+		summarizeBy: sum
+
+	column 'Average session duration'
+		dataType: double
+		sourceColumn: Average session duration
+		summarizeBy: none
+
+	partition WebTraffic = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(SourceFolder & "Mock_WebTraffic.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Date", type date}, {"Page path and screen class", type text}, {"Campaign Name for UTM", type text}, {"Views", Int64.Type}, {"Total users", Int64.Type}, {"Sessions", Int64.Type}, {"Average session duration", type number}}, "en-US"),
+				    Cleaned = Table.SelectRows(Typed, each [Date] <> null)
+				in
+				    Cleaned

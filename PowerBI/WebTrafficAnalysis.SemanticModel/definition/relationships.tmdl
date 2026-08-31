@@ -1,0 +1,13 @@
+relationship Campaign_WebTraffic
+	fromColumn: WebTraffic.'Campaign Name for UTM'
+	toColumn: Campaign.'Campaign Name for UTM'
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection
+
+relationship Calendar_WebTraffic
+	fromColumn: WebTraffic.Date
+	toColumn: Calendar.Date
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection

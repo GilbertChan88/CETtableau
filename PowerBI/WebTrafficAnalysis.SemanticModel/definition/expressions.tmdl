@@ -1,0 +1,5 @@
+/// Folder that contains the source CSV / XLSX files. Set this once (with a
+/// trailing backslash) — e.g. C:\Users\you\CETtableau\
+expression SourceFolder = "C:\Users\CHANGE_ME\CETtableau\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	annotation PBI_NavigationStepName = Navigation
+	annotation PBI_ResultType = Text

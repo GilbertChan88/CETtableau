@@ -1,0 +1,43 @@
+// =====================================================================
+// DAX CALCULATED COLUMNS
+// Add these on the indicated tables (Modeling > New Column).
+// =====================================================================
+
+// ----- On table: CampaignSpend -----
+
+// Campaign length in days (Tableau "Campaign Duration (Days)")
+Campaign Duration (Days) =
+DATEDIFF ( CampaignSpend[Start Date], CampaignSpend[End Date], DAY )
+
+// Optional: a single "Total Spend" friendly column already exists as [Total Campaign Spend];
+// use the measure [Total Spend] in visuals instead of summing the column directly.
+
+// ----- On table: Campaign (dimension) -----
+
+Campaign Duration (Days) =
+DATEDIFF ( Campaign[Start Date], Campaign[End Date], DAY )
+
+// =====================================================================
+// FIELD PARAMETERS  (create via Modeling > New parameter > Fields — do NOT
+// paste as measures). Shown here for reference so you know the members.
+// =====================================================================
+
+// "Date Granularity" field parameter — lets a slicer switch the trend X-axis
+// between Day / Week / Month. Create with these three fields (in this order):
+//     Calendar[Date]         -> label "Day"
+//     Calendar[Week Start]   -> label "Week"
+//     Calendar[Month-Year]   -> label "Month"   (set its Sort-by column to [Month Sort])
+//
+// Power BI generates a table similar to:
+// Date Granularity = {
+//     ("Day",   NAMEOF('Calendar'[Date]),        0),
+//     ("Week",  NAMEOF('Calendar'[Week Start]),  1),
+//     ("Month", NAMEOF('Calendar'[Month-Year]),  2)
+// }
+
+// "Schedule View" field parameter — toggles the Campaign Schedule between
+// Individual (one bar per Marketing Platform) and Overlap (combined per campaign).
+// Create with two fields:
+//     CampaignSpend[Marketing Platform] -> label "Individual (bar per platform)"
+//     CampaignSpend[Campaign Name]      -> label "Overlap (combined)"
+// (In Overlap the visual groups only by campaign; in Individual it also splits by platform.)
