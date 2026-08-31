@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vFOSlicerType",
+  "position": {
+    "x": 650,
+    "y": 24,
+    "z": 2,
+    "height": 56,
+    "width": 300,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Campaign Type"
+                }
+              },
+              "queryRef": "CampaignSpend.Campaign Type",
+              "nativeQueryRef": "Campaign Type",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

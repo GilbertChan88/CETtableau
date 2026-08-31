@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vFOChannelMix",
+  "position": {
+    "x": 24,
+    "y": 120,
+    "z": 3,
+    "height": 340,
+    "width": 500,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Marketing Platform"
+                }
+              },
+              "queryRef": "CampaignSpend.Marketing Platform",
+              "nativeQueryRef": "Marketing Platform",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Total Spend"
+                }
+              },
+              "queryRef": "CampaignSpend.Total Spend",
+              "nativeQueryRef": "Total Spend"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Channel Mix (% of Spend)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
