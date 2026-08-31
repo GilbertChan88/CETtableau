@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vTrend01",
+  "position": { "x": 24, "y": 96, "z": 0, "height": 560, "width": 800, "tabOrder": 0 },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Calendar" } }, "Property": "Month-Year" } }, "queryRef": "Calendar.Month-Year", "nativeQueryRef": "Month-Year", "active": true } ] },
+        "Y": { "projections": [
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "WebTraffic" } }, "Property": "Total Views" } }, "queryRef": "WebTraffic.Total Views", "nativeQueryRef": "Total Views" },
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "WebTraffic" } }, "Property": "Total Users" } }, "queryRef": "WebTraffic.Total Users", "nativeQueryRef": "Total Users" }
+        ] }
+      },
+      "sortDefinition": { "sort": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Calendar" } }, "Property": "Month-Year" } }, "direction": "Ascending" } ] }
+    },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Total Web Traffic Over Time'" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}
