@@ -2446,8 +2446,6 @@
             <column-instance column='[Campaign ID]' derivation='None' name='[none:Campaign ID:nk]' pivot='key' type='nominal' />
             <column-instance column='[Campaign Name]' derivation='None' name='[none:Campaign Name:nk]' pivot='key' type='nominal' />
             <column-instance column='[Date]' derivation='None' name='[none:Date:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Date]' derivation='Min' name='[min:Date:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Date]' derivation='Max' name='[max:Date:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Page path and screen class]' derivation='None' name='[none:Page path and screen class:nk]' pivot='key' type='nominal' />
             <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
@@ -2456,8 +2454,6 @@
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]'>
             <groupfilter function='union' user:op='manual'>
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[min:Date:qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[max:Date:qk]&quot;' />
               <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]&quot;' />
               <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]&quot;' />
               <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_3296071987586428928:qk]&quot;' />
@@ -2465,8 +2461,6 @@
           </filter>
           <manual-sort column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' direction='ASC'>
             <dictionary>
-              <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[min:Date:qk]&quot;</bucket>
-              <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[max:Date:qk]&quot;</bucket>
               <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]&quot;</bucket>
               <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]&quot;</bucket>
               <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_3296071987586428928:qk]&quot;</bucket>
@@ -2500,8 +2494,6 @@
         <style>
           <style-rule element='cell'>
             <format attr='width' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' value='110' />
-            <format attr='text-format' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[min:Date:qk]' value='dd/mm/yyyy' />
-            <format attr='text-format' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[max:Date:qk]' value='dd/mm/yyyy' />
           </style-rule>
           <style-rule element='header'>
             <format attr='font-weight' data-class='subtotal' field='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Page path and screen class:nk]' value='bold' />
