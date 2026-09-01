@@ -139,6 +139,13 @@ table CampaignSpend
 		dataType: int64
 		summarizeBy: none
 
+	/// Single-line "Campaign — Platform" label so the Campaign Schedule bar chart
+	/// can show BOTH the campaign and its Marketing Platform on one visible axis
+	/// level (a bar-chart hierarchy would otherwise hide the platform behind drill-down).
+	column 'Campaign & Platform' = CampaignSpend[Campaign Name] & "  —  " & CampaignSpend[Marketing Platform]
+		dataType: string
+		summarizeBy: none
+
 	partition CampaignSpend = m
 		mode: import
 		source =

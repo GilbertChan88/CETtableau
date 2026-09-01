@@ -7,14 +7,14 @@
     "query": {
       "queryState": {
         "Category": { "projections": [
-          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Campaign Name" } }, "queryRef": "CampaignSpend.Campaign Name", "nativeQueryRef": "Campaign Name" },
-          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Schedule View" } }, "Property": "Schedule View" } }, "queryRef": "Schedule View.Schedule View", "nativeQueryRef": "Schedule View" }
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Schedule View" } }, "Property": "Schedule View" } }, "queryRef": "Schedule View.Schedule View", "nativeQueryRef": "Schedule View", "active": true }
         ] },
         "Y": { "projections": [
           { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Gantt Start Offset (Days)" } }, "queryRef": "CampaignSpend.Gantt Start Offset (Days)", "nativeQueryRef": "Gantt Start Offset (Days)" },
           { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Gantt Duration (Days)" } }, "queryRef": "CampaignSpend.Gantt Duration (Days)", "nativeQueryRef": "Gantt Duration (Days)" }
         ] },
         "Tooltips": { "projections": [
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Campaign Name" } }, "queryRef": "CampaignSpend.Campaign Name", "nativeQueryRef": "Campaign Name" },
           { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Platform" } }, "queryRef": "CampaignSpend.Marketing Platform", "nativeQueryRef": "Marketing Platform" }
         ] }
       },
