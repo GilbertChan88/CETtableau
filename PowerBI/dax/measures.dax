@@ -60,3 +60,24 @@ Platform Count = DISTINCTCOUNT ( CampaignSpend[Marketing Platform] )
 // Earliest start / latest end in the current filter context (for a dynamic schedule axis)
 Min Start Date = MIN ( CampaignSpend[Start Date] )
 Max End Date   = MAX ( CampaignSpend[End Date] )
+
+
+// ---------- Campaign Schedule (Gantt) helpers — table: CampaignSpend ----------
+// Power BI has no native Gantt mark. The "Campaign Schedule" worksheet is
+// reproduced with a STACKED BAR: [Gantt Start Offset (Days)] (rendered white /
+// transparent) followed by [Gantt Duration (Days)] (the visible bar). Together
+// they float each campaign's bar to its correct start on a shared day axis.
+
+Platform Count = DISTINCTCOUNT ( CampaignSpend[Marketing Platform] )
+
+// Days from the earliest selected campaign start to this row's start.
+Gantt Start Offset (Days) =
+VAR MinStartAll = CALCULATE ( MIN ( CampaignSpend[Start Date] ), ALLSELECTED ( CampaignSpend ) )
+VAR ThisStart   = MIN ( CampaignSpend[Start Date] )
+RETURN DATEDIFF ( MinStartAll, ThisStart, DAY )
+
+// Inclusive length of the campaign in days (Tableau "Duration (Days)").
+Gantt Duration (Days) =
+VAR ThisStart = MIN ( CampaignSpend[Start Date] )
+VAR ThisEnd   = MAX ( CampaignSpend[End Date] )
+RETURN DATEDIFF ( ThisStart, ThisEnd, DAY ) + 1

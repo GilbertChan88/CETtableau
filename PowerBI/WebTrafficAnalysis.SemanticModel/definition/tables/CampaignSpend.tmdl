@@ -18,6 +18,26 @@ table CampaignSpend
 	measure 'Campaign Count' = DISTINCTCOUNT(CampaignSpend[Campaign Name])
 		formatString: #,0
 
+	measure 'Platform Count' = DISTINCTCOUNT(CampaignSpend[Marketing Platform])
+		formatString: #,0
+
+	/// Days between the earliest selected campaign start and this row's start.
+	/// Used as the transparent base of the Campaign Schedule (Gantt) stacked bar.
+	measure 'Gantt Start Offset (Days)' = ```
+			VAR MinStartAll = CALCULATE ( MIN ( CampaignSpend[Start Date] ), ALLSELECTED ( CampaignSpend ) )
+			VAR ThisStart = MIN ( CampaignSpend[Start Date] )
+			RETURN DATEDIFF ( MinStartAll, ThisStart, DAY )
+			```
+		formatString: #,0
+
+	/// Length of the campaign (inclusive) in days — the visible segment of the Gantt bar.
+	measure 'Gantt Duration (Days)' = ```
+			VAR ThisStart = MIN ( CampaignSpend[Start Date] )
+			VAR ThisEnd = MAX ( CampaignSpend[End Date] )
+			RETURN DATEDIFF ( ThisStart, ThisEnd, DAY ) + 1
+			```
+		formatString: #,0
+
 	column 'Dept/Sch/Institute'
 		dataType: string
 		sourceColumn: Dept/Sch/Institute

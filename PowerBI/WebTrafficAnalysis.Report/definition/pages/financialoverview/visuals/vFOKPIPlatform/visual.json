@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vFOKPIPlatform",
+  "position": { "x": 584, "y": 72, "z": 7, "height": 76, "width": 200, "tabOrder": 7 },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": { "projections": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Platform Count" } }, "queryRef": "CampaignSpend.Platform Count", "nativeQueryRef": "Platform Count" } ] }
+      }
+    },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Platforms'" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}

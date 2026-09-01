@@ -1,53 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
   "name": "vFOKPI",
-  "position": {
-    "x": 24,
-    "y": 24,
-    "z": 0,
-    "height": 80,
-    "width": 300,
-    "tabOrder": 0
-  },
+  "position": { "x": 8, "y": 72, "z": 0, "height": 76, "width": 360, "tabOrder": 0 },
   "visual": {
-    "visualType": "tableEx",
+    "visualType": "card",
     "query": {
       "queryState": {
-        "Values": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "CampaignSpend"
-                    }
-                  },
-                  "Property": "Total Spend"
-                }
-              },
-              "queryRef": "CampaignSpend.Total Spend",
-              "nativeQueryRef": "Total Spend"
-            }
-          ]
-        }
+        "Values": { "projections": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Total Spend" } }, "queryRef": "CampaignSpend.Total Spend", "nativeQueryRef": "Total Spend" } ] }
       }
     },
-    "drillFilterOtherVisuals": true,
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Total Spend'"
-                }
-              }
-            }
-          }
-        }
-      ]
-    }
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Total Campaign Investment'" } } } } } ] },
+    "drillFilterOtherVisuals": true
   }
 }

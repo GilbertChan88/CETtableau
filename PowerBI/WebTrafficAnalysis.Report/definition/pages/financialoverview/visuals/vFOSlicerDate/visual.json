@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vFOSlicerDate",
+  "position": { "x": 8, "y": 8, "z": 10, "height": 56, "width": 200, "tabOrder": 10 },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Start Date" } }, "queryRef": "CampaignSpend.Start Date", "nativeQueryRef": "Start Date", "active": true } ] }
+      },
+      "sortDefinition": { "sort": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Start Date" } }, "direction": "Ascending" } ], "isDefaultSort": true }
+    },
+    "objects": { "data": [ { "properties": { "mode": { "expr": { "Literal": { "Value": "'Between'" } } } } } ] },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Campaign Start Date'" } } }, "show": { "expr": { "Literal": { "Value": "true" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}

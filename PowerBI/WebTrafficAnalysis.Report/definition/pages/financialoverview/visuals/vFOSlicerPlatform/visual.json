@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vFOSlicerPlatform",
+  "position": { "x": 1090, "y": 8, "z": 15, "height": 56, "width": 150, "tabOrder": 15 },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Platform" } }, "queryRef": "CampaignSpend.Marketing Platform", "nativeQueryRef": "Marketing Platform", "active": true } ] }
+      }
+    },
+    "objects": { "data": [ { "properties": { "mode": { "expr": { "Literal": { "Value": "'Dropdown'" } } } } } ] },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Marketing Platform'" } } }, "show": { "expr": { "Literal": { "Value": "true" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}

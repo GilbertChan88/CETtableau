@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vFOSlicerDept",
+  "position": { "x": 214, "y": 8, "z": 11, "height": 56, "width": 140, "tabOrder": 11 },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Dept/Sch/Institute" } }, "queryRef": "CampaignSpend.Dept/Sch/Institute", "nativeQueryRef": "Dept/Sch/Institute", "active": true } ] }
+      }
+    },
+    "objects": { "data": [ { "properties": { "mode": { "expr": { "Literal": { "Value": "'Dropdown'" } } } } } ] },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Dept / Sch / Institute'" } } }, "show": { "expr": { "Literal": { "Value": "true" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}

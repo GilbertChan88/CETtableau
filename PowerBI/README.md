@@ -43,3 +43,35 @@ Follow **POWERBI_BUILD_GUIDE.md** end-to-end: paste the `powerquery/` scripts, a
 - **CampaignSpend** (one row per campaign × marketing platform; costs, Start/End dates) — standalone star for the spend pages and the Campaign Schedule.
 - Key DAX: weighted avg session duration, `min sec` string, `% of Total Spend`, `Total Spend`, campaign duration.
 - Parameters mapped to Power BI: Date slicer (Between), **Date Granularity** field parameter, **Schedule View** field parameter.
+
+
+## Recreation status — the two required dashboards (PowerBIkiro)
+
+Both target dashboards from `Web Traffic Analysis(Ref for migration to PowerBI).twbx`
+are now **fully built out in PBIR** so every Tableau worksheet has a Power BI equivalent:
+
+**Web Traffic Dashboard** (`pages/webtrafficdashboard`)
+| Tableau worksheet | Power BI visual | Type |
+|---|---|---|
+| Traffic Trend Analysis | `vTrend01` — Total Views (columns) + Total Users (line) over Month-Year | line & clustered column combo |
+| Traffic Trend Table | `vTable01` — Year ▸ Month-Year × Views/Users | matrix |
+| Campaign Schedule (Gantt) | `vWTSchedule` — floating stacked bar (transparent `Gantt Start Offset (Days)` + `Gantt Duration (Days)`) per Campaign × Platform | stacked bar (Gantt) |
+| Page Performance Details | `vWTPagePerf` — Campaign ID ▸ Campaign Name ▸ Page path × Views/Users/Avg Session Duration | matrix |
+| Slicers | Date (Between), Campaign (UTM), Dept, Campaign ID, Marketing Platform | slicers |
+
+**Campaign Spending – Financial Overview** (`pages/financialoverview`)
+| Tableau worksheet | Power BI visual | Type |
+|---|---|---|
+| KPI Banner | `vFOKPI` Total Spend + `vFOKPICount` Campaigns + `vFOKPIPlatform` Platforms | cards |
+| Channel Mix | `vFOChannelMix` — Channel ▸ Platform sized by Total Spend | treemap |
+| Spend by Objective | `vFOObjective` | bar |
+| Spend by Channel | `vFOChannel` | bar |
+| Spend by Dept | `vFODept` — Dept × Total Spend, coloured by Campaign Type | column |
+| Cost Details | `vFOCost` — Campaign ▸ Channel ▸ Platform × Total Spend / % of Total | matrix |
+| Slicers | Campaign Start Date (Between), Dept, Campaign Name, Campaign ID, Campaign Type, Campaign Objective, Marketing Channel, Marketing Platform | slicers |
+
+**Parameter mapping notes**
+- *Date From / Date To* → a single **Between** date slicer.
+- *Date Granularity* (Day/Week/Month) → the trend axis uses **Month-Year** (the Tableau default). The `Calendar` table already carries `Date`, `Week Label` and `Month-Year`, so a Date-Granularity field parameter can be added later if live switching is required.
+- *Schedule View* (Individual/Overlap) → the schedule is shown at the Individual grain (one bar per Campaign × Marketing Platform).
+- Power BI has no native Gantt mark; the schedule is reproduced with the transparent-offset stacked-bar technique using the two `Gantt …` measures added to `CampaignSpend`.
