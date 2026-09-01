@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vWTPagePerf",
+  "position": { "x": 8, "y": 538, "z": 8, "height": 174, "width": 1232, "tabOrder": 8 },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": { "projections": [
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Campaign" } }, "Property": "Campaign ID" } }, "queryRef": "Campaign.Campaign ID", "nativeQueryRef": "Campaign ID" },
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Campaign" } }, "Property": "Campaign Name" } }, "queryRef": "Campaign.Campaign Name", "nativeQueryRef": "Campaign Name" },
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "WebTraffic" } }, "Property": "Page path and screen class" } }, "queryRef": "WebTraffic.Page path and screen class", "nativeQueryRef": "Page path and screen class" }
+        ] },
+        "Values": { "projections": [
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "WebTraffic" } }, "Property": "Total Views" } }, "queryRef": "WebTraffic.Total Views", "nativeQueryRef": "Total Views" },
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "WebTraffic" } }, "Property": "Total Users" } }, "queryRef": "WebTraffic.Total Users", "nativeQueryRef": "Total Users" },
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "WebTraffic" } }, "Property": "Avg Session Duration (min sec)" } }, "queryRef": "WebTraffic.Avg Session Duration (min sec)", "nativeQueryRef": "Avg Session Duration (min sec)" }
+        ] }
+      },
+      "sortDefinition": { "sort": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "WebTraffic" } }, "Property": "Total Views" } }, "direction": "Descending" } ], "isDefaultSort": true }
+    },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Page Performance Details'" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}

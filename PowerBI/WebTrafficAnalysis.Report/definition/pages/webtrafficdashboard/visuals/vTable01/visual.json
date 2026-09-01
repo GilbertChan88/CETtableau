@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vTable01",
+  "position": { "x": 8, "y": 72, "z": 2, "height": 250, "width": 304, "tabOrder": 2 },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": { "projections": [
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Calendar" } }, "Property": "Year" } }, "queryRef": "Calendar.Year", "nativeQueryRef": "Year" },
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Calendar" } }, "Property": "Month-Year" } }, "queryRef": "Calendar.Month-Year", "nativeQueryRef": "Month-Year" }
+        ] },
+        "Values": { "projections": [
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "WebTraffic" } }, "Property": "Total Views" } }, "queryRef": "WebTraffic.Total Views", "nativeQueryRef": "Total Views" },
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "WebTraffic" } }, "Property": "Total Users" } }, "queryRef": "WebTraffic.Total Users", "nativeQueryRef": "Total Users" }
+        ] }
+      },
+      "sortDefinition": { "sort": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Calendar" } }, "Property": "Month-Year" } }, "direction": "Ascending" } ], "isDefaultSort": true }
+    },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Traffic Trend Table — Total Views & Users by Month'" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}

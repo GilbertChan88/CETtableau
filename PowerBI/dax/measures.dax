@@ -1,0 +1,83 @@
+// =====================================================================
+// DAX MEASURES  —  Web Traffic & Campaign (Power BI replica of version-2)
+// Create a measures home table (or put on the fact tables as noted).
+// =====================================================================
+
+// ---------- Web Traffic (table: WebTraffic) ----------
+
+Total Views = SUM ( WebTraffic[Views] )
+
+Total Users = SUM ( WebTraffic[Users] )   // column renamed from "Total users" -> "Users" to avoid a measure/column name clash
+
+Total Sessions = SUM ( WebTraffic[Sessions] )
+
+// Weighted average session duration in seconds (Tableau "True Avg Session Duration":
+// SUM(duration*sessions)/SUM(sessions) — NOT an average of averages)
+Weighted Avg Session Duration (s) =
+DIVIDE (
+    SUMX ( WebTraffic, WebTraffic[Average session duration] * WebTraffic[Sessions] ),
+    SUM ( WebTraffic[Sessions] )
+)
+
+// Human-readable "2min 25s" (Tableau "Avg Session Duration (min sec)")
+Avg Session Duration (min sec) =
+VAR SecondsTotal = [Weighted Avg Session Duration (s)]
+VAR Mins = INT ( DIVIDE ( SecondsTotal, 60 ) )
+VAR Secs = INT ( MOD ( SecondsTotal, 60 ) )
+RETURN
+    IF (
+        ISBLANK ( SecondsTotal ),
+        BLANK (),
+        FORMAT ( Mins, "0" ) & "min " & FORMAT ( Secs, "00" ) & "s"
+    )
+
+// ---------- Campaign Spend (table: CampaignSpend) ----------
+
+Total Spend = SUM ( CampaignSpend[Total Campaign Spend] )
+
+Total Media Cost = SUM ( CampaignSpend[Media Cost] )
+
+Total Production Cost = SUM ( CampaignSpend[Production Cost] )
+
+Total Agency Fee = SUM ( CampaignSpend[Calculated Agency Fee] )
+
+// Dynamic % of the (filtered) grand total — Tableau "% of Total Spend"
+% of Total Spend =
+DIVIDE (
+    [Total Spend],
+    CALCULATE ( [Total Spend], ALLSELECTED ( CampaignSpend ) )
+)
+
+// Spend formatted as a compact label for bars/cards
+Total Spend ($) = FORMAT ( [Total Spend], "$#,##0" )
+
+// ---------- Campaign counts / schedule helpers ----------
+
+Campaign Count = DISTINCTCOUNT ( CampaignSpend[Campaign Name] )
+
+Platform Count = DISTINCTCOUNT ( CampaignSpend[Marketing Platform] )
+
+// Earliest start / latest end in the current filter context (for a dynamic schedule axis)
+Min Start Date = MIN ( CampaignSpend[Start Date] )
+Max End Date   = MAX ( CampaignSpend[End Date] )
+
+
+// ---------- Campaign Schedule (Gantt) helpers — table: CampaignSpend ----------
+// Power BI has no native Gantt mark. The "Campaign Schedule" worksheet is
+// reproduced with a STACKED BAR: [Gantt Start Offset (Days)] (rendered white /
+// transparent) followed by [Gantt Duration (Days)] (the visible bar). Together
+// they float each campaign's bar to its correct start on a shared day axis.
+
+Platform Count = DISTINCTCOUNT ( CampaignSpend[Marketing Platform] )
+
+// Days from the earliest selected campaign start to this row's start.
+Gantt Start Offset (Days) =
+VAR MinStartAll = CALCULATE ( MIN ( CampaignSpend[Start Date] ), ALLSELECTED ( CampaignSpend ) )
+VAR ThisStart   = MIN ( CampaignSpend[Start Date] )
+RETURN DATEDIFF ( MinStartAll, ThisStart, DAY )
+
+// Inclusive length of the campaign in days (Tableau "Duration (Days)").
+Gantt Duration (Days) =
+VAR ThisStart = MIN ( CampaignSpend[Start Date] )
+VAR ThisEnd   = MAX ( CampaignSpend[End Date] )
+RETURN DATEDIFF ( ThisStart, ThisEnd, DAY ) + 1

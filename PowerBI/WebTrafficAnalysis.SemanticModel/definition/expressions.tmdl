@@ -1,0 +1,4 @@
+/// Folder that contains the source CSV / XLSX files. Set this once (with a
+/// trailing backslash). Update it if your data files move.
+expression SourceFolder = "C:\Work\CETMarketingKiro\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	annotation PBI_ResultType = Text

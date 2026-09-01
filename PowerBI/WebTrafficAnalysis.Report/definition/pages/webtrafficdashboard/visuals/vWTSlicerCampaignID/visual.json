@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vWTSlicerCampaignID",
+  "position": { "x": 602, "y": 8, "z": 5, "height": 56, "width": 150, "tabOrder": 5 },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Campaign" } }, "Property": "Campaign ID" } }, "queryRef": "Campaign.Campaign ID", "nativeQueryRef": "Campaign ID", "active": true } ] }
+      }
+    },
+    "objects": { "data": [ { "properties": { "mode": { "expr": { "Literal": { "Value": "'Dropdown'" } } } } } ] },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Campaign ID'" } } }, "show": { "expr": { "Literal": { "Value": "true" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}

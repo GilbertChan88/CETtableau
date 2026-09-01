@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vD1KPI",
+  "position": {
+    "x": 24,
+    "y": 96,
+    "z": 2,
+    "height": 90,
+    "width": 1232,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WebTraffic"
+                    }
+                  },
+                  "Property": "Total Views"
+                }
+              },
+              "queryRef": "WebTraffic.Total Views",
+              "nativeQueryRef": "Total Views"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WebTraffic"
+                    }
+                  },
+                  "Property": "Total Users"
+                }
+              },
+              "queryRef": "WebTraffic.Total Users",
+              "nativeQueryRef": "Total Users"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WebTraffic"
+                    }
+                  },
+                  "Property": "Total Sessions"
+                }
+              },
+              "queryRef": "WebTraffic.Total Sessions",
+              "nativeQueryRef": "Total Sessions"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WebTraffic"
+                    }
+                  },
+                  "Property": "Avg Session Duration (min sec)"
+                }
+              },
+              "queryRef": "WebTraffic.Avg Session Duration (min sec)",
+              "nativeQueryRef": "Avg Session Duration (min sec)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Key Metrics'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vFOCost",
+  "position": { "x": 8, "y": 384, "z": 5, "height": 328, "width": 1232, "tabOrder": 5 },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": { "projections": [
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Campaign Name" } }, "queryRef": "CampaignSpend.Campaign Name", "nativeQueryRef": "Campaign Name" },
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Channel" } }, "queryRef": "CampaignSpend.Marketing Channel", "nativeQueryRef": "Marketing Channel" },
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Platform" } }, "queryRef": "CampaignSpend.Marketing Platform", "nativeQueryRef": "Marketing Platform" }
+        ] },
+        "Values": { "projections": [
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Total Spend" } }, "queryRef": "CampaignSpend.Total Spend", "nativeQueryRef": "Total Spend" },
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "% of Total Spend" } }, "queryRef": "CampaignSpend.% of Total Spend", "nativeQueryRef": "% of Total Spend" }
+        ] }
+      },
+      "sortDefinition": { "sort": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Total Spend" } }, "direction": "Descending" } ], "isDefaultSort": true }
+    },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Cost Details'" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}
