@@ -21,20 +21,35 @@ table CampaignSpend
 	measure 'Platform Count' = DISTINCTCOUNT(CampaignSpend[Marketing Platform])
 		formatString: #,0
 
-	/// Days between the earliest selected campaign start and this row's start.
-	/// Used as the transparent base of the Campaign Schedule (Gantt) stacked bar.
+	/// Left (transparent) segment of the Campaign Schedule bar: days from the
+	/// selected Date From to this campaign's start, clipped to 0. The Date slicer
+	/// is on Calendar[Date]; harvesting MIN/MAX(Calendar[Date]) keeps the schedule
+	/// anchored to the same Date From / Date To window as the Traffic Trend Analysis.
+	/// Blank when the campaign does not overlap the window, so its bar drops off.
 	measure 'Gantt Start Offset (Days)' = ```
-			VAR MinStartAll = CALCULATE ( MIN ( CampaignSpend[Start Date] ), ALLSELECTED ( CampaignSpend ) )
-			VAR ThisStart = MIN ( CampaignSpend[Start Date] )
-			RETURN DATEDIFF ( MinStartAll, ThisStart, DAY )
+			VAR WinFrom = MIN ( Calendar[Date] )
+			VAR WinTo = MAX ( Calendar[Date] )
+			VAR CampStart = MIN ( CampaignSpend[Start Date] )
+			VAR CampEnd = MAX ( CampaignSpend[End Date] )
+			VAR Overlaps = CampStart <= WinTo && CampEnd >= WinFrom
+			VAR ClippedStart = IF ( CampStart < WinFrom, WinFrom, CampStart )
+			RETURN IF ( Overlaps, DATEDIFF ( WinFrom, ClippedStart, DAY ) )
 			```
 		formatString: #,0
 
-	/// Length of the campaign (inclusive) in days — the visible segment of the Gantt bar.
+	/// Visible segment of the Campaign Schedule bar: the campaign's duration in days,
+	/// clipped to the selected Date From / Date To window so the timeline lines up
+	/// with the Traffic Trend Analysis. Blank (bar hidden) when the campaign does
+	/// not overlap the window.
 	measure 'Gantt Duration (Days)' = ```
-			VAR ThisStart = MIN ( CampaignSpend[Start Date] )
-			VAR ThisEnd = MAX ( CampaignSpend[End Date] )
-			RETURN DATEDIFF ( ThisStart, ThisEnd, DAY ) + 1
+			VAR WinFrom = MIN ( Calendar[Date] )
+			VAR WinTo = MAX ( Calendar[Date] )
+			VAR CampStart = MIN ( CampaignSpend[Start Date] )
+			VAR CampEnd = MAX ( CampaignSpend[End Date] )
+			VAR Overlaps = CampStart <= WinTo && CampEnd >= WinFrom
+			VAR ClippedStart = IF ( CampStart < WinFrom, WinFrom, CampStart )
+			VAR ClippedEnd = IF ( CampEnd > WinTo, WinTo, CampEnd )
+			RETURN IF ( Overlaps, DATEDIFF ( ClippedStart, ClippedEnd, DAY ) + 1 )
 			```
 		formatString: #,0
 

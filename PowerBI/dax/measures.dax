@@ -70,14 +70,30 @@ Max End Date   = MAX ( CampaignSpend[End Date] )
 
 Platform Count = DISTINCTCOUNT ( CampaignSpend[Marketing Platform] )
 
-// Days from the earliest selected campaign start to this row's start.
-Gantt Start Offset (Days) =
-VAR MinStartAll = CALCULATE ( MIN ( CampaignSpend[Start Date] ), ALLSELECTED ( CampaignSpend ) )
-VAR ThisStart   = MIN ( CampaignSpend[Start Date] )
-RETURN DATEDIFF ( MinStartAll, ThisStart, DAY )
+// The Date slicer sits on Calendar[Date]. CampaignSpend is NOT related to
+// Calendar, but a slicer still filters the whole page's filter context, so
+// MIN/MAX(Calendar[Date]) "harvest" the selected Date From / Date To. Both
+// Gantt measures use that window to (a) anchor the timeline to Date From and
+// (b) clip each bar to the window — keeping the Campaign Schedule in sync with
+// the Traffic Trend Analysis. Non-overlapping campaigns return BLANK and drop.
 
-// Inclusive length of the campaign in days (Tableau "Duration (Days)").
+// Left (transparent) segment: days from Date From to the campaign start.
+Gantt Start Offset (Days) =
+VAR WinFrom = MIN ( Calendar[Date] )
+VAR WinTo   = MAX ( Calendar[Date] )
+VAR CampStart = MIN ( CampaignSpend[Start Date] )
+VAR CampEnd   = MAX ( CampaignSpend[End Date] )
+VAR Overlaps  = CampStart <= WinTo && CampEnd >= WinFrom
+VAR ClippedStart = IF ( CampStart < WinFrom, WinFrom, CampStart )
+RETURN IF ( Overlaps, DATEDIFF ( WinFrom, ClippedStart, DAY ) )
+
+// Visible segment: campaign duration clipped to the Date From / Date To window.
 Gantt Duration (Days) =
-VAR ThisStart = MIN ( CampaignSpend[Start Date] )
-VAR ThisEnd   = MAX ( CampaignSpend[End Date] )
-RETURN DATEDIFF ( ThisStart, ThisEnd, DAY ) + 1
+VAR WinFrom = MIN ( Calendar[Date] )
+VAR WinTo   = MAX ( Calendar[Date] )
+VAR CampStart = MIN ( CampaignSpend[Start Date] )
+VAR CampEnd   = MAX ( CampaignSpend[End Date] )
+VAR Overlaps  = CampStart <= WinTo && CampEnd >= WinFrom
+VAR ClippedStart = IF ( CampStart < WinFrom, WinFrom, CampStart )
+VAR ClippedEnd   = IF ( CampEnd > WinTo, WinTo, CampEnd )
+RETURN IF ( Overlaps, DATEDIFF ( ClippedStart, ClippedEnd, DAY ) + 1 )

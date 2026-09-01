@@ -23,7 +23,7 @@
       ],
       "legend": [ { "properties": { "show": { "expr": { "Literal": { "Value": "false" } } } } } ]
     },
-    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Campaign Schedule (timeline in days from earliest start)'" } } } } } ] },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Campaign Schedule (days across the selected Date From / Date To window)'" } } } } } ] },
     "drillFilterOtherVisuals": true
   }
 }
