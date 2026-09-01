@@ -5,3 +5,10 @@ relationship Campaign_WebTraffic
 relationship Calendar_WebTraffic
 	fromColumn: WebTraffic.Date
 	toColumn: Calendar.Date
+
+// Lets the Campaign dimension (Campaign Name for UTM / Campaign ID / Dept) filter
+// CampaignSpend too, so the Web Traffic page slicers also drive the Campaign Schedule.
+// Campaign is the one side (unique per UTM); CampaignSpend is the many side.
+relationship Campaign_CampaignSpend
+	fromColumn: CampaignSpend.'Campaign Name for UTM'
+	toColumn: Campaign.'Campaign Name for UTM'

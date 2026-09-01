@@ -40,7 +40,7 @@ Follow **POWERBI_BUILD_GUIDE.md** end-to-end: paste the `powerquery/` scripts, a
 
 ## Data model summary
 - **WebTraffic** (fact) → related to **Campaign** (dim, one row per `Campaign Name for UTM`) and **Calendar** (date).
-- **CampaignSpend** (one row per campaign × marketing platform; costs, Start/End dates) — standalone star for the spend pages and the Campaign Schedule.
+- **CampaignSpend** (one row per campaign × marketing platform; costs, Start/End dates) → powers the spend pages and the Campaign Schedule. Related to **Campaign** (`Campaign Name for UTM`, Campaign = one side) so the Web Traffic page's Campaign / Campaign ID / Dept slicers filter the Campaign Schedule as well.
 - Key DAX: weighted avg session duration, `min sec` string, `% of Total Spend`, `Total Spend`, campaign duration.
 - Parameters mapped to Power BI: Date slicer (Between), **Date Granularity** field parameter, **Schedule View** field parameter.
 
