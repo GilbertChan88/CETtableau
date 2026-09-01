@@ -16,8 +16,6 @@ let
             {"Campaign Name for UTM", type text},
             {"Campaign Type", type text},
             {"Campaign Objective", type text},
-            {"Start Date", type datetime},
-            {"End Date", type datetime},
             {"Marketing Channel", type text},
             {"Marketing Platform", type text},
             {"Remarks", type text},
@@ -28,9 +26,25 @@ let
             {"Total Campaign Spend", type number}
         }
     ),
-    // Convert the datetime start/end to plain dates
-    AsDates = Table.TransformColumnTypes(Typed, {{"Start Date", type date}, {"End Date", type date}}),
+    // Robustly parse Start/End Date. The export can deliver them either as text
+    // datetimes ("2024-03-01 00:00:00") or as Excel serial numbers (e.g. 45445);
+    // "type datetime" chokes on the serial numbers, so parse each value defensively.
+    ToDate = (v) as nullable date =>
+        if v = null then
+            null
+        else if v is number then
+            // Excel serial number (days since 1899-12-30)
+            Date.From(#datetime(1899, 12, 30, 0, 0, 0) + #duration(v, 0, 0, 0))
+        else
+            let
+                t = Text.Trim(Text.From(v)),
+                n = try Number.FromText(t) otherwise null
+            in
+                if t = "" then null
+                else if n <> null then Date.From(#datetime(1899, 12, 30, 0, 0, 0) + #duration(n, 0, 0, 0))
+                else try Date.From(DateTime.FromText(t)) otherwise Date.FromText(t),
+    ParsedDates = Table.TransformColumns(Typed, {{"Start Date", ToDate, type date}, {"End Date", ToDate, type date}}),
     // Client rename: "Print" -> "Brochures" (matches version-2 alias)
-    Renamed = Table.ReplaceValue(AsDates, "Print", "Brochures", Replacer.ReplaceText, {"Marketing Platform"})
+    Renamed = Table.ReplaceValue(ParsedDates, "Print", "Brochures", Replacer.ReplaceText, {"Marketing Platform"})
 in
     Renamed
