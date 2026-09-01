@@ -468,7 +468,7 @@
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
-      <column caption='Duration (Days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
+      <column caption='Campaign Duration (days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [Start Date], [End Date])' />
       </column>
       <column caption='Gantt Position (Top)' datatype='real' name='[Calculation_3296071988386656259]' role='measure' type='quantitative'>
@@ -1973,7 +1973,7 @@
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
-      <column caption='True Avg Session Duration' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
+      <column caption='Avg Session Duration (sec)' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='SUM([Average session duration] * [Sessions]) / SUM([Sessions])' />
       </column>
       <column caption='In Campaign Period' datatype='boolean' name='[Calculation_D1CAMPPERIOD01]' role='dimension' type='nominal'>
@@ -2163,7 +2163,7 @@
             </column>
           </datasource-dependencies>
           <datasource-dependencies datasource='federated.1ndc0xs0yux68k1e2bmmz07xy1lf'>
-            <column caption='Duration (Days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
+            <column caption='Campaign Duration (days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [Start Date], [End Date])' />
             </column>
             <column caption='In Range (Campaign)' datatype='boolean' name='[Calculation_D3RANGEC01]' role='dimension' type='nominal'>
@@ -2538,7 +2538,7 @@
           </datasources>
           <datasource-dependencies datasource='federated.0bkpira1pza2b3133tu8b1gkoqit'>
             <column datatype='real' name='[Average session duration]' role='measure' type='quantitative' />
-            <column caption='True Avg Session Duration' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
+            <column caption='Avg Session Duration (sec)' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='SUM([Average session duration] * [Sessions]) / SUM([Sessions])' />
             </column>
             <column datatype='string' name='[Campaign ID]' role='dimension' type='nominal' />
@@ -3507,7 +3507,7 @@
           </datasource-dependencies>
           <datasource-dependencies datasource='federated.0bkpira1pza2b3133tu8b1gkoqit'>
             <column datatype='real' name='[Average session duration]' role='measure' type='quantitative' />
-            <column caption='True Avg Session Duration' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
+            <column caption='Avg Session Duration (sec)' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='SUM([Average session duration] * [Sessions]) / SUM([Sessions])' />
             </column>
             <column caption='In Range (Traffic)' datatype='boolean' name='[Calculation_D1RANGET01]' role='dimension' type='nominal'>
@@ -5072,7 +5072,7 @@
             <datasource caption='Mock + Live Data' name='federated.1ndc0xs0yux68k1e2bmmz07xy1lf' />
           </datasources>
           <datasource-dependencies datasource='federated.1ndc0xs0yux68k1e2bmmz07xy1lf'>
-            <column caption='Duration (Days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
+            <column caption='Campaign Duration (days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [Start Date], [End Date])' />
             </column>
             <column caption='Gantt Position (Top)' datatype='real' name='[Calculation_3296071988386656259]' role='measure' type='quantitative'>
