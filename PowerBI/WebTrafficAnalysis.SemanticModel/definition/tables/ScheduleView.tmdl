@@ -1,0 +1,36 @@
+/// Field parameter that reproduces the Tableau "Schedule View" parameter for the
+/// Campaign Schedule. It swaps the schedule's second axis level between:
+///   - Individual (bar per platform) -> CampaignSpend[Marketing Platform]
+///   - Overlap (combined)            -> CampaignSpend[Campaign Name] (collapses to one bar per campaign)
+table 'Schedule View'
+
+	column 'Schedule View'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Schedule View Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Schedule View Fields'
+
+	column 'Schedule View Fields'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: [Value2]
+
+		extendedProperty ParameterMetadata = {"version":3,"kind":2}
+
+	column 'Schedule View Order'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: [Value3]
+
+	partition 'Schedule View' = calculated
+		mode: import
+		source =
+				{
+				    ("Individual (bar per platform)", NAMEOF('CampaignSpend'[Marketing Platform]), 0),
+				    ("Overlap (combined)", NAMEOF('CampaignSpend'[Campaign Name]), 1)
+				}
