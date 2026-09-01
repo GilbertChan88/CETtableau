@@ -7,7 +7,7 @@
     "query": {
       "queryState": {
         "Category": { "projections": [
-          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "Schedule View" } }, "Property": "Schedule View" } }, "queryRef": "Schedule View.Schedule View", "nativeQueryRef": "Schedule View", "active": true }
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Campaign & Platform" } }, "queryRef": "CampaignSpend.Campaign & Platform", "nativeQueryRef": "Campaign & Platform", "active": true }
         ] },
         "Y": { "projections": [
           { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Gantt Start Offset (Days)" } }, "queryRef": "CampaignSpend.Gantt Start Offset (Days)", "nativeQueryRef": "Gantt Start Offset (Days)" },
@@ -26,7 +26,7 @@
       ],
       "legend": [ { "properties": { "show": { "expr": { "Literal": { "Value": "false" } } } } } ]
     },
-    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Campaign Schedule — by Marketing Platform (use Schedule View to switch Individual / Overlap)'" } } } } } ] },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Campaign Schedule — Campaign & Marketing Platform'" } } } } } ] },
     "drillFilterOtherVisuals": true
   }
 }

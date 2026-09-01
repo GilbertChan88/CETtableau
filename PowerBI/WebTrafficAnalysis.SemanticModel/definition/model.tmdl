@@ -15,4 +15,3 @@ ref table CampaignSpend
 ref table Campaign
 ref table Calendar
 ref table FactActualSpend
-ref table 'Schedule View'
