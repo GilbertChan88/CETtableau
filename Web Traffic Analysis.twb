@@ -3511,6 +3511,7 @@
           </datasource-dependencies>
           <aggregation value='true' />
         </view>
+        <style />
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
