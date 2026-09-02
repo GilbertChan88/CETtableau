@@ -135,6 +135,29 @@
           "selector": {
             "metadata": "CampaignSpend.Gantt Start Offset (Days)"
           }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "CampaignSpend"
+                        }
+                      },
+                      "Property": "Campaign Color"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "CampaignSpend.Gantt Duration (Days)"
+          }
         }
       ],
       "legend": [

@@ -61,6 +61,24 @@ table CampaignSpend
 		formatString: #,0
 		lineageTag: 7526389c-c5bc-476a-bc8c-faa0e0f1b839
 
+	/// Distinct hex colour per Campaign Name (cycles an 8-colour palette) for the
+	/// Campaign Schedule. Apply to the "Gantt Duration (Days)" bars via Data colors ▸
+	/// fx ▸ Format by = Field value. Palette is distinct from the Financial Overview charts.
+	measure 'Campaign Color' =
+			VAR ThisName = SELECTEDVALUE ( CampaignSpend[Campaign Name] )
+			VAR Idx = COUNTROWS ( FILTER ( ALLSELECTED ( CampaignSpend[Campaign Name] ), CampaignSpend[Campaign Name] < ThisName ) )
+			RETURN
+			    SWITCH ( MOD ( Idx, 8 ),
+			        0, "#4E79A7", 1, "#F28E2B", 2, "#59A14F", 3, "#E15759",
+			        4, "#B07AA1", 5, "#76B7B2", 6, "#EDC948", 7, "#FF9DA7", "#4E79A7" )
+
+	/// Palette A (greens/purple) for Spend by Objective — Data colors ▸ fx ▸ Field value.
+	measure 'Objective Color' = SWITCH ( SELECTEDVALUE ( CampaignSpend[Campaign Objective] ), "Awareness", "#1B9E77", "Conversion", "#7570B3", "Lead Generation", "#66A61E", "#B3B3B3" )
+
+	/// Palette B (pink/orange/brown/gold) for Spend by Channel — distinct from Objective
+	/// and from Spend by Department. Data colors ▸ fx ▸ Field value.
+	measure 'Channel Color' = SWITCH ( SELECTEDVALUE ( CampaignSpend[Marketing Channel] ), "Digital Ads", "#E7298A", "Content Marketing", "#D95F02", "Out-of-Home Ads", "#E6AB02", "Others", "#A6761D", "#B3B3B3" )
+
 	column Dept/Sch/Institute
 		dataType: string
 		lineageTag: d93eb94c-4906-499e-82a8-351f537823bb

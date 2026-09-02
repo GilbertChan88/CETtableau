@@ -280,6 +280,14 @@ Three **Card** visuals:
 - **Currency:** spend measures format `$ #,##0`; `% of Total Spend` = percentage.
 - `Print` already shows as **Brochures** (done in Power Query).
 - Give **Channel Mix** and **Spend by Department** different colour palettes.
+- **Category colours via measures (already wired in the PBIR):** three colour measures on `CampaignSpend`
+  drive distinct palettes so each chart uses a different colour set:
+  - `Campaign Color` → Campaign Schedule: on the **`Gantt Duration (Days)`** bars, Data colors ▸ *fx* ▸
+    Format by = **Field value** = `[Campaign Color]` (each campaign a distinct colour; offset stays white).
+  - `Objective Color` (palette A, greens/purple) → Spend by Objective, same *fx ▸ Field value*.
+  - `Channel Color` (palette B, pink/orange/brown/gold) → Spend by Channel, same *fx ▸ Field value*.
+  - Spend by Department stays on its own (theme) palette via the `Campaign Type` legend — a third, different set.
+  If a chart opens in the default single colour, re-confirm Data colors ▸ *fx* ▸ Field value pointing at the matching measure.
 
 ---
 
