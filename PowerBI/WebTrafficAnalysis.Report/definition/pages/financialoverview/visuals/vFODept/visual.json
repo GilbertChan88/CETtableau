@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vFODept",
   "position": {
-    "x": 992,
-    "y": 156,
-    "z": 4,
-    "height": 220,
-    "width": 248,
-    "tabOrder": 4
+    "x": 608,
+    "y": 480,
+    "z": 4000,
+    "height": 240,
+    "width": 304,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "columnChart",
@@ -89,7 +89,6 @@
         "isDefaultSort": true
       }
     },
-    "drillFilterOtherVisuals": true,
     "visualContainerObjects": {
       "title": [
         {
@@ -104,6 +103,7 @@
           }
         }
       ]
-    }
+    },
+    "drillFilterOtherVisuals": true
   }
 }

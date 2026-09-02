@@ -1,16 +1,83 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vFOSlicerChannel",
-  "position": { "x": 934, "y": 8, "z": 14, "height": 56, "width": 150, "tabOrder": 14 },
+  "position": {
+    "x": 934,
+    "y": 8,
+    "z": 14000,
+    "height": 56,
+    "width": 150,
+    "tabOrder": 14000
+  },
   "visual": {
     "visualType": "slicer",
     "query": {
       "queryState": {
-        "Values": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Channel" } }, "queryRef": "CampaignSpend.Marketing Channel", "nativeQueryRef": "Marketing Channel", "active": true } ] }
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Marketing Channel"
+                }
+              },
+              "queryRef": "CampaignSpend.Marketing Channel",
+              "nativeQueryRef": "Marketing Channel",
+              "active": true
+            }
+          ]
+        }
       }
     },
-    "objects": { "data": [ { "properties": { "mode": { "expr": { "Literal": { "Value": "'Dropdown'" } } } } } ] },
-    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Marketing Channel'" } } }, "show": { "expr": { "Literal": { "Value": "true" } } } } } ] },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Marketing Channel'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
   }
 }

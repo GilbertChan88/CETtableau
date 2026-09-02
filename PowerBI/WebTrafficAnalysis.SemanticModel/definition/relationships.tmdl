@@ -9,3 +9,4 @@ relationship Calendar_WebTraffic
 relationship Campaign_CampaignSpend
 	fromColumn: CampaignSpend.'Campaign Name for UTM'
 	toColumn: Campaign.'Campaign Name for UTM'
+

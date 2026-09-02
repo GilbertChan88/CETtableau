@@ -1,29 +1,35 @@
 table FactActualSpend
+	lineageTag: 23e187a5-adac-4aef-a125-cb162a19738e
 
 	column 'Campaign Name'
 		dataType: string
-		sourceColumn: Campaign Name
+		lineageTag: 7b390396-d2e7-4b5e-86a8-ba9733267c61
 		summarizeBy: none
+		sourceColumn: Campaign Name
 
 	column Spend
 		dataType: double
-		sourceColumn: Spend
+		lineageTag: 7bf36437-163e-418c-b3ac-b077ec1b0a62
 		summarizeBy: sum
+		sourceColumn: Spend
 
 	column Impressions
 		dataType: int64
-		sourceColumn: Impressions
+		lineageTag: 8f4406c0-7556-4a18-8fda-90cbb99731ca
 		summarizeBy: sum
+		sourceColumn: Impressions
 
 	column Clicks
 		dataType: int64
-		sourceColumn: Clicks
+		lineageTag: e2879305-ee40-4047-b1bf-d25b9ba4d92c
 		summarizeBy: sum
+		sourceColumn: Clicks
 
 	column Platform
 		dataType: string
-		sourceColumn: Platform
+		lineageTag: 967f2679-f80a-4e29-b1fa-90ff028ed6f3
 		summarizeBy: none
+		sourceColumn: Platform
 
 	partition FactActualSpend = m
 		mode: import
@@ -34,3 +40,4 @@ table FactActualSpend
 				    Typed = Table.TransformColumnTypes(Promoted, {{"Campaign Name", type text}, {"Spend", type number}, {"Impressions", Int64.Type}, {"Clicks", Int64.Type}, {"Platform", type text}})
 				in
 				    Typed
+

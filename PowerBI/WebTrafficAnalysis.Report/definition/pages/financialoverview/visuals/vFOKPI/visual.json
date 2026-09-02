@@ -1,15 +1,81 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vFOKPI",
-  "position": { "x": 8, "y": 72, "z": 0, "height": 76, "width": 360, "tabOrder": 0 },
+  "position": {
+    "x": 0,
+    "y": 64,
+    "z": 0,
+    "height": 80,
+    "width": 368,
+    "tabOrder": 0
+  },
   "visual": {
     "visualType": "card",
     "query": {
       "queryState": {
-        "Values": { "projections": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Total Spend" } }, "queryRef": "CampaignSpend.Total Spend", "nativeQueryRef": "Total Spend" } ] }
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Total Spend"
+                }
+              },
+              "queryRef": "CampaignSpend.Total Spend",
+              "nativeQueryRef": "Total Spend"
+            }
+          ]
+        }
       }
     },
-    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Total Campaign Investment'" } } } } } ] },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "30D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Campaign Investment'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "lockAspect": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
   }
 }

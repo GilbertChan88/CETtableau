@@ -1,16 +1,83 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vWTSlicerPlatform",
-  "position": { "x": 758, "y": 8, "z": 6, "height": 56, "width": 150, "tabOrder": 6 },
+  "position": {
+    "x": 864,
+    "y": 0,
+    "z": 6000,
+    "height": 64,
+    "width": 224,
+    "tabOrder": 6000
+  },
   "visual": {
     "visualType": "slicer",
     "query": {
       "queryState": {
-        "Values": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Platform" } }, "queryRef": "CampaignSpend.Marketing Platform", "nativeQueryRef": "Marketing Platform", "active": true } ] }
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Marketing Platform"
+                }
+              },
+              "queryRef": "CampaignSpend.Marketing Platform",
+              "nativeQueryRef": "Marketing Platform",
+              "active": true
+            }
+          ]
+        }
       }
     },
-    "objects": { "data": [ { "properties": { "mode": { "expr": { "Literal": { "Value": "'Dropdown'" } } } } } ] },
-    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Marketing Platform'" } } }, "show": { "expr": { "Literal": { "Value": "true" } } } } } ] },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Marketing Platform'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
   }
 }

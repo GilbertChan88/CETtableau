@@ -1,32 +1,40 @@
 table CampaignSpend
+	lineageTag: 91a278f8-ff94-4f51-85d7-a33dad7cdb0d
 
 	measure 'Total Spend' = SUM(CampaignSpend[Total Campaign Spend])
 		formatString: \$#,0
+		lineageTag: cd552b4b-a23a-4e69-a9a9-847ca9863023
 
 	measure 'Total Media Cost' = SUM(CampaignSpend[Media Cost])
 		formatString: \$#,0
+		lineageTag: 1506dc1c-ab6e-4401-bbda-b693136db3e1
 
 	measure 'Total Production Cost' = SUM(CampaignSpend[Production Cost])
 		formatString: \$#,0
+		lineageTag: 88d80ead-4658-4bc7-9cec-49e4901110a6
 
 	measure 'Total Agency Fee' = SUM(CampaignSpend[Calculated Agency Fee])
 		formatString: \$#,0
+		lineageTag: 62a4f48b-8a3c-4258-98dd-4283f895389b
 
 	measure '% of Total Spend' = DIVIDE([Total Spend], CALCULATE([Total Spend], ALLSELECTED(CampaignSpend)))
 		formatString: 0.0%
+		lineageTag: 071e5984-300f-497d-a85a-05a543c0e8f6
 
 	measure 'Campaign Count' = DISTINCTCOUNT(CampaignSpend[Campaign Name])
 		formatString: #,0
+		lineageTag: e2b10562-a716-4618-b2d9-1aa90f725883
 
 	measure 'Platform Count' = DISTINCTCOUNT(CampaignSpend[Marketing Platform])
 		formatString: #,0
+		lineageTag: d5bd6684-c20a-4532-a2a6-7575063b8a3f
 
 	/// Left (transparent) segment of the Campaign Schedule bar: days from the
 	/// selected Date From to this campaign's start, clipped to 0. The Date slicer
 	/// is on Calendar[Date]; harvesting MIN/MAX(Calendar[Date]) keeps the schedule
 	/// anchored to the same Date From / Date To window as the Traffic Trend Analysis.
 	/// Blank when the campaign does not overlap the window, so its bar drops off.
-	measure 'Gantt Start Offset (Days)' = ```
+	measure 'Gantt Start Offset (Days)' =
 			VAR WinFrom = MIN ( Calendar[Date] )
 			VAR WinTo = MAX ( Calendar[Date] )
 			VAR CampStart = MIN ( CampaignSpend[Start Date] )
@@ -34,14 +42,14 @@ table CampaignSpend
 			VAR Overlaps = CampStart <= WinTo && CampEnd >= WinFrom
 			VAR ClippedStart = IF ( CampStart < WinFrom, WinFrom, CampStart )
 			RETURN IF ( Overlaps, DATEDIFF ( WinFrom, ClippedStart, DAY ) )
-			```
 		formatString: #,0
+		lineageTag: f188d6a4-f72c-4cc2-9a76-f3d69b2d8928
 
 	/// Visible segment of the Campaign Schedule bar: the campaign's duration in days,
 	/// clipped to the selected Date From / Date To window so the timeline lines up
 	/// with the Traffic Trend Analysis. Blank (bar hidden) when the campaign does
 	/// not overlap the window.
-	measure 'Gantt Duration (Days)' = ```
+	measure 'Gantt Duration (Days)' =
 			VAR WinFrom = MIN ( Calendar[Date] )
 			VAR WinTo = MAX ( Calendar[Date] )
 			VAR CampStart = MIN ( CampaignSpend[Start Date] )
@@ -50,93 +58,114 @@ table CampaignSpend
 			VAR ClippedStart = IF ( CampStart < WinFrom, WinFrom, CampStart )
 			VAR ClippedEnd = IF ( CampEnd > WinTo, WinTo, CampEnd )
 			RETURN IF ( Overlaps, DATEDIFF ( ClippedStart, ClippedEnd, DAY ) + 1 )
-			```
 		formatString: #,0
+		lineageTag: 7526389c-c5bc-476a-bc8c-faa0e0f1b839
 
-	column 'Dept/Sch/Institute'
+	column Dept/Sch/Institute
 		dataType: string
-		sourceColumn: Dept/Sch/Institute
+		lineageTag: d93eb94c-4906-499e-82a8-351f537823bb
 		summarizeBy: none
+		sourceColumn: Dept/Sch/Institute
 
 	column 'Campaign ID'
 		dataType: string
-		sourceColumn: Campaign ID
+		lineageTag: 31d5612a-d4f9-4eb6-9cf0-b4e7dc4eaa32
 		summarizeBy: none
+		sourceColumn: Campaign ID
 
 	column 'Campaign Name'
 		dataType: string
-		sourceColumn: Campaign Name
+		lineageTag: cae40940-ad5c-41f0-95ed-d5844f5ba7f4
 		summarizeBy: none
+		sourceColumn: Campaign Name
 
 	column 'Campaign Name for UTM'
 		dataType: string
-		sourceColumn: Campaign Name for UTM
+		lineageTag: 5a09427f-52e6-43c7-a86a-15888c45f245
 		summarizeBy: none
+		sourceColumn: Campaign Name for UTM
 
 	column 'Campaign Type'
 		dataType: string
-		sourceColumn: Campaign Type
+		lineageTag: 074b81de-260c-41d0-bdf3-1d496734a854
 		summarizeBy: none
+		sourceColumn: Campaign Type
 
 	column 'Campaign Objective'
 		dataType: string
-		sourceColumn: Campaign Objective
+		lineageTag: fb188a2b-7b5a-450d-b5bf-9918eae344a0
 		summarizeBy: none
+		sourceColumn: Campaign Objective
 
 	column 'Start Date'
 		dataType: dateTime
-		formatString: dd/mm/yyyy
-		sourceColumn: Start Date
+		formatString: Long Date
+		lineageTag: fdf5bc73-db69-4f81-83cb-b5c12d187f11
 		summarizeBy: none
+		sourceColumn: Start Date
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column 'End Date'
 		dataType: dateTime
-		formatString: dd/mm/yyyy
-		sourceColumn: End Date
+		formatString: Long Date
+		lineageTag: 8278ead0-fe8d-4e76-9f80-b6a04f62f5f2
 		summarizeBy: none
+		sourceColumn: End Date
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column 'Marketing Channel'
 		dataType: string
-		sourceColumn: Marketing Channel
+		lineageTag: db28d3f3-c92a-4614-9639-453efa08f618
 		summarizeBy: none
+		sourceColumn: Marketing Channel
 
 	column 'Marketing Platform'
 		dataType: string
-		sourceColumn: Marketing Platform
+		lineageTag: 4950a9fb-be93-453b-b193-812311be137d
 		summarizeBy: none
+		sourceColumn: Marketing Platform
 
 	column Remarks
 		dataType: string
-		sourceColumn: Remarks
+		lineageTag: 73a4c15a-d9ff-4476-940b-0101ec9cb015
 		summarizeBy: none
+		sourceColumn: Remarks
 
 	column 'Agency Rate'
 		dataType: double
-		sourceColumn: Agency Rate
+		lineageTag: 0fa9ce76-c22a-45a6-a534-2fc92e75fc81
 		summarizeBy: none
+		sourceColumn: Agency Rate
 
 	column 'Media Cost'
 		dataType: double
-		sourceColumn: Media Cost
+		lineageTag: eb003c54-f457-4713-8e6e-7fc66868c9a2
 		summarizeBy: sum
+		sourceColumn: Media Cost
 
 	column 'Production Cost'
 		dataType: double
-		sourceColumn: Production Cost
+		lineageTag: c616442e-a3f7-4dbc-8f00-ba068bbc69fa
 		summarizeBy: sum
+		sourceColumn: Production Cost
 
 	column 'Calculated Agency Fee'
 		dataType: double
-		sourceColumn: Calculated Agency Fee
+		lineageTag: d5ebba4f-5667-4151-9900-61bf86cb584f
 		summarizeBy: sum
+		sourceColumn: Calculated Agency Fee
 
 	column 'Total Campaign Spend'
 		dataType: double
-		sourceColumn: Total Campaign Spend
+		lineageTag: ce98ec91-8783-4d2e-8cb1-eb08c47508d9
 		summarizeBy: sum
+		sourceColumn: Total Campaign Spend
 
 	column 'Campaign Duration (Days)' = DATEDIFF(CampaignSpend[Start Date], CampaignSpend[End Date], DAY)
 		dataType: int64
+		lineageTag: 12bedb17-da9d-4155-b893-f50ae1ea290c
 		summarizeBy: none
 
 	/// Single-line "Campaign — Platform" label so the Campaign Schedule bar chart
@@ -144,6 +173,7 @@ table CampaignSpend
 	/// level (a bar-chart hierarchy would otherwise hide the platform behind drill-down).
 	column 'Campaign & Platform' = CampaignSpend[Campaign Name] & "  —  " & CampaignSpend[Marketing Platform]
 		dataType: string
+		lineageTag: 675f3f72-4127-4d9f-be46-78fdebe418de
 		summarizeBy: none
 
 	partition CampaignSpend = m
@@ -160,3 +190,6 @@ table CampaignSpend
 				    Renamed = Table.ReplaceValue(ParsedDates, "Print", "Brochures", Replacer.ReplaceText, {"Marketing Platform"})
 				in
 				    Renamed
+
+	annotation PBI_ResultType = Table
+

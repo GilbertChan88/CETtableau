@@ -1,44 +1,56 @@
 table Calendar
+	lineageTag: 50d6038a-9242-4048-86b2-43db5926da66
 	dataCategory: Time
 
 	column Date
-		isKey
 		dataType: dateTime
-		formatString: dd/mm/yyyy
-		sourceColumn: Date
+		isKey
+		formatString: Long Date
+		lineageTag: 90768482-827f-4eda-bff0-06fa269db25f
 		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column Year
 		dataType: int64
-		sourceColumn: Year
+		lineageTag: a202ce4f-c3e6-41da-8ac9-56bfee99f564
 		summarizeBy: none
+		sourceColumn: Year
 
 	column 'Month No'
 		dataType: int64
+		lineageTag: 01be93b8-8019-4a6b-a3e7-726204f20b97
+		summarizeBy: none
 		sourceColumn: Month No
-		summarizeBy: none
 
-	column 'Month-Year'
+	column Month-Year
 		dataType: string
-		sourceColumn: Month-Year
+		lineageTag: c9cc2846-dda7-472c-8753-2c5d7350215e
 		summarizeBy: none
+		sourceColumn: Month-Year
 		sortByColumn: 'Month Sort'
 
 	column 'Month Sort'
 		dataType: int64
-		sourceColumn: Month Sort
+		lineageTag: a0d420c2-53d1-46c1-95f8-7f3bdd2bf2a3
 		summarizeBy: none
+		sourceColumn: Month Sort
 
 	column 'Week Start'
 		dataType: dateTime
-		formatString: dd/mm/yyyy
-		sourceColumn: Week Start
+		formatString: Long Date
+		lineageTag: da4a6cf6-d579-4112-9b2a-14fb1bcda92d
 		summarizeBy: none
+		sourceColumn: Week Start
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column 'Week Label'
 		dataType: string
-		sourceColumn: Week Label
+		lineageTag: 4bea9362-aa31-4619-9d84-0a3cd187ead6
 		summarizeBy: none
+		sourceColumn: Week Label
 
 	partition Calendar = m
 		mode: import
@@ -58,3 +70,4 @@ table Calendar
 				    Added6 = Table.AddColumn(Added5, "Week Label", each "W" & Text.From(Date.WeekOfYear([Date], Day.Monday)) & " " & Text.From(Date.Year([Date])), type text)
 				in
 				    Added6
+

@@ -10,8 +10,11 @@ annotation PBI_QueryOrder = ["SourceFolder","WebTraffic","CampaignSpend","Campai
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
+annotation PBI_ProTooling = ["DevMode"]
+
 ref table WebTraffic
 ref table CampaignSpend
 ref table Campaign
 ref table Calendar
 ref table FactActualSpend
+

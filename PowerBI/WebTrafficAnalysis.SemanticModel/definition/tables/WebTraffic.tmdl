@@ -1,60 +1,74 @@
 table WebTraffic
+	lineageTag: 34280b22-e652-4f65-99bf-d29c07b3efac
 
 	measure 'Total Views' = SUM(WebTraffic[Views])
 		formatString: #,0
+		lineageTag: 1dd7a35f-ff87-4fe2-bb7f-2fb4d34504f8
 
 	measure 'Total Users' = SUM(WebTraffic[Users])
 		formatString: #,0
+		lineageTag: 16f75c25-61e0-44aa-b32e-805d395744b6
 
 	measure 'Total Sessions' = SUM(WebTraffic[Sessions])
 		formatString: #,0
+		lineageTag: eabe4174-1c98-4781-ab52-ceb09aa1b897
 
 	measure 'Weighted Avg Session Duration (s)' = DIVIDE(SUMX(WebTraffic, WebTraffic[Average session duration] * WebTraffic[Sessions]), SUM(WebTraffic[Sessions]))
 		formatString: #,0.0
+		lineageTag: 6af25c2c-08e6-4e3b-98b1-ab74f4c837de
 
-	measure 'Avg Session Duration (min sec)' = ```
+	measure 'Avg Session Duration (min sec)' =
 			VAR SecondsTotal = [Weighted Avg Session Duration (s)]
 			VAR Mins = INT ( DIVIDE ( SecondsTotal, 60 ) )
 			VAR Secs = INT ( MOD ( SecondsTotal, 60 ) )
 			RETURN
 			    IF ( ISBLANK ( SecondsTotal ), BLANK (), FORMAT ( Mins, "0" ) & "min " & FORMAT ( Secs, "00" ) & "s" )
-			```
+		lineageTag: 39527fd8-76ae-4116-8585-df06705bbc01
 
 	column Date
 		dataType: dateTime
-		formatString: dd/mm/yyyy
-		sourceColumn: Date
+		formatString: Long Date
+		lineageTag: 8085c94a-b5ce-4ab5-8845-cd95b00babe1
 		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column 'Page path and screen class'
 		dataType: string
-		sourceColumn: Page path and screen class
+		lineageTag: bbe59269-ab04-4675-878e-12db1376ed1d
 		summarizeBy: none
+		sourceColumn: Page path and screen class
 
 	column 'Campaign Name for UTM'
 		dataType: string
-		sourceColumn: Campaign Name for UTM
+		lineageTag: fbdd2b6a-ad0e-44e8-a7a3-ded837e2a47e
 		summarizeBy: none
+		sourceColumn: Campaign Name for UTM
 
 	column Views
 		dataType: int64
-		sourceColumn: Views
+		lineageTag: bb4b013d-da97-497e-8439-88e3abe77c54
 		summarizeBy: sum
+		sourceColumn: Views
 
 	column Users
 		dataType: int64
-		sourceColumn: Users
+		lineageTag: 0f159b32-c68e-4ed5-a2ff-2e08c30582ab
 		summarizeBy: sum
+		sourceColumn: Users
 
 	column Sessions
 		dataType: int64
-		sourceColumn: Sessions
+		lineageTag: 8a04b265-d9e4-4599-9bc4-f429565b73d6
 		summarizeBy: sum
+		sourceColumn: Sessions
 
 	column 'Average session duration'
 		dataType: double
-		sourceColumn: Average session duration
+		lineageTag: 82a829df-ade6-4a04-be79-5e6570d02a22
 		summarizeBy: none
+		sourceColumn: Average session duration
 
 	partition WebTraffic = m
 		mode: import
@@ -67,3 +81,4 @@ table WebTraffic
 				    Cleaned = Table.SelectRows(Renamed, each [Date] <> null)
 				in
 				    Cleaned
+

@@ -1,46 +1,59 @@
 table Campaign
+	lineageTag: c6f8d5ec-5f9c-4688-8137-7681e0d05b8f
 
 	column 'Campaign Name for UTM'
 		dataType: string
-		sourceColumn: Campaign Name for UTM
+		lineageTag: 8f8fb47b-d9c4-4d0c-8390-5d14a28ee941
 		summarizeBy: none
+		sourceColumn: Campaign Name for UTM
 
 	column 'Campaign ID'
 		dataType: string
-		sourceColumn: Campaign ID
+		lineageTag: 1a58c51d-005d-4db5-9de0-fc462657db47
 		summarizeBy: none
+		sourceColumn: Campaign ID
 
 	column 'Campaign Name'
 		dataType: string
+		lineageTag: 7314bac6-0949-4ec1-8464-7817bb30396f
+		summarizeBy: none
 		sourceColumn: Campaign Name
-		summarizeBy: none
 
-	column 'Dept/Sch/Institute'
+	column Dept/Sch/Institute
 		dataType: string
-		sourceColumn: Dept/Sch/Institute
+		lineageTag: 452f3bc3-d1ac-4578-bc6b-ab31dcc44c45
 		summarizeBy: none
+		sourceColumn: Dept/Sch/Institute
 
 	column 'Campaign Type'
 		dataType: string
-		sourceColumn: Campaign Type
+		lineageTag: 247a48b1-5ec5-4390-abbe-2f7075768aac
 		summarizeBy: none
+		sourceColumn: Campaign Type
 
 	column 'Campaign Objective'
 		dataType: string
-		sourceColumn: Campaign Objective
+		lineageTag: bd8c6295-54ef-4039-b151-e0e203d248c7
 		summarizeBy: none
+		sourceColumn: Campaign Objective
 
 	column 'Start Date'
 		dataType: dateTime
-		formatString: dd/mm/yyyy
-		sourceColumn: Start Date
+		formatString: Long Date
+		lineageTag: 2cc10cbc-39c5-4653-9b2e-05d26856d871
 		summarizeBy: none
+		sourceColumn: Start Date
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column 'End Date'
 		dataType: dateTime
-		formatString: dd/mm/yyyy
-		sourceColumn: End Date
+		formatString: Long Date
+		lineageTag: fd5d36eb-1c05-4d94-a9d6-8e11a0f1741f
 		summarizeBy: none
+		sourceColumn: End Date
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	partition Campaign = m
 		mode: import
@@ -51,3 +64,4 @@ table Campaign
 				    Grouped = Table.Group(Kept, {"Campaign Name for UTM"}, {{"Campaign ID", each List.First([Campaign ID]), type text}, {"Campaign Name", each List.First([Campaign Name]), type text}, {"Dept/Sch/Institute", each List.First([#"Dept/Sch/Institute"]), type text}, {"Campaign Type", each List.First([Campaign Type]), type text}, {"Campaign Objective", each List.First([Campaign Objective]), type text}, {"Start Date", each List.Min([Start Date]), type date}, {"End Date", each List.Max([End Date]), type date}})
 				in
 				    Grouped
+

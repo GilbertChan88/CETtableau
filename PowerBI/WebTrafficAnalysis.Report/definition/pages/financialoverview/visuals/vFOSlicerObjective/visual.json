@@ -1,16 +1,83 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vFOSlicerObjective",
-  "position": { "x": 778, "y": 8, "z": 13, "height": 56, "width": 150, "tabOrder": 13 },
+  "position": {
+    "x": 778,
+    "y": 8,
+    "z": 13000,
+    "height": 56,
+    "width": 150,
+    "tabOrder": 13000
+  },
   "visual": {
     "visualType": "slicer",
     "query": {
       "queryState": {
-        "Values": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Campaign Objective" } }, "queryRef": "CampaignSpend.Campaign Objective", "nativeQueryRef": "Campaign Objective", "active": true } ] }
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Campaign Objective"
+                }
+              },
+              "queryRef": "CampaignSpend.Campaign Objective",
+              "nativeQueryRef": "Campaign Objective",
+              "active": true
+            }
+          ]
+        }
       }
     },
-    "objects": { "data": [ { "properties": { "mode": { "expr": { "Literal": { "Value": "'Dropdown'" } } } } } ] },
-    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Campaign Objective'" } } }, "show": { "expr": { "Literal": { "Value": "true" } } } } } ] },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Campaign Objective'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
   }
 }
