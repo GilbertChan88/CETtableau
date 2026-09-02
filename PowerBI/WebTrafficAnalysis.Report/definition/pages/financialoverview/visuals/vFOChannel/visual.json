@@ -1,112 +1,45 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vFOChannel",
-  "position": {
-    "x": 912,
-    "y": 464,
-    "z": 9000,
-    "height": 256,
-    "width": 368,
-    "tabOrder": 9000
-  },
+  "position": { "x": 912, "y": 464, "z": 9000, "height": 256, "width": 368, "tabOrder": 9000 },
   "visual": {
     "visualType": "barChart",
     "query": {
       "queryState": {
         "Category": {
           "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "CampaignSpend"
-                    }
-                  },
-                  "Property": "Marketing Channel"
-                }
-              },
-              "queryRef": "CampaignSpend.Marketing Channel",
-              "nativeQueryRef": "Marketing Channel",
-              "active": true
-            }
+            { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Channel" } }, "queryRef": "CampaignSpend.Marketing Channel", "nativeQueryRef": "Marketing Channel", "active": true }
+          ]
+        },
+        "Series": {
+          "projections": [
+            { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Channel" } }, "queryRef": "CampaignSpend.Marketing Channel", "nativeQueryRef": "Marketing Channel" }
           ]
         },
         "Y": {
           "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "CampaignSpend"
-                    }
-                  },
-                  "Property": "Total Spend"
-                }
-              },
-              "queryRef": "CampaignSpend.Total Spend",
-              "nativeQueryRef": "Total Spend"
-            }
+            { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Total Spend" } }, "queryRef": "CampaignSpend.Total Spend", "nativeQueryRef": "Total Spend" }
           ]
         }
       },
       "sortDefinition": {
         "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "CampaignSpend"
-                  }
-                },
-                "Property": "Total Spend"
-              }
-            },
-            "direction": "Descending"
-          }
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Total Spend" } }, "direction": "Descending" }
         ],
         "isDefaultSort": true
       }
     },
     "objects": {
       "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "CampaignSpend"
-                        }
-                      },
-                      "Property": "Channel Color"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        { "properties": { "fill": { "solid": { "color": { "expr": { "Literal": { "Value": "'#E7298A'" } } } } } }, "selector": { "data": [ { "scopeId": { "Comparison": { "ComparisonKind": 0, "Left": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Channel" } }, "Right": { "Literal": { "Value": "'Digital Ads'" } } } } } ] } },
+        { "properties": { "fill": { "solid": { "color": { "expr": { "Literal": { "Value": "'#D95F02'" } } } } } }, "selector": { "data": [ { "scopeId": { "Comparison": { "ComparisonKind": 0, "Left": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Channel" } }, "Right": { "Literal": { "Value": "'Content Marketing'" } } } } } ] } },
+        { "properties": { "fill": { "solid": { "color": { "expr": { "Literal": { "Value": "'#E6AB02'" } } } } } }, "selector": { "data": [ { "scopeId": { "Comparison": { "ComparisonKind": 0, "Left": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Channel" } }, "Right": { "Literal": { "Value": "'Out-of-Home Ads'" } } } } } ] } },
+        { "properties": { "fill": { "solid": { "color": { "expr": { "Literal": { "Value": "'#A6761D'" } } } } } }, "selector": { "data": [ { "scopeId": { "Comparison": { "ComparisonKind": 0, "Left": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Channel" } }, "Right": { "Literal": { "Value": "'Others'" } } } } } ] } }
       ]
     },
     "visualContainerObjects": {
       "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Spend by Channel'"
-                }
-              }
-            }
-          }
-        }
+        { "properties": { "text": { "expr": { "Literal": { "Value": "'Spend by Channel'" } } } } }
       ]
     },
     "drillFilterOtherVisuals": true
