@@ -294,14 +294,47 @@ Three **Card** visuals:
 
 ---
 
-## Step 8 — Extra pages (optional, already in the file)
+## Step 8 — Extra pages (already in the file)
 
 - **Dashboard 1 – Total Web Traffic:** KPI cards (`Total Views/Users/Sessions`, `Avg Session Duration (min sec)`),
   a Views+Users combo over `Month-Year`, a Page‑Performance matrix, plus Date / Campaign / Campaign ID / Page‑path slicers.
 - **Dashboard 2 – Total Campaign Spends:** bar charts for Spend by Objective, Spend by Channel, Spend by
   Platform (all `[Total Spend]`), with Start Date (Between) + Campaign Type slicers.
 
-Page order (`pages.json`): `webtrafficdashboard`, `dashboard1totalwebtraffic`, `dashboard2campaignspends`, `financialoverview`.
+Page order (`pages.json`): `webtrafficdashboard`, `financialoverview`, `dashboard1totalwebtraffic`,
+`dashboard2campaignspends`, `dashboard4digitalads`.
+
+---
+
+## Step 8b — Page: **Campaign Performance by Digital Ads** (Dashboard 4)
+
+Source = **FactActualSpend** (`Fact_Actual_Spend.csv`), presented as a table per the mockup.
+
+**Model additions (on FactActualSpend):**
+```DAX
+Total Impressions  = SUM ( FactActualSpend[Impressions] )       -- #,0
+Total Clicks       = SUM ( FactActualSpend[Clicks] )            -- #,0
+Total Actual Spend = SUM ( FactActualSpend[Spend] )             -- $ #,0
+CTR = DIVIDE ( [Total Clicks], [Total Impressions] )            -- 0.00%
+CPC = DIVIDE ( [Total Actual Spend], [Total Clicks] )           -- $ #,0.00
+CPM = DIVIDE ( [Total Actual Spend], [Total Impressions] ) * 1000  -- $ #,0.00
+```
+Calculated column `Marketing Objective` is parsed in Power Query from the 3rd `" - "` segment of the
+campaign name (e.g. `NY2520 - CET B2C - Awareness - …`); rows without that pattern → `(Unspecified)`.
+
+**Visuals (1280×720):**
+- Slicers (y=8): **Platform**, **Campaign Name**, **Marketing Objective** (all dropdown, on FactActualSpend).
+- KPI cards (y=72): **Impressions, Clicks, Actual Spend, CTR, CPC, CPM**.
+- **Performance table** (matrix, full width, y=172): Rows = `Platform ▸ Marketing Objective ▸ Campaign Name`;
+  Values = Impressions, Clicks, Actual Spend, CTR, CPC, CPM. Sorted by Actual Spend desc.
+
+**Data‑availability notes (important):** the actuals file only supports the metrics above and only two
+platforms are present (**Meta (FB/IG)**, **YouTube**). The mockup's other Key Metrics — **Reach, Link Clicks,
+CPLC, Views, CPV, Leads, Conversion rate, CPA** — are **not in the data**, and **Campaign ID / Dept / Duration**
+are not present in the actuals (its campaign names don't join to the campaign master). Those, plus the
+objective‑driven "dynamic metric set" question from the mockup, need additional source data before they can
+be built. The Marketing Objective slicer works for the Meta rows (Awareness/Traffic); YouTube rows show
+`(Unspecified)`.
 
 ---
 

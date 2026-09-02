@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vD4Table",
+  "position": { "x": 8, "y": 172, "z": 9, "height": 540, "width": 1264, "tabOrder": 9 },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": { "projections": [
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "FactActualSpend" } }, "Property": "Platform" } }, "queryRef": "FactActualSpend.Platform", "nativeQueryRef": "Platform" },
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "FactActualSpend" } }, "Property": "Marketing Objective" } }, "queryRef": "FactActualSpend.Marketing Objective", "nativeQueryRef": "Marketing Objective" },
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "FactActualSpend" } }, "Property": "Campaign Name" } }, "queryRef": "FactActualSpend.Campaign Name", "nativeQueryRef": "Campaign Name" }
+        ] },
+        "Values": { "projections": [
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "FactActualSpend" } }, "Property": "Total Impressions" } }, "queryRef": "FactActualSpend.Total Impressions", "nativeQueryRef": "Total Impressions" },
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "FactActualSpend" } }, "Property": "Total Clicks" } }, "queryRef": "FactActualSpend.Total Clicks", "nativeQueryRef": "Total Clicks" },
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "FactActualSpend" } }, "Property": "Total Actual Spend" } }, "queryRef": "FactActualSpend.Total Actual Spend", "nativeQueryRef": "Total Actual Spend" },
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "FactActualSpend" } }, "Property": "CTR" } }, "queryRef": "FactActualSpend.CTR", "nativeQueryRef": "CTR" },
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "FactActualSpend" } }, "Property": "CPC" } }, "queryRef": "FactActualSpend.CPC", "nativeQueryRef": "CPC" },
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "FactActualSpend" } }, "Property": "CPM" } }, "queryRef": "FactActualSpend.CPM", "nativeQueryRef": "CPM" }
+        ] }
+      },
+      "sortDefinition": { "sort": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "FactActualSpend" } }, "Property": "Total Actual Spend" } }, "direction": "Descending" } ], "isDefaultSort": true }
+    },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Campaign Performance by Digital Ads  —  Platform ▸ Objective ▸ Campaign'" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}
