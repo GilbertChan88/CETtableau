@@ -5,7 +5,7 @@ table Calendar
 	column Date
 		dataType: dateTime
 		isKey
-		formatString: Long Date
+		formatString: dd/MM/yyyy
 		lineageTag: 90768482-827f-4eda-bff0-06fa269db25f
 		summarizeBy: none
 		sourceColumn: Date
@@ -39,7 +39,7 @@ table Calendar
 
 	column 'Week Start'
 		dataType: dateTime
-		formatString: Long Date
+		formatString: dd/MM/yyyy
 		lineageTag: da4a6cf6-d579-4112-9b2a-14fb1bcda92d
 		summarizeBy: none
 		sourceColumn: Week Start

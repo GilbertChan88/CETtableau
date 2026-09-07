@@ -30,13 +30,13 @@ table CampaignSpend
 		lineageTag: d5bd6684-c20a-4532-a2a6-7575063b8a3f
 
 	/// Left (transparent) segment of the Campaign Schedule bar: days from the
-	/// selected Date From to this campaign's start, clipped to 0. The Date slicer
-	/// is on Calendar[Date]; harvesting MIN/MAX(Calendar[Date]) keeps the schedule
-	/// anchored to the same Date From / Date To window as the Traffic Trend Analysis.
-	/// Blank when the campaign does not overlap the window, so its bar drops off.
+	/// selected window to this campaign's start, clipped to 0. The window is harvested
+	/// from MIN/MAX(WebTraffic[Date]) under the current filters, so the Campaign Schedule
+	/// spans exactly the same date range as the Traffic Trend Analysis (same data + same
+	/// Date From/To slicer). Blank when the campaign does not overlap the window.
 	measure 'Gantt Start Offset (Days)' =
-			VAR WinFrom = MIN ( Calendar[Date] )
-			VAR WinTo = MAX ( Calendar[Date] )
+			VAR WinFrom = MIN ( WebTraffic[Date] )
+			VAR WinTo = MAX ( WebTraffic[Date] )
 			VAR CampStart = MIN ( CampaignSpend[Start Date] )
 			VAR CampEnd = MAX ( CampaignSpend[End Date] )
 			VAR Overlaps = CampStart <= WinTo && CampEnd >= WinFrom
@@ -46,12 +46,12 @@ table CampaignSpend
 		lineageTag: f188d6a4-f72c-4cc2-9a76-f3d69b2d8928
 
 	/// Visible segment of the Campaign Schedule bar: the campaign's duration in days,
-	/// clipped to the selected Date From / Date To window so the timeline lines up
-	/// with the Traffic Trend Analysis. Blank (bar hidden) when the campaign does
-	/// not overlap the window.
+	/// clipped to the web-traffic date window (MIN/MAX WebTraffic[Date]) so the schedule's
+	/// date range matches the Traffic Trend Analysis. Blank (bar hidden) when the campaign
+	/// does not overlap that window.
 	measure 'Gantt Duration (Days)' =
-			VAR WinFrom = MIN ( Calendar[Date] )
-			VAR WinTo = MAX ( Calendar[Date] )
+			VAR WinFrom = MIN ( WebTraffic[Date] )
+			VAR WinTo = MAX ( WebTraffic[Date] )
 			VAR CampStart = MIN ( CampaignSpend[Start Date] )
 			VAR CampEnd = MAX ( CampaignSpend[End Date] )
 			VAR Overlaps = CampStart <= WinTo && CampEnd >= WinFrom
@@ -99,7 +99,7 @@ table CampaignSpend
 
 	column 'Start Date'
 		dataType: dateTime
-		formatString: Long Date
+		formatString: dd/MM/yyyy
 		lineageTag: fdf5bc73-db69-4f81-83cb-b5c12d187f11
 		summarizeBy: none
 		sourceColumn: Start Date
@@ -108,7 +108,7 @@ table CampaignSpend
 
 	column 'End Date'
 		dataType: dateTime
-		formatString: Long Date
+		formatString: dd/MM/yyyy
 		lineageTag: 8278ead0-fe8d-4e76-9f80-b6a04f62f5f2
 		summarizeBy: none
 		sourceColumn: End Date

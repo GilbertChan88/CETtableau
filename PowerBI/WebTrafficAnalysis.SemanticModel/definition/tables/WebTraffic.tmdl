@@ -27,7 +27,7 @@ table WebTraffic
 
 	column Date
 		dataType: dateTime
-		formatString: Long Date
+		formatString: dd/MM/yyyy
 		lineageTag: 8085c94a-b5ce-4ab5-8845-cd95b00babe1
 		summarizeBy: none
 		sourceColumn: Date

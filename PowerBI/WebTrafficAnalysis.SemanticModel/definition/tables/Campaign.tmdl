@@ -39,7 +39,7 @@ table Campaign
 
 	column 'Start Date'
 		dataType: dateTime
-		formatString: Long Date
+		formatString: dd/MM/yyyy
 		lineageTag: 2cc10cbc-39c5-4653-9b2e-05d26856d871
 		summarizeBy: none
 		sourceColumn: Start Date
@@ -48,7 +48,7 @@ table Campaign
 
 	column 'End Date'
 		dataType: dateTime
-		formatString: Long Date
+		formatString: dd/MM/yyyy
 		lineageTag: fd5d36eb-1c05-4d94-a9d6-8e11a0f1741f
 		summarizeBy: none
 		sourceColumn: End Date
