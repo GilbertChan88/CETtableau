@@ -302,7 +302,17 @@ Three **Card** visuals:
   Platform (all `[Total Spend]`), with Start Date (Between) + Campaign Type slicers.
 
 Page order (`pages.json`): `webtrafficdashboard`, `financialoverview`, `dashboard1totalwebtraffic`,
-`dashboard2campaignspends`, `dashboard4digitalads`.
+`dashboard2campaignspends`, `dashboard4digitalads`, `dashboard5contentmktg`, `dashboard6oohads`.
+
+### Dashboards 5 & 6 — interim spend views (pending performance data)
+`dashboard5contentmktg` (**Content Marketing**) and `dashboard6oohads` (**OOH Ads**) are built as
+**spend views** from `CampaignSpend`, scoped with channel measures `Content Marketing Spend` / `OOH Spend`
+(and matching campaign/platform/site counts). Each has KPI cards, a spend‑by‑platform bar, a
+spend‑by‑campaign matrix (OOH also breaks out the **site** via `Remarks`), and Campaign/Dept/Objective/Date
+slicers. The mockups' **performance** metrics — D5: Reach / Page Views / Avg Time on Page; D6: Reach /
+QR‑code scans / Cost‑per‑scan — are **not in the client data** yet, so those pages show spend only and note
+the pending metrics in their titles. Wire them up once the content‑marketing and OOH performance exports
+arrive (see `CLIENT_DATA_SUMMARY_AND_GAPS.md`).
 
 ---
 

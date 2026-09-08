@@ -5,7 +5,9 @@
     "financialoverview",
     "dashboard1totalwebtraffic",
     "dashboard2campaignspends",
-    "dashboard4digitalads"
+    "dashboard4digitalads",
+    "dashboard5contentmktg",
+    "dashboard6oohads"
   ],
   "activePageName": "financialoverview",
   "landingPageName": "webtrafficdashboard"

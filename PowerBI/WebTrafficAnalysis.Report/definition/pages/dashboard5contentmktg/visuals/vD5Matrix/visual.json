@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vD5Matrix",
+  "position": { "x": 536, "y": 168, "z": 8, "height": 524, "width": 728, "tabOrder": 8 },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": { "projections": [
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Marketing Platform" } }, "queryRef": "CampaignSpend.Marketing Platform", "nativeQueryRef": "Marketing Platform" },
+          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Campaign Name" } }, "queryRef": "CampaignSpend.Campaign Name", "nativeQueryRef": "Campaign Name" }
+        ] },
+        "Values": { "projections": [
+          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Content Marketing Spend" } }, "queryRef": "CampaignSpend.Content Marketing Spend", "nativeQueryRef": "Content Marketing Spend" }
+        ] }
+      },
+      "sortDefinition": { "sort": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "CampaignSpend" } }, "Property": "Content Marketing Spend" } }, "direction": "Descending" } ], "isDefaultSort": true }
+    },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Content Marketing spend by platform & campaign — Reach / Page Views / Avg Time on Page pending performance data'" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}

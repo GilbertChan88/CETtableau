@@ -54,6 +54,10 @@ All files sit under `RawData/`. In short, the client supplied **digital‑ads pl
 **Purpose (from mockup):** show **Total Conversions from STEP**, split into **Interest Registration**
 and **Course Signup**, presented as a chart, filterable by Campaign ID / Name / Duration / Dept.
 
+> **Interim build:** `dashboard5contentmktg` and `dashboard6oohads` pages now exist as **spend‑only views**
+> (Content Marketing / OOH spend, campaigns, platforms/sites from `CampaignSpend`). The performance metrics
+> below are still required to complete them; Dashboard 3 has no interim view (it has no spend proxy).
+
 ### B1. Required data source
 A **STEP conversions export** (from the SkillsFuture/course‑registration platform, "STEP"),
 one delivery per reporting period.
