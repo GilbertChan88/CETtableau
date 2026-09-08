@@ -339,7 +339,8 @@ CPA             = DIVIDE ( [Total Ad Spend], [Total Conversions] )              
 **Visuals (1280×720):**
 - Slicers (y=8): **Platform**, **Campaign**, **Marketing Objective**, **Duration (campaign start, Between)**.
 - KPI cards (y=72): **Impressions, Reach, Clicks, Conversions, Ad Spend, CTR, CPC, CPM**.
-- **Performance table** (matrix, full width, y=170): Rows = `Platform ▸ Marketing Objective ▸ Campaign`;
+- Charts (y=168): **Ad Spend by Platform** (column), **CTR by Platform** (bar), **Impressions Share by Platform** (donut).
+- **Performance table** (matrix, full width, y=382): Rows = `Platform ▸ Marketing Objective ▸ Campaign`;
   Values = Impressions, Reach, Clicks, Link Clicks, Video Views, CTR, CPC, CPM, CPV, Conversions,
   Conversion Rate, CPA, Ad Spend. Sorted by Ad Spend desc.
 

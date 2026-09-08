@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vD4ChartSpend",
+  "position": { "x": 8, "y": 168, "z": 13, "height": 206, "width": 410, "tabOrder": 13 },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Platform" } }, "queryRef": "DigitalAdsPerf.Platform", "nativeQueryRef": "Platform", "active": true } ] },
+        "Series": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Platform" } }, "queryRef": "DigitalAdsPerf.Platform", "nativeQueryRef": "Platform" } ] },
+        "Y": { "projections": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Total Ad Spend" } }, "queryRef": "DigitalAdsPerf.Total Ad Spend", "nativeQueryRef": "Total Ad Spend" } ] }
+      },
+      "sortDefinition": { "sort": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Total Ad Spend" } }, "direction": "Descending" } ], "isDefaultSort": true }
+    },
+    "objects": { "legend": [ { "properties": { "show": { "expr": { "Literal": { "Value": "false" } } } } } ] },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Ad Spend by Platform'" } } } } } ] },
+    "drillFilterOtherVisuals": true
+  }
+}
