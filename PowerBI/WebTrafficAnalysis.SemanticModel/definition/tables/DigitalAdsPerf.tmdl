@@ -1,0 +1,129 @@
+/// Unified digital-ads performance fact, normalised from the client's RawData platform
+/// exports (Meta, LinkedIn, Google Search/SEM, Google Ads/PMax, YouTube) into one clean
+/// CSV (DigitalAds_Performance.csv), aggregated per Platform x Campaign.
+/// Note: metrics are additive across campaigns; Reach summed across campaigns/ad sets
+/// overstates unique reach. "Conversions" is the ad platform's own reported conversions
+/// (Google/PMax counts many action types) — it is NOT the STEP course-signup metric.
+table DigitalAdsPerf
+
+	measure 'Total Impressions' = SUM(DigitalAdsPerf[Impressions])
+		formatString: #,0
+
+	measure 'Total Reach' = SUM(DigitalAdsPerf[Reach])
+		formatString: #,0
+
+	measure 'Total Clicks' = SUM(DigitalAdsPerf[Clicks])
+		formatString: #,0
+
+	measure 'Total Link Clicks' = SUM(DigitalAdsPerf[Link Clicks])
+		formatString: #,0
+
+	measure 'Total Video Views' = SUM(DigitalAdsPerf[Video Views])
+		formatString: #,0
+
+	measure 'Total Conversions' = SUM(DigitalAdsPerf[Conversions])
+		formatString: #,0
+
+	measure 'Total Ad Spend' = SUM(DigitalAdsPerf[Spend])
+		formatString: \$#,0
+
+	/// Click-through rate = Clicks / Impressions
+	measure CTR = DIVIDE([Total Clicks], [Total Impressions])
+		formatString: 0.00%
+
+	/// Cost per click = Spend / Clicks
+	measure CPC = DIVIDE([Total Ad Spend], [Total Clicks])
+		formatString: \$#,0.00
+
+	/// Cost per 1,000 impressions = Spend / Impressions * 1000
+	measure CPM = DIVIDE([Total Ad Spend], [Total Impressions]) * 1000
+		formatString: \$#,0.00
+
+	/// Cost per link click = Spend / Link Clicks (Meta)
+	measure CPLC = DIVIDE([Total Ad Spend], [Total Link Clicks])
+		formatString: \$#,0.00
+
+	/// Cost per view = Spend / Video Views (YouTube/LinkedIn/Meta video)
+	measure CPV = DIVIDE([Total Ad Spend], [Total Video Views])
+		formatString: \$#,0.000
+
+	/// Conversion rate = Conversions / Clicks (Google/SEM)
+	measure 'Conversion Rate' = DIVIDE([Total Conversions], [Total Clicks])
+		formatString: 0.00%
+
+	/// Cost per acquisition = Spend / Conversions (Google/SEM)
+	measure CPA = DIVIDE([Total Ad Spend], [Total Conversions])
+		formatString: \$#,0.00
+
+	column Platform
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Platform
+
+	column Campaign
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Campaign
+
+	column 'Marketing Objective'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Marketing Objective
+
+	column Impressions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Impressions
+
+	column Reach
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Reach
+
+	column Clicks
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Clicks
+
+	column 'Link Clicks'
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Link Clicks
+
+	column 'Video Views'
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Video Views
+
+	column Conversions
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: Conversions
+
+	column Spend
+		dataType: double
+		formatString: \$#,0
+		summarizeBy: sum
+		sourceColumn: Spend
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		summarizeBy: none
+		sourceColumn: Start Date
+
+	column 'End Date'
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		summarizeBy: none
+		sourceColumn: End Date
+
+	partition DigitalAdsPerf = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(SourceFolder & "DigitalAds_Performance.csv"), [Delimiter=",", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Platform", type text}, {"Campaign", type text}, {"Marketing Objective", type text}, {"Impressions", Int64.Type}, {"Reach", Int64.Type}, {"Clicks", Int64.Type}, {"Link Clicks", Int64.Type}, {"Video Views", Int64.Type}, {"Conversions", type number}, {"Spend", type number}, {"Start Date", type date}, {"End Date", type date}})
+				in
+				    Typed

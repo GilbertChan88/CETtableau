@@ -28,7 +28,7 @@ Put these CSVs in one folder (the `SourceFolder`):
 |------|---------------|---------|
 | `Mock_WebTraffic.csv` | **WebTraffic** | daily web traffic (Views, Total users, Sessions, Avg session duration) by Date × Page × UTM |
 | `Final_Campaign_Spend_Data.csv` | **CampaignSpend** | one row per campaign × marketing platform (costs + Start/End dates) |
-| `Fact_Actual_Spend.csv` | **FactActualSpend** | optional platform actuals (not used by the two main dashboards) |
+| `DigitalAds_Performance.csv` | **DigitalAdsPerf** | unified digital‑ads performance (Meta/LinkedIn/Google/YouTube), normalised from `RawData/` for Dashboard 4 |
 | *(derived)* | **Campaign** | dimension, one row per `Campaign Name for UTM` |
 | *(generated in M)* | **Calendar** | date table (2024‑01‑01 → 2025‑12‑31) |
 
@@ -63,7 +63,7 @@ script, rename the query. Key points baked into the scripts:
   `Table.Group` by `Campaign Name for UTM` (one row per UTM; `Start Date = List.Min`, `End Date = List.Max`).
 - **Calendar** (`Calendar.m`): generates a continuous date table and adds `Year`, `Month No`,
   `Month-Year` (`MMM yy`), `Month Sort` (`Year*100+Month`), `Week Start`, `Week Label`.
-- **FactActualSpend** (`FactActualSpend.m`): straight load (optional).
+- **DigitalAdsPerf** (`DigitalAds_Performance.csv`): straight `Csv.Document` load of the pre‑normalised digital‑ads performance table (see Step 8b).
 
 ### 1.5 Close & Apply.
 
@@ -308,33 +308,50 @@ Page order (`pages.json`): `webtrafficdashboard`, `financialoverview`, `dashboar
 
 ## Step 8b — Page: **Campaign Performance by Digital Ads** (Dashboard 4)
 
-Source = **FactActualSpend** (`Fact_Actual_Spend.csv`), presented as a table per the mockup.
+Source = **DigitalAdsPerf** (`DigitalAds_Performance.csv`) — a unified table normalised from the client's
+`RawData/` platform exports (Meta, LinkedIn, Google Search/SEM, Google Ads/PMax, YouTube), presented as a
+table per the mockup.
 
-**Model additions (on FactActualSpend):**
+**Data prep (once):** the raw platform files have different schemas, header rows and totals rows, so they are
+normalised by `PowerBI/scripts/normalize_digitalads.py` (run from the repo root) into one clean CSV with
+columns: `Platform, Campaign, Marketing Objective, Impressions, Reach, Clicks, Link Clicks, Video Views,
+Conversions, Spend, Start Date, End Date` (aggregated per Platform × Campaign; Objective parsed from the
+campaign name; ISO dates; totals rows dropped). Re‑run the script whenever the client sends new raw data.
+
+**Model — table `DigitalAdsPerf`** (loads `DigitalAds_Performance.csv`) with measures:
 ```DAX
-Total Impressions  = SUM ( FactActualSpend[Impressions] )       -- #,0
-Total Clicks       = SUM ( FactActualSpend[Clicks] )            -- #,0
-Total Actual Spend = SUM ( FactActualSpend[Spend] )             -- $ #,0
-CTR = DIVIDE ( [Total Clicks], [Total Impressions] )            -- 0.00%
-CPC = DIVIDE ( [Total Actual Spend], [Total Clicks] )           -- $ #,0.00
-CPM = DIVIDE ( [Total Actual Spend], [Total Impressions] ) * 1000  -- $ #,0.00
+Total Impressions  = SUM ( DigitalAdsPerf[Impressions] )                          -- #,0
+Total Reach        = SUM ( DigitalAdsPerf[Reach] )                                -- #,0
+Total Clicks       = SUM ( DigitalAdsPerf[Clicks] )                               -- #,0
+Total Link Clicks  = SUM ( DigitalAdsPerf[Link Clicks] )                          -- #,0
+Total Video Views  = SUM ( DigitalAdsPerf[Video Views] )                          -- #,0
+Total Conversions  = SUM ( DigitalAdsPerf[Conversions] )                          -- #,0
+Total Ad Spend     = SUM ( DigitalAdsPerf[Spend] )                                -- $ #,0
+CTR             = DIVIDE ( [Total Clicks], [Total Impressions] )                  -- 0.00%
+CPC             = DIVIDE ( [Total Ad Spend], [Total Clicks] )                     -- $ #,0.00
+CPM             = DIVIDE ( [Total Ad Spend], [Total Impressions] ) * 1000         -- $ #,0.00
+CPLC            = DIVIDE ( [Total Ad Spend], [Total Link Clicks] )                -- $ #,0.00
+CPV             = DIVIDE ( [Total Ad Spend], [Total Video Views] )                -- $ #,0.000
+Conversion Rate = DIVIDE ( [Total Conversions], [Total Clicks] )                  -- 0.00%
+CPA             = DIVIDE ( [Total Ad Spend], [Total Conversions] )                -- $ #,0.00
 ```
-Calculated column `Marketing Objective` is parsed in Power Query from the 3rd `" - "` segment of the
-campaign name (e.g. `NY2520 - CET B2C - Awareness - …`); rows without that pattern → `(Unspecified)`.
 
 **Visuals (1280×720):**
-- Slicers (y=8): **Platform**, **Campaign Name**, **Marketing Objective** (all dropdown, on FactActualSpend).
-- KPI cards (y=72): **Impressions, Clicks, Actual Spend, CTR, CPC, CPM**.
-- **Performance table** (matrix, full width, y=172): Rows = `Platform ▸ Marketing Objective ▸ Campaign Name`;
-  Values = Impressions, Clicks, Actual Spend, CTR, CPC, CPM. Sorted by Actual Spend desc.
+- Slicers (y=8): **Platform**, **Campaign**, **Marketing Objective**, **Duration (campaign start, Between)**.
+- KPI cards (y=72): **Impressions, Reach, Clicks, Conversions, Ad Spend, CTR, CPC, CPM**.
+- **Performance table** (matrix, full width, y=170): Rows = `Platform ▸ Marketing Objective ▸ Campaign`;
+  Values = Impressions, Reach, Clicks, Link Clicks, Video Views, CTR, CPC, CPM, CPV, Conversions,
+  Conversion Rate, CPA, Ad Spend. Sorted by Ad Spend desc.
 
-**Data‑availability notes (important):** the actuals file only supports the metrics above and only two
-platforms are present (**Meta (FB/IG)**, **YouTube**). The mockup's other Key Metrics — **Reach, Link Clicks,
-CPLC, Views, CPV, Leads, Conversion rate, CPA** — are **not in the data**, and **Campaign ID / Dept / Duration**
-are not present in the actuals (its campaign names don't join to the campaign master). Those, plus the
-objective‑driven "dynamic metric set" question from the mockup, need additional source data before they can
-be built. The Marketing Objective slicer works for the Meta rows (Awareness/Traffic); YouTube rows show
-`(Unspecified)`.
+**Data‑availability notes (important):**
+- Metrics are **platform‑specific** (as the mockup anticipated): Reach = Meta & LinkedIn only; Conversions /
+  Conversion Rate / CPA = Google/SEM only; Views/CPV = video platforms — blank cells elsewhere are expected.
+- **Reach** is additive across campaigns/ad sets, so the grand total overstates unique reach.
+- **Conversions** is the **ad platform's own reported conversions** (Google/PMax counts many action types) —
+  it is **not** the STEP course‑signup metric (that's Dashboard 3, still pending a STEP export).
+- The raw campaign names **do not match** the campaign master's Campaign ID/UTM, so this table is standalone;
+  filtering is by its own Platform / Campaign / Objective / Start Date (not the master's Dept/Campaign ID).
+- Two campaign waves are included: GroupM "NY2520" (early 2025) and IMC "NYP CET" (late 2025).
 
 ---
 
