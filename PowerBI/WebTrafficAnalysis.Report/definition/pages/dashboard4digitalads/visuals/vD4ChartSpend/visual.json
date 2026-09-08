@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
   "name": "vD4ChartSpend",
-  "position": { "x": 8, "y": 168, "z": 13, "height": 206, "width": 410, "tabOrder": 13 },
+  "position": { "x": 8, "y": 168, "z": 13, "height": 206, "width": 306, "tabOrder": 13 },
   "visual": {
     "visualType": "columnChart",
     "query": {

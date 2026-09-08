@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
   "name": "vD4ChartImpr",
-  "position": { "x": 844, "y": 168, "z": 15, "height": 206, "width": 420, "tabOrder": 15 },
+  "position": { "x": 950, "y": 168, "z": 15, "height": 206, "width": 314, "tabOrder": 15 },
   "visual": {
     "visualType": "donutChart",
     "query": {

@@ -10,8 +10,8 @@
       },
       "sortDefinition": { "sort": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Start Date" } }, "direction": "Ascending" } ], "isDefaultSort": true }
     },
-    "objects": { "data": [ { "properties": { "mode": { "expr": { "Literal": { "Value": "'Between'" } } } } } ] },
-    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Duration (campaign start)'" } } } } } ] },
+    "objects": { "data": [ { "properties": { "mode": { "expr": { "Literal": { "Value": "'Dropdown'" } } } } } ] },
+    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Campaign Start Date'" } } } } } ] },
     "drillFilterOtherVisuals": true
   }
 }

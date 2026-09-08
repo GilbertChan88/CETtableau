@@ -1,11 +1,81 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
   "name": "vD4KPICPM",
-  "position": { "x": 1114, "y": 72, "z": 11, "height": 88, "width": 150, "tabOrder": 11 },
+  "position": {
+    "x": 1114,
+    "y": 72,
+    "z": 11,
+    "height": 88,
+    "width": 150,
+    "tabOrder": 11
+  },
   "visual": {
     "visualType": "card",
-    "query": { "queryState": { "Values": { "projections": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "CPM" } }, "queryRef": "DigitalAdsPerf.CPM", "nativeQueryRef": "CPM" } ] } } },
-    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'CPM'" } } } } } ] },
-    "drillFilterOtherVisuals": true
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "CPM"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.CPM",
+              "nativeQueryRef": "CPM"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'CPM'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryLabels": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }
