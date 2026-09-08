@@ -337,7 +337,7 @@ CPA             = DIVIDE ( [Total Ad Spend], [Total Conversions] )              
 ```
 
 **Visuals (1280×720):**
-- Slicers (y=8): **Platform**, **Campaign**, **Marketing Objective**, **Campaign Start Date** (dropdown — a list slicer honours the `dd/MM/yyyy` column format; a Between date picker would render in the app locale).
+- Slicers (y=8): **Platform**, **Campaign**, **Marketing Objective**, **Duration (campaign start, Between)**. *(Note: a Between date picker renders in the app/report locale, not the column format — set the file's Regional locale to English (UK) for DD/MM/YYYY.)*
 - KPI cards (y=72): **Impressions, Reach, Clicks, Conversions, Ad Spend, CTR, CPC, CPM** — compact font (value 15pt, label 9pt).
 - Charts (y=168): **Ad Spend by Platform** (column), **CTR by Platform** (bar), **Conversion Rate by Platform** (bar), **Impressions Share by Platform** (donut).
 - **Performance table** (matrix, full width, y=382): Rows = `Platform ▸ Marketing Objective ▸ Campaign`;
