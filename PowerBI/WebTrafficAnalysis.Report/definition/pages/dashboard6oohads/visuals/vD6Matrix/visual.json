@@ -3,7 +3,7 @@
   "name": "vD6Matrix",
   "position": {
     "x": 536,
-    "y": 168,
+    "y": 216,
     "z": 8,
     "height": 524,
     "width": 728,
@@ -107,7 +107,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'OOH spend by format, site & campaign — Reach / QR scans / Cost-per-scan pending performance data'"
+                  "Value": "'OOH spend by format, site & campaign \u2014 Reach / QR scans / Cost-per-scan pending performance data'"
                 }
               }
             }

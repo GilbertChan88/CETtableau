@@ -1,9 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "financialoverview",
-  "displayName": "Campaign Spending - Financial Overview",
+  "displayName": "Campaign Spending",
   "displayOption": "FitToPage",
-  "height": 720,
+  "height": 776,
   "width": 1280,
   "pageBinding": {
     "name": "48c8d894c9270cae84b6",

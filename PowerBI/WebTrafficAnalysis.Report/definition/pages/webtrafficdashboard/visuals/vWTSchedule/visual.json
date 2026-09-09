@@ -3,7 +3,7 @@
   "name": "vWTSchedule",
   "position": {
     "x": 8,
-    "y": 330,
+    "y": 378,
     "z": 7000,
     "height": 200,
     "width": 1232,
@@ -161,7 +161,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Campaign Schedule — bars grouped/coloured by Campaign (Platform per row)'"
+                  "Value": "'Campaign Schedule \u2014 bars grouped/coloured by Campaign (Platform per row)'"
                 }
               }
             }

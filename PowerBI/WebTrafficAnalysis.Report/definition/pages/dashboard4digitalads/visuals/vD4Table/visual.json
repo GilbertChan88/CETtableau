@@ -3,7 +3,7 @@
   "name": "vD4Table",
   "position": {
     "x": 8,
-    "y": 382,
+    "y": 430,
     "z": 12,
     "height": 330,
     "width": 1264,
@@ -275,7 +275,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Campaign Performance by Digital Ads  —  Platform ▸ Objective ▸ Campaign'"
+                  "Value": "'Campaign Performance by Digital Ads  \u2014  Platform \u25b8 Objective \u25b8 Campaign'"
                 }
               }
             }

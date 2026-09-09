@@ -3,11 +3,11 @@
   "pageOrder": [
     "webtrafficdashboard",
     "financialoverview",
-    "dashboard1totalwebtraffic",
-    "dashboard2campaignspends",
     "dashboard4digitalads",
     "dashboard5contentmktg",
-    "dashboard6oohads"
+    "dashboard6oohads",
+    "dashboard1totalwebtraffic",
+    "dashboard2campaignspends"
   ],
   "activePageName": "webtrafficdashboard",
   "landingPageName": "webtrafficdashboard"
