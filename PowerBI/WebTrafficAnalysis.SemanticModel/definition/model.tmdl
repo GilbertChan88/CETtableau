@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["SourceFolder","WebTraffic","CampaignSpend","Campaign","Calendar","DigitalAdsPerf"]
+annotation PBI_QueryOrder = ["SourceFolder","WebTraffic","CampaignSpend","Campaign","Calendar","DigitalAdsPerf","ContentMktgPerf","OOHPerf"]
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
@@ -17,4 +17,6 @@ ref table CampaignSpend
 ref table Campaign
 ref table Calendar
 ref table DigitalAdsPerf
+ref table ContentMktgPerf
+ref table OOHPerf
 

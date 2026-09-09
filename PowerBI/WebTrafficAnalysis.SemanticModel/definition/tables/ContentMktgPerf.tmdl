@@ -1,0 +1,97 @@
+/// DUMMY / mock content-marketing performance data (Mock_ContentMarketing_Performance.csv)
+/// for Dashboard 5. Replace with the real publisher performance export when it arrives
+/// (same columns: Campaign, Dept, Objective, Publisher, Month, Reach, Page Views,
+/// Avg Time on Page, Impressions, Clicks, Spend).
+table ContentMktgPerf
+
+	measure 'CM Reach' = SUM(ContentMktgPerf[Reach])
+		formatString: #,0
+
+	measure 'CM Page Views' = SUM(ContentMktgPerf[Page Views])
+		formatString: #,0
+
+	/// Average time on page, weighted by page views (not an average of averages).
+	measure 'CM Avg Time on Page (s)' = DIVIDE(SUMX(ContentMktgPerf, ContentMktgPerf[Avg Time on Page (s)] * ContentMktgPerf[Page Views]), SUM(ContentMktgPerf[Page Views]))
+		formatString: #,0.0
+
+	measure 'CM Impressions' = SUM(ContentMktgPerf[Impressions])
+		formatString: #,0
+
+	measure 'CM Clicks' = SUM(ContentMktgPerf[Clicks])
+		formatString: #,0
+
+	measure 'CM Media Spend' = SUM(ContentMktgPerf[Spend])
+		formatString: \$#,0
+
+	measure 'CM Cost per View' = DIVIDE([CM Media Spend], [CM Page Views])
+		formatString: \$#,0.00
+
+	measure 'CM Campaigns' = DISTINCTCOUNT(ContentMktgPerf[Campaign])
+		formatString: #,0
+
+	column Campaign
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Campaign
+
+	column 'Dept/Sch/Institute'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Dept/Sch/Institute
+
+	column 'Marketing Objective'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Marketing Objective
+
+	column Publisher
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Publisher
+
+	column Month
+		dataType: dateTime
+		formatString: MMM yyyy
+		summarizeBy: none
+		sourceColumn: Month
+
+	column Reach
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Reach
+
+	column 'Page Views'
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Page Views
+
+	column 'Avg Time on Page (s)'
+		dataType: double
+		summarizeBy: none
+		sourceColumn: Avg Time on Page (s)
+
+	column Impressions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Impressions
+
+	column Clicks
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Clicks
+
+	column Spend
+		dataType: double
+		formatString: \$#,0
+		summarizeBy: sum
+		sourceColumn: Spend
+
+	partition ContentMktgPerf = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(SourceFolder & "Mock_ContentMarketing_Performance.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Campaign", type text}, {"Dept/Sch/Institute", type text}, {"Marketing Objective", type text}, {"Publisher", type text}, {"Month", type date}, {"Reach", Int64.Type}, {"Page Views", Int64.Type}, {"Avg Time on Page (s)", type number}, {"Impressions", Int64.Type}, {"Clicks", Int64.Type}, {"Spend", type number}})
+				in
+				    Typed

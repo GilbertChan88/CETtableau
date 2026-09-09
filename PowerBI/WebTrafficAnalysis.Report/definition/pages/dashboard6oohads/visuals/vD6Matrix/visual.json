@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
   "name": "vD6Matrix",
   "position": {
-    "x": 536,
-    "y": 216,
-    "z": 8,
-    "height": 524,
-    "width": 728,
-    "tabOrder": 8
+    "x": 8,
+    "y": 466,
+    "z": 33,
+    "height": 302,
+    "width": 1256,
+    "tabOrder": 33
   },
   "visual": {
     "visualType": "pivotTable",
@@ -20,45 +20,42 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "CampaignSpend"
+                      "Entity": "OOHPerf"
                     }
                   },
-                  "Property": "Marketing Platform"
+                  "Property": "OOH Format"
                 }
               },
-              "queryRef": "CampaignSpend.Marketing Platform",
-              "nativeQueryRef": "Marketing Platform",
-              "active": true
+              "queryRef": "OOHPerf.OOH Format",
+              "nativeQueryRef": "OOH Format"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "CampaignSpend"
+                      "Entity": "OOHPerf"
                     }
                   },
-                  "Property": "Remarks"
+                  "Property": "Site"
                 }
               },
-              "queryRef": "CampaignSpend.Remarks",
-              "nativeQueryRef": "Remarks",
-              "active": false
+              "queryRef": "OOHPerf.Site",
+              "nativeQueryRef": "Site"
             },
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "CampaignSpend"
+                      "Entity": "OOHPerf"
                     }
                   },
-                  "Property": "Campaign Name"
+                  "Property": "Campaign"
                 }
               },
-              "queryRef": "CampaignSpend.Campaign Name",
-              "nativeQueryRef": "Campaign Name",
-              "active": false
+              "queryRef": "OOHPerf.Campaign",
+              "nativeQueryRef": "Campaign"
             }
           ]
         },
@@ -69,14 +66,56 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "CampaignSpend"
+                      "Entity": "OOHPerf"
                     }
                   },
-                  "Property": "OOH Spend"
+                  "Property": "OOH Reach"
                 }
               },
-              "queryRef": "CampaignSpend.OOH Spend",
-              "nativeQueryRef": "OOH Spend"
+              "queryRef": "OOHPerf.OOH Reach",
+              "nativeQueryRef": "OOH Reach"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OOHPerf"
+                    }
+                  },
+                  "Property": "OOH QR Scans"
+                }
+              },
+              "queryRef": "OOHPerf.OOH QR Scans",
+              "nativeQueryRef": "OOH QR Scans"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OOHPerf"
+                    }
+                  },
+                  "Property": "OOH Cost per Scan"
+                }
+              },
+              "queryRef": "OOHPerf.OOH Cost per Scan",
+              "nativeQueryRef": "OOH Cost per Scan"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OOHPerf"
+                    }
+                  },
+                  "Property": "OOH Media Spend"
+                }
+              },
+              "queryRef": "OOHPerf.OOH Media Spend",
+              "nativeQueryRef": "OOH Media Spend"
             }
           ]
         }
@@ -88,10 +127,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "CampaignSpend"
+                    "Entity": "OOHPerf"
                   }
                 },
-                "Property": "OOH Spend"
+                "Property": "OOH Reach"
               }
             },
             "direction": "Descending"
@@ -107,7 +146,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'OOH spend by format, site & campaign — Reach / QR scans / Cost-per-scan pending performance data'"
+                  "Value": "'OOH performance by format, site & campaign (DUMMY data)'"
                 }
               }
             }

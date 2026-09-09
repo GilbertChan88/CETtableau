@@ -1,0 +1,123 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vD6ChartCost",
+  "position": {
+    "x": 844,
+    "y": 204,
+    "z": 32,
+    "height": 250,
+    "width": 420,
+    "tabOrder": 32
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OOHPerf"
+                    }
+                  },
+                  "Property": "OOH Format"
+                }
+              },
+              "queryRef": "OOHPerf.OOH Format",
+              "nativeQueryRef": "OOH Format",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OOHPerf"
+                    }
+                  },
+                  "Property": "OOH Cost per Scan"
+                }
+              },
+              "queryRef": "OOHPerf.OOH Cost per Scan",
+              "nativeQueryRef": "OOH Cost per Scan"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OOHPerf"
+                    }
+                  },
+                  "Property": "OOH Format"
+                }
+              },
+              "queryRef": "OOHPerf.OOH Format",
+              "nativeQueryRef": "OOH Format"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "OOHPerf"
+                  }
+                },
+                "Property": "OOH Cost per Scan"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cost per Scan by Format'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "name": "vD5ChartTime",
+  "position": {
+    "x": 844,
+    "y": 204,
+    "z": 32,
+    "height": 250,
+    "width": 420,
+    "tabOrder": 32
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContentMktgPerf"
+                    }
+                  },
+                  "Property": "Publisher"
+                }
+              },
+              "queryRef": "ContentMktgPerf.Publisher",
+              "nativeQueryRef": "Publisher",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContentMktgPerf"
+                    }
+                  },
+                  "Property": "CM Avg Time on Page (s)"
+                }
+              },
+              "queryRef": "ContentMktgPerf.CM Avg Time on Page (s)",
+              "nativeQueryRef": "CM Avg Time on Page (s)"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContentMktgPerf"
+                    }
+                  },
+                  "Property": "Publisher"
+                }
+              },
+              "queryRef": "ContentMktgPerf.Publisher",
+              "nativeQueryRef": "Publisher"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ContentMktgPerf"
+                  }
+                },
+                "Property": "CM Avg Time on Page (s)"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Avg Time on Page by Publisher'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

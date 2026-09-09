@@ -3,11 +3,11 @@
   "name": "vD5SlicerDept",
   "position": {
     "x": 336,
-    "y": 56,
-    "z": 1,
+    "y": 52,
+    "z": 10,
     "height": 56,
     "width": 180,
-    "tabOrder": 1
+    "tabOrder": 10
   },
   "visual": {
     "visualType": "slicer",
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "CampaignSpend"
+                      "Entity": "ContentMktgPerf"
                     }
                   },
                   "Property": "Dept/Sch/Institute"
                 }
               },
-              "queryRef": "CampaignSpend.Dept/Sch/Institute",
+              "queryRef": "ContentMktgPerf.Dept/Sch/Institute",
               "nativeQueryRef": "Dept/Sch/Institute",
               "active": true
             }

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
-  "name": "vD5KPISpend",
+  "name": "vD5KPIPageViews",
   "position": {
-    "x": 656,
+    "x": 224,
     "y": 116,
-    "z": 23,
+    "z": 21,
     "height": 80,
     "width": 208,
-    "tabOrder": 23
+    "tabOrder": 21
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "ContentMktgPerf"
                     }
                   },
-                  "Property": "CM Media Spend"
+                  "Property": "CM Page Views"
                 }
               },
-              "queryRef": "ContentMktgPerf.CM Media Spend",
-              "nativeQueryRef": "CM Media Spend"
+              "queryRef": "ContentMktgPerf.CM Page Views",
+              "nativeQueryRef": "CM Page Views"
             }
           ]
         }
@@ -55,7 +55,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Media Spend'"
+                  "Value": "'Page Views'"
                 }
               }
             }

@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
-  "name": "vD5SlicerDate",
+  "name": "vD5ChartTrend",
   "position": {
-    "x": 940,
-    "y": 52,
-    "z": 10,
-    "height": 56,
-    "width": 220,
-    "tabOrder": 10
+    "x": 436,
+    "y": 204,
+    "z": 31,
+    "height": 250,
+    "width": 400,
+    "tabOrder": 31
   },
   "visual": {
-    "visualType": "slicer",
+    "visualType": "columnChart",
     "query": {
       "queryState": {
-        "Values": {
+        "Category": {
           "projections": [
             {
               "field": {
@@ -29,6 +29,24 @@
               "queryRef": "ContentMktgPerf.Month",
               "nativeQueryRef": "Month",
               "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContentMktgPerf"
+                    }
+                  },
+                  "Property": "CM Page Views"
+                }
+              },
+              "queryRef": "ContentMktgPerf.CM Page Views",
+              "nativeQueryRef": "CM Page Views"
             }
           ]
         }
@@ -52,21 +70,6 @@
         "isDefaultSort": true
       }
     },
-    "objects": {
-      "data": [
-        {
-          "properties": {
-            "mode": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Between'"
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
     "visualContainerObjects": {
       "title": [
         {
@@ -74,7 +77,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Month'"
+                  "Value": "'Page Views by Month'"
                 }
               }
             }

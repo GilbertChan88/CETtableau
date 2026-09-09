@@ -1,0 +1,93 @@
+/// DUMMY / mock out-of-home (OOH) performance data (Mock_OOH_Performance.csv) for
+/// Dashboard 6. Replace with the real OOH performance export when it arrives (same
+/// columns: Campaign, Dept, Objective, OOH Format, Site, Month, Reach, QR Code Scans,
+/// Impressions, Spend).
+table OOHPerf
+
+	measure 'OOH Reach' = SUM(OOHPerf[Reach])
+		formatString: #,0
+
+	measure 'OOH QR Scans' = SUM(OOHPerf[QR Code Scans])
+		formatString: #,0
+
+	measure 'OOH Impressions' = SUM(OOHPerf[Impressions])
+		formatString: #,0
+
+	measure 'OOH Media Spend' = SUM(OOHPerf[Spend])
+		formatString: \$#,0
+
+	/// Cost per QR scan = Spend / QR Code Scans
+	measure 'OOH Cost per Scan' = DIVIDE([OOH Media Spend], [OOH QR Scans])
+		formatString: \$#,0.00
+
+	/// Scan rate = QR Code Scans / Reach
+	measure 'OOH Scan Rate' = DIVIDE([OOH QR Scans], [OOH Reach])
+		formatString: 0.000%
+
+	measure 'OOH Campaigns' = DISTINCTCOUNT(OOHPerf[Campaign])
+		formatString: #,0
+
+	measure 'OOH Sites' = DISTINCTCOUNT(OOHPerf[Site])
+		formatString: #,0
+
+	column Campaign
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Campaign
+
+	column 'Dept/Sch/Institute'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Dept/Sch/Institute
+
+	column 'Marketing Objective'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Marketing Objective
+
+	column 'OOH Format'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: OOH Format
+
+	column Site
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Site
+
+	column Month
+		dataType: dateTime
+		formatString: MMM yyyy
+		summarizeBy: none
+		sourceColumn: Month
+
+	column Reach
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Reach
+
+	column 'QR Code Scans'
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: QR Code Scans
+
+	column Impressions
+		dataType: int64
+		summarizeBy: sum
+		sourceColumn: Impressions
+
+	column Spend
+		dataType: double
+		formatString: \$#,0
+		summarizeBy: sum
+		sourceColumn: Spend
+
+	partition OOHPerf = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(SourceFolder & "Mock_OOH_Performance.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Campaign", type text}, {"Dept/Sch/Institute", type text}, {"Marketing Objective", type text}, {"OOH Format", type text}, {"Site", type text}, {"Month", type date}, {"Reach", Int64.Type}, {"QR Code Scans", Int64.Type}, {"Impressions", Int64.Type}, {"Spend", type number}})
+				in
+				    Typed

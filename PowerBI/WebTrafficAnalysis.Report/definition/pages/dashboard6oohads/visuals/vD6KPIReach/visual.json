@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
-  "name": "vD5KPISpend",
+  "name": "vD6KPIReach",
   "position": {
-    "x": 656,
+    "x": 8,
     "y": 116,
-    "z": 23,
+    "z": 20,
     "height": 80,
     "width": 208,
-    "tabOrder": 23
+    "tabOrder": 20
   },
   "visual": {
     "visualType": "card",
@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "ContentMktgPerf"
+                      "Entity": "OOHPerf"
                     }
                   },
-                  "Property": "CM Media Spend"
+                  "Property": "OOH Reach"
                 }
               },
-              "queryRef": "ContentMktgPerf.CM Media Spend",
-              "nativeQueryRef": "CM Media Spend"
+              "queryRef": "OOHPerf.OOH Reach",
+              "nativeQueryRef": "OOH Reach"
             }
           ]
         }
@@ -55,7 +55,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Media Spend'"
+                  "Value": "'Reach'"
                 }
               }
             }

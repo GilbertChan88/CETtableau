@@ -3,11 +3,11 @@
   "name": "vD5SlicerCampaign",
   "position": {
     "x": 8,
-    "y": 56,
-    "z": 0,
+    "y": 52,
+    "z": 10,
     "height": 56,
     "width": 320,
-    "tabOrder": 0
+    "tabOrder": 10
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "CampaignSpend"
+                      "Entity": "ContentMktgPerf"
                     }
                   },
-                  "Property": "Campaign Name"
+                  "Property": "Campaign"
                 }
               },
-              "queryRef": "CampaignSpend.Campaign Name",
-              "nativeQueryRef": "Campaign Name",
+              "queryRef": "ContentMktgPerf.Campaign",
+              "nativeQueryRef": "Campaign",
               "active": true
             }
           ]

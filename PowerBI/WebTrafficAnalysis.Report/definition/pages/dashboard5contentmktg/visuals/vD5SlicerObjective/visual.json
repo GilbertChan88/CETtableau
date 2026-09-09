@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
   "name": "vD5SlicerObjective",
   "position": {
     "x": 524,
-    "y": 56,
-    "z": 2,
+    "y": 52,
+    "z": 10,
     "height": 56,
     "width": 200,
-    "tabOrder": 2
+    "tabOrder": 10
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "CampaignSpend"
+                      "Entity": "ContentMktgPerf"
                     }
                   },
-                  "Property": "Campaign Objective"
+                  "Property": "Marketing Objective"
                 }
               },
-              "queryRef": "CampaignSpend.Campaign Objective",
-              "nativeQueryRef": "Campaign Objective",
+              "queryRef": "ContentMktgPerf.Marketing Objective",
+              "nativeQueryRef": "Marketing Objective",
               "active": true
             }
           ]
@@ -47,11 +47,6 @@
             }
           }
         }
-      ],
-      "general": [
-        {
-          "properties": {}
-        }
       ]
     },
     "visualContainerObjects": {
@@ -61,7 +56,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Campaign Objective'"
+                  "Value": "'Marketing Objective'"
                 }
               }
             }

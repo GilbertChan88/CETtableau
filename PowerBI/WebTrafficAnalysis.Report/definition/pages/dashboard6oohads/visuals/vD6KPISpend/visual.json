@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
   "name": "vD6KPISpend",
   "position": {
-    "x": 8,
-    "y": 120,
-    "z": 4,
+    "x": 656,
+    "y": 116,
+    "z": 23,
     "height": 80,
     "width": 208,
-    "tabOrder": 4
+    "tabOrder": 23
   },
   "visual": {
     "visualType": "card",
@@ -20,14 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "CampaignSpend"
+                      "Entity": "OOHPerf"
                     }
                   },
-                  "Property": "OOH Spend"
+                  "Property": "OOH Media Spend"
                 }
               },
-              "queryRef": "CampaignSpend.OOH Spend",
-              "nativeQueryRef": "OOH Spend"
+              "queryRef": "OOHPerf.OOH Media Spend",
+              "nativeQueryRef": "OOH Media Spend"
             }
           ]
         }
@@ -40,7 +40,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "30D"
+                  "Value": "24D"
                 }
               }
             }
@@ -55,7 +55,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'OOH Ad Spend'"
+                  "Value": "'Media Spend'"
                 }
               }
             }

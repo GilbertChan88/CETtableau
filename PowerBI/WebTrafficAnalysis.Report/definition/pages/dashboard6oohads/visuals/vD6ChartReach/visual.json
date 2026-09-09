@@ -1,34 +1,52 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
-  "name": "vD5SlicerDate",
+  "name": "vD6ChartReach",
   "position": {
-    "x": 940,
-    "y": 52,
-    "z": 10,
-    "height": 56,
-    "width": 220,
-    "tabOrder": 10
+    "x": 436,
+    "y": 204,
+    "z": 31,
+    "height": 250,
+    "width": 400,
+    "tabOrder": 31
   },
   "visual": {
-    "visualType": "slicer",
+    "visualType": "barChart",
     "query": {
       "queryState": {
-        "Values": {
+        "Category": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "ContentMktgPerf"
+                      "Entity": "OOHPerf"
                     }
                   },
-                  "Property": "Month"
+                  "Property": "Site"
                 }
               },
-              "queryRef": "ContentMktgPerf.Month",
-              "nativeQueryRef": "Month",
+              "queryRef": "OOHPerf.Site",
+              "nativeQueryRef": "Site",
               "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OOHPerf"
+                    }
+                  },
+                  "Property": "OOH Reach"
+                }
+              },
+              "queryRef": "OOHPerf.OOH Reach",
+              "nativeQueryRef": "OOH Reach"
             }
           ]
         }
@@ -37,29 +55,29 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "ContentMktgPerf"
+                    "Entity": "OOHPerf"
                   }
                 },
-                "Property": "Month"
+                "Property": "OOH Reach"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ],
         "isDefaultSort": true
       }
     },
     "objects": {
-      "data": [
+      "legend": [
         {
           "properties": {
-            "mode": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Between'"
+                  "Value": "false"
                 }
               }
             }
@@ -74,7 +92,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Month'"
+                  "Value": "'Reach by Site'"
                 }
               }
             }

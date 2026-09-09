@@ -1,46 +1,47 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
-  "name": "vD5KPISpend",
+  "name": "vD5SlicerPublisher",
   "position": {
-    "x": 656,
-    "y": 116,
-    "z": 23,
-    "height": 80,
-    "width": 208,
-    "tabOrder": 23
+    "x": 732,
+    "y": 52,
+    "z": 10,
+    "height": 56,
+    "width": 200,
+    "tabOrder": 10
   },
   "visual": {
-    "visualType": "card",
+    "visualType": "slicer",
     "query": {
       "queryState": {
         "Values": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "ContentMktgPerf"
                     }
                   },
-                  "Property": "CM Media Spend"
+                  "Property": "Publisher"
                 }
               },
-              "queryRef": "ContentMktgPerf.CM Media Spend",
-              "nativeQueryRef": "CM Media Spend"
+              "queryRef": "ContentMktgPerf.Publisher",
+              "nativeQueryRef": "Publisher",
+              "active": true
             }
           ]
         }
       }
     },
     "objects": {
-      "labels": [
+      "data": [
         {
           "properties": {
-            "fontSize": {
+            "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "24D"
+                  "Value": "'Dropdown'"
                 }
               }
             }
@@ -55,7 +56,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Media Spend'"
+                  "Value": "'Publisher'"
                 }
               }
             }

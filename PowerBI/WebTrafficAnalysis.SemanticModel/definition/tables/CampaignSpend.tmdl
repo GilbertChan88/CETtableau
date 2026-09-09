@@ -29,34 +29,6 @@ table CampaignSpend
 		formatString: #,0
 		lineageTag: d5bd6684-c20a-4532-a2a6-7575063b8a3f
 
-	/// Content Marketing channel spend only (Dashboard 5 — spend view pending a
-	/// content-marketing performance export for Reach / Page Views / Avg Time on Page).
-	measure 'Content Marketing Spend' = CALCULATE([Total Spend], KEEPFILTERS(CampaignSpend[Marketing Channel] = "Content Marketing"))
-		formatString: \$#,0
-		lineageTag: 2603da37-d544-4b91-8986-06dfe65f0b0b
-
-	measure 'CM Campaign Count' = CALCULATE([Campaign Count], KEEPFILTERS(CampaignSpend[Marketing Channel] = "Content Marketing"))
-		formatString: #,0
-		lineageTag: 29062002-3c69-4876-89cc-f9e8e2c5216b
-
-	measure 'CM Platform Count' = CALCULATE(DISTINCTCOUNT(CampaignSpend[Marketing Platform]), KEEPFILTERS(CampaignSpend[Marketing Channel] = "Content Marketing"))
-		formatString: #,0
-		lineageTag: 9b4949b4-b4f9-43e2-9b52-4b98a37ef0b3
-
-	/// Out-of-Home Ads channel spend only (Dashboard 6 — spend view pending an OOH
-	/// performance export for Reach / QR-code scans / Cost-per-scan).
-	measure 'OOH Spend' = CALCULATE([Total Spend], KEEPFILTERS(CampaignSpend[Marketing Channel] = "Out-of-Home Ads"))
-		formatString: \$#,0
-		lineageTag: 8ba53fe1-565c-4d98-ae8c-9fabd65104f9
-
-	measure 'OOH Campaign Count' = CALCULATE([Campaign Count], KEEPFILTERS(CampaignSpend[Marketing Channel] = "Out-of-Home Ads"))
-		formatString: #,0
-		lineageTag: 7b33acc8-d303-4c17-ac6f-19a27e174d3c
-
-	measure 'OOH Site Count' = CALCULATE(DISTINCTCOUNT(CampaignSpend[Marketing Platform]), KEEPFILTERS(CampaignSpend[Marketing Channel] = "Out-of-Home Ads"))
-		formatString: #,0
-		lineageTag: 47ae8822-2d32-4871-a238-17d2bd4ef60a
-
 	/// Left (transparent) segment of the Campaign Schedule bar: days from the
 	/// selected window to this campaign's start, clipped to 0. The window is harvested
 	/// from MIN/MAX(WebTraffic[Date]) under the current filters, so the Campaign Schedule
