@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD4SlicerDate",
   "position": {
-    "x": 772,
-    "y": 56,
+    "x": 768,
+    "y": 48,
     "z": 3,
-    "height": 56,
-    "width": 230,
+    "height": 80.000000000000014,
+    "width": 432,
     "tabOrder": 3
   },
   "visual": {
@@ -114,6 +114,32 @@
             }
           }
         }
+      ],
+      "header": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "slider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -124,6 +150,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'Duration (campaign start)'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

@@ -106,7 +106,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Traffic Trend Table \u2014 Total Views & Users by Month'"
+                  "Value": "'Traffic Trend Table — Total Views & Users by Month'"
                 }
               }
             }

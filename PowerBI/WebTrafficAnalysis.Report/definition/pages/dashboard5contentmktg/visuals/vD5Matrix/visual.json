@@ -43,7 +43,7 @@
               },
               "queryRef": "CampaignSpend.Campaign Name",
               "nativeQueryRef": "Campaign Name",
-              "active": false
+              "active": true
             }
           ]
         },
@@ -85,6 +85,65 @@
         "isDefaultSort": true
       }
     },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "CampaignSpend.Marketing Platform"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Marketing Platform"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "CampaignSpend.Campaign Name"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'The Straits Times'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Mothership'"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
+      }
+    ],
     "visualContainerObjects": {
       "title": [
         {
@@ -92,7 +151,14 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Content Marketing spend by platform & campaign \u2014 Reach / Page Views / Avg Time on Page pending performance data'"
+                  "Value": "'Content Marketing spend by platform & campaign'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

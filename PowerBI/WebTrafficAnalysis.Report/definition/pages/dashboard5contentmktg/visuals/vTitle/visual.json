@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vTitle",
   "position": {
     "x": 8,
@@ -21,8 +21,9 @@
                   {
                     "value": "Campaign Performance by Content Marketing",
                     "textStyle": {
-                      "fontSize": "20pt",
-                      "fontWeight": "bold"
+                      "fontWeight": "bold",
+                      "fontSize": "14pt",
+                      "color": "#12239e"
                     }
                   }
                 ]

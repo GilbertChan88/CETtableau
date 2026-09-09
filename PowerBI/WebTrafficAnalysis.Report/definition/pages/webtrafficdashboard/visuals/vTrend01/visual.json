@@ -110,7 +110,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Traffic Trend Analysis \u2014 Total Web Traffic Over Time'"
+                  "Value": "'Traffic Trend Analysis — Total Web Traffic Over Time'"
                 }
               }
             }

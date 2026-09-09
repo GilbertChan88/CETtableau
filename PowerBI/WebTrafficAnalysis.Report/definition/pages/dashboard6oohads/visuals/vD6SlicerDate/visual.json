@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD6SlicerDate",
   "position": {
-    "x": 732,
-    "y": 56,
+    "x": 736,
+    "y": 64,
     "z": 3,
-    "height": 56,
-    "width": 230,
+    "height": 96,
+    "width": 368,
     "tabOrder": 3
   },
   "visual": {
@@ -59,7 +59,7 @@
             "endDate": {
               "expr": {
                 "Literal": {
-                  "Value": "datetime'2025-09-24T00:00:00'"
+                  "Value": "datetime'2025-10-01T00:00:00'"
                 }
               }
             },
@@ -103,13 +103,39 @@
                         },
                         "Right": {
                           "Literal": {
-                            "Value": "datetime'2025-09-25T00:00:00'"
+                            "Value": "datetime'2025-10-02T00:00:00'"
                           }
                         }
                       }
                     }
                   }
                 ]
+              }
+            }
+          }
+        }
+      ],
+      "slider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
               }
             }
           }
@@ -124,6 +150,26 @@
               "expr": {
                 "Literal": {
                   "Value": "'Duration (campaign start)'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
