@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vFOSlicerChannel",
   "position": {
-    "x": 934,
-    "y": 8,
+    "x": 928,
+    "y": 0,
     "z": 14000,
     "height": 56,
     "width": 150,

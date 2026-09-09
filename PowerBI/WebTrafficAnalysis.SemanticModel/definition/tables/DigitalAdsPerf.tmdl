@@ -5,118 +5,149 @@
 /// overstates unique reach. "Conversions" is the ad platform's own reported conversions
 /// (Google/PMax counts many action types) — it is NOT the STEP course-signup metric.
 table DigitalAdsPerf
+	lineageTag: 65e7ab46-00bf-4ded-9b80-8419edcc2d56
 
 	measure 'Total Impressions' = SUM(DigitalAdsPerf[Impressions])
 		formatString: #,0
+		lineageTag: 975f96f1-f89b-47f4-babf-dc3e65e9e09a
 
 	measure 'Total Reach' = SUM(DigitalAdsPerf[Reach])
 		formatString: #,0
+		lineageTag: f856ae0b-b038-488e-8063-453a1bfb6faf
 
 	measure 'Total Clicks' = SUM(DigitalAdsPerf[Clicks])
 		formatString: #,0
+		lineageTag: 845b0bcb-d868-44d2-bc80-8b5a956fc776
 
 	measure 'Total Link Clicks' = SUM(DigitalAdsPerf[Link Clicks])
 		formatString: #,0
+		lineageTag: eea24f71-b6bd-4837-8c63-ce0c0eaa61eb
 
 	measure 'Total Video Views' = SUM(DigitalAdsPerf[Video Views])
 		formatString: #,0
+		lineageTag: 3757640c-ecff-41f9-9dd7-be6fb70f21a4
 
 	measure 'Total Conversions' = SUM(DigitalAdsPerf[Conversions])
 		formatString: #,0
+		lineageTag: 347ba71f-30be-44e7-a07d-d8d2470f79d5
 
 	measure 'Total Ad Spend' = SUM(DigitalAdsPerf[Spend])
 		formatString: \$#,0
+		lineageTag: 11fea9ef-6163-45ec-ab21-cf12fd7e37c0
 
 	/// Click-through rate = Clicks / Impressions
 	measure CTR = DIVIDE([Total Clicks], [Total Impressions])
 		formatString: 0.00%
+		lineageTag: a6b108cb-c568-4d0b-a0f6-e56a4ca9e632
 
 	/// Cost per click = Spend / Clicks
 	measure CPC = DIVIDE([Total Ad Spend], [Total Clicks])
 		formatString: \$#,0.00
+		lineageTag: fbb7aae4-76dd-4289-b8f1-cf147be58e12
 
 	/// Cost per 1,000 impressions = Spend / Impressions * 1000
 	measure CPM = DIVIDE([Total Ad Spend], [Total Impressions]) * 1000
 		formatString: \$#,0.00
+		lineageTag: 7ce8901b-6074-417e-ae15-6ecc7713e521
 
 	/// Cost per link click = Spend / Link Clicks (Meta)
 	measure CPLC = DIVIDE([Total Ad Spend], [Total Link Clicks])
 		formatString: \$#,0.00
+		lineageTag: f2cadf3c-2651-40d6-b18e-9d5358d236fd
 
 	/// Cost per view = Spend / Video Views (YouTube/LinkedIn/Meta video)
 	measure CPV = DIVIDE([Total Ad Spend], [Total Video Views])
 		formatString: \$#,0.000
+		lineageTag: 7a6eec9e-95dd-4e1e-8629-26664d3b15ba
 
 	/// Conversion rate = Conversions / Clicks (Google/SEM)
 	measure 'Conversion Rate' = DIVIDE([Total Conversions], [Total Clicks])
 		formatString: 0.00%
+		lineageTag: 9de42a9c-c23b-4342-a62b-ad51ee8761c2
 
 	/// Cost per acquisition = Spend / Conversions (Google/SEM)
 	measure CPA = DIVIDE([Total Ad Spend], [Total Conversions])
 		formatString: \$#,0.00
+		lineageTag: 6f95815a-fb97-4a20-81ec-e91629bee17e
 
 	column Platform
 		dataType: string
+		lineageTag: 85b9fa21-05f2-475e-bedb-e325e0fbb104
 		summarizeBy: none
 		sourceColumn: Platform
 
 	column Campaign
 		dataType: string
+		lineageTag: 47d0846b-9235-4652-afd6-443a301919b8
 		summarizeBy: none
 		sourceColumn: Campaign
 
 	column 'Marketing Objective'
 		dataType: string
+		lineageTag: 97c286d2-61ae-425e-80aa-6d455d3f564c
 		summarizeBy: none
 		sourceColumn: Marketing Objective
 
 	column Impressions
 		dataType: int64
+		lineageTag: d8c966fb-5ccf-49fe-9dfb-85f0845442e0
 		summarizeBy: sum
 		sourceColumn: Impressions
 
 	column Reach
 		dataType: int64
+		lineageTag: d159c7ed-38cd-4802-ab46-12bda6f0d232
 		summarizeBy: sum
 		sourceColumn: Reach
 
 	column Clicks
 		dataType: int64
+		lineageTag: aae77223-f89e-42f5-8b32-7a3f1acb2c20
 		summarizeBy: sum
 		sourceColumn: Clicks
 
 	column 'Link Clicks'
 		dataType: int64
+		lineageTag: 9793ce18-40b8-4153-ab7a-2d616bd1f1fd
 		summarizeBy: sum
 		sourceColumn: Link Clicks
 
 	column 'Video Views'
 		dataType: int64
+		lineageTag: f1fa6e03-d884-496c-aac0-8b5b27e32b6b
 		summarizeBy: sum
 		sourceColumn: Video Views
 
 	column Conversions
 		dataType: double
+		lineageTag: 3c0d8d93-499d-495e-a6b8-7fd06365747a
 		summarizeBy: sum
 		sourceColumn: Conversions
 
 	column Spend
 		dataType: double
 		formatString: \$#,0
+		lineageTag: a66f73f4-f1a2-4f8d-8a85-7bfb0d2a7556
 		summarizeBy: sum
 		sourceColumn: Spend
 
 	column 'Start Date'
 		dataType: dateTime
 		formatString: dd/MM/yyyy
+		lineageTag: ad746323-e721-4cb0-b8b2-6cd9891f52c0
 		summarizeBy: none
 		sourceColumn: Start Date
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column 'End Date'
 		dataType: dateTime
 		formatString: dd/MM/yyyy
+		lineageTag: 18f1f7d3-a31c-4a91-9740-112c7422cb23
 		summarizeBy: none
 		sourceColumn: End Date
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	partition DigitalAdsPerf = m
 		mode: import
@@ -127,3 +158,4 @@ table DigitalAdsPerf
 				    Typed = Table.TransformColumnTypes(Promoted, {{"Platform", type text}, {"Campaign", type text}, {"Marketing Objective", type text}, {"Impressions", Int64.Type}, {"Reach", Int64.Type}, {"Clicks", Int64.Type}, {"Link Clicks", Int64.Type}, {"Video Views", Int64.Type}, {"Conversions", type number}, {"Spend", type number}, {"Start Date", type date}, {"End Date", type date}})
 				in
 				    Typed
+

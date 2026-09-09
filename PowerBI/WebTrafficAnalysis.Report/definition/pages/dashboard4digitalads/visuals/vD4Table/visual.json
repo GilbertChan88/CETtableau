@@ -1,35 +1,288 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD4Table",
-  "position": { "x": 8, "y": 382, "z": 12, "height": 330, "width": 1264, "tabOrder": 12 },
+  "position": {
+    "x": 8,
+    "y": 382,
+    "z": 12,
+    "height": 330,
+    "width": 1264,
+    "tabOrder": 12
+  },
   "visual": {
     "visualType": "pivotTable",
     "query": {
       "queryState": {
-        "Rows": { "projections": [
-          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Platform" } }, "queryRef": "DigitalAdsPerf.Platform", "nativeQueryRef": "Platform" },
-          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Marketing Objective" } }, "queryRef": "DigitalAdsPerf.Marketing Objective", "nativeQueryRef": "Marketing Objective" },
-          { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Campaign" } }, "queryRef": "DigitalAdsPerf.Campaign", "nativeQueryRef": "Campaign" }
-        ] },
-        "Values": { "projections": [
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Total Impressions" } }, "queryRef": "DigitalAdsPerf.Total Impressions", "nativeQueryRef": "Total Impressions" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Total Reach" } }, "queryRef": "DigitalAdsPerf.Total Reach", "nativeQueryRef": "Total Reach" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Total Clicks" } }, "queryRef": "DigitalAdsPerf.Total Clicks", "nativeQueryRef": "Total Clicks" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Total Link Clicks" } }, "queryRef": "DigitalAdsPerf.Total Link Clicks", "nativeQueryRef": "Total Link Clicks" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Total Video Views" } }, "queryRef": "DigitalAdsPerf.Total Video Views", "nativeQueryRef": "Total Video Views" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "CTR" } }, "queryRef": "DigitalAdsPerf.CTR", "nativeQueryRef": "CTR" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "CPC" } }, "queryRef": "DigitalAdsPerf.CPC", "nativeQueryRef": "CPC" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "CPM" } }, "queryRef": "DigitalAdsPerf.CPM", "nativeQueryRef": "CPM" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "CPV" } }, "queryRef": "DigitalAdsPerf.CPV", "nativeQueryRef": "CPV" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Total Conversions" } }, "queryRef": "DigitalAdsPerf.Total Conversions", "nativeQueryRef": "Total Conversions" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Conversion Rate" } }, "queryRef": "DigitalAdsPerf.Conversion Rate", "nativeQueryRef": "Conversion Rate" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "CPA" } }, "queryRef": "DigitalAdsPerf.CPA", "nativeQueryRef": "CPA" },
-          { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Total Ad Spend" } }, "queryRef": "DigitalAdsPerf.Total Ad Spend", "nativeQueryRef": "Total Ad Spend" }
-        ] }
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Platform"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Platform",
+              "nativeQueryRef": "Platform",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Marketing Objective"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Marketing Objective",
+              "nativeQueryRef": "Marketing Objective",
+              "active": false
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Campaign"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Campaign",
+              "nativeQueryRef": "Campaign",
+              "active": false
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Total Impressions"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Total Impressions",
+              "nativeQueryRef": "Total Impressions"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Total Reach"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Total Reach",
+              "nativeQueryRef": "Total Reach"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Total Clicks"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Total Clicks",
+              "nativeQueryRef": "Total Clicks"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Total Link Clicks"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Total Link Clicks",
+              "nativeQueryRef": "Total Link Clicks"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Total Video Views"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Total Video Views",
+              "nativeQueryRef": "Total Video Views"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "CTR"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.CTR",
+              "nativeQueryRef": "CTR"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "CPC"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.CPC",
+              "nativeQueryRef": "CPC"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "CPM"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.CPM",
+              "nativeQueryRef": "CPM"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "CPV"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.CPV",
+              "nativeQueryRef": "CPV"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Total Conversions"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Total Conversions",
+              "nativeQueryRef": "Total Conversions"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Conversion Rate"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Conversion Rate",
+              "nativeQueryRef": "Conversion Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "CPA"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.CPA",
+              "nativeQueryRef": "CPA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Total Ad Spend"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Total Ad Spend",
+              "nativeQueryRef": "Total Ad Spend"
+            }
+          ]
+        }
       },
-      "sortDefinition": { "sort": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Total Ad Spend" } }, "direction": "Descending" } ], "isDefaultSort": true }
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DigitalAdsPerf"
+                  }
+                },
+                "Property": "Total Ad Spend"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
     },
-    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Campaign Performance by Digital Ads  —  Platform ▸ Objective ▸ Campaign'" } } } } } ] },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Campaign Performance by Digital Ads  —  Platform ▸ Objective ▸ Campaign'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
   }
 }

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vFOSlicerDate",
   "position": {
-    "x": 8,
-    "y": 8,
+    "x": 0,
+    "y": 0,
     "z": 10000,
-    "height": 56,
-    "width": 200,
+    "height": 64,
+    "width": 240,
     "tabOrder": 10000
   },
   "visual": {
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "CampaignSpend"
+                      "Entity": "Campaign"
                     }
                   },
                   "Property": "Start Date"
                 }
               },
-              "queryRef": "CampaignSpend.Start Date",
+              "queryRef": "Campaign.Start Date",
               "nativeQueryRef": "Start Date",
               "active": true
             }
@@ -40,7 +40,7 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "CampaignSpend"
+                    "Entity": "Campaign"
                   }
                 },
                 "Property": "Start Date"
@@ -56,6 +56,13 @@
       "data": [
         {
           "properties": {
+            "startDate": {
+              "expr": {
+                "Literal": {
+                  "Value": "datetime'2024-01-16T00:00:00'"
+                }
+              }
+            },
             "mode": {
               "expr": {
                 "Literal": {
@@ -81,6 +88,48 @@
                 "Literal": {
                   "Value": "12D"
                 }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "c",
+                    "Entity": "Campaign",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Comparison": {
+                        "ComparisonKind": 2,
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "c"
+                              }
+                            },
+                            "Property": "Start Date"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "datetime'2024-01-16T00:00:00'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
               }
             }
           }

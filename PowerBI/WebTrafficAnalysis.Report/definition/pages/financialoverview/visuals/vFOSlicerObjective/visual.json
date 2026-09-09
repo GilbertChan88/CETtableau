@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vFOSlicerObjective",
   "position": {
-    "x": 778,
-    "y": 8,
+    "x": 784,
+    "y": 0,
     "z": 13000,
     "height": 56,
     "width": 150,

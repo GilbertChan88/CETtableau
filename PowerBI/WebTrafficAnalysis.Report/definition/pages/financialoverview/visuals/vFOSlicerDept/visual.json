@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vFOSlicerDept",
   "position": {
-    "x": 214,
-    "y": 8,
+    "x": 240,
+    "y": 0,
     "z": 11000,
-    "height": 56,
-    "width": 140,
+    "height": 64,
+    "width": 144,
     "tabOrder": 11000
   },
   "visual": {

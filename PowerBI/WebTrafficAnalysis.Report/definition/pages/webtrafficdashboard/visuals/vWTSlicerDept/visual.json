@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vWTSlicerDept",
   "position": {
-    "x": 446,
-    "y": 8,
+    "x": 432,
+    "y": 0,
     "z": 4000,
     "height": 56,
     "width": 150,

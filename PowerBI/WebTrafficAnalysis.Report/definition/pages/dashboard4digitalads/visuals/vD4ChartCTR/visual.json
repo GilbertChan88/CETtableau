@@ -1,19 +1,123 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
   "name": "vD4ChartCTR",
-  "position": { "x": 322, "y": 168, "z": 14, "height": 206, "width": 306, "tabOrder": 14 },
+  "position": {
+    "x": 322,
+    "y": 168,
+    "z": 14,
+    "height": 206,
+    "width": 306,
+    "tabOrder": 14
+  },
   "visual": {
     "visualType": "barChart",
     "query": {
       "queryState": {
-        "Category": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Platform" } }, "queryRef": "DigitalAdsPerf.Platform", "nativeQueryRef": "Platform", "active": true } ] },
-        "Series": { "projections": [ { "field": { "Column": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "Platform" } }, "queryRef": "DigitalAdsPerf.Platform", "nativeQueryRef": "Platform" } ] },
-        "Y": { "projections": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "CTR" } }, "queryRef": "DigitalAdsPerf.CTR", "nativeQueryRef": "CTR" } ] }
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Platform"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Platform",
+              "nativeQueryRef": "Platform",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "Platform"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.Platform",
+              "nativeQueryRef": "Platform"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DigitalAdsPerf"
+                    }
+                  },
+                  "Property": "CTR"
+                }
+              },
+              "queryRef": "DigitalAdsPerf.CTR",
+              "nativeQueryRef": "CTR"
+            }
+          ]
+        }
       },
-      "sortDefinition": { "sort": [ { "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "DigitalAdsPerf" } }, "Property": "CTR" } }, "direction": "Descending" } ], "isDefaultSort": true }
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DigitalAdsPerf"
+                  }
+                },
+                "Property": "CTR"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
     },
-    "objects": { "legend": [ { "properties": { "show": { "expr": { "Literal": { "Value": "false" } } } } } ] },
-    "visualContainerObjects": { "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'CTR by Platform'" } } } } } ] },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'CTR by Platform'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
   }
 }

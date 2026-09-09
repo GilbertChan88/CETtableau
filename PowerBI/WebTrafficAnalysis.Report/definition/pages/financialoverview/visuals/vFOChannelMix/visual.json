@@ -70,6 +70,34 @@
         }
       }
     },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
@@ -86,5 +114,51 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "db4a026d5d374b8707ba",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CampaignSpend"
+              }
+            },
+            "Property": "Marketing Platform"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d35f50610e544d9d8886",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CampaignSpend"
+              }
+            },
+            "Property": "Marketing Channel"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "53b4fc65ac8543612161",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CampaignSpend"
+              }
+            },
+            "Property": "Total Spend"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

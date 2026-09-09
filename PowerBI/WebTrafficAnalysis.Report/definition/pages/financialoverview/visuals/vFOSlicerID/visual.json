@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vFOSlicerID",
   "position": {
-    "x": 516,
-    "y": 8,
+    "x": 528,
+    "y": 0,
     "z": 12000,
     "height": 56,
     "width": 120,
