@@ -3,9 +3,9 @@
   "name": "vFOKPIPlatform",
   "position": {
     "x": 576,
-    "y": 112,
+    "y": 111.99999999999999,
     "z": 7000,
-    "height": 80,
+    "height": 96,
     "width": 208,
     "tabOrder": 7000
   },

@@ -5,6 +5,11 @@
   "displayOption": "FitToPage",
   "height": 776,
   "width": 1280,
+  "pageBinding": {
+    "name": "2a2d2f2da9ed2ba96cb7",
+    "type": "Default",
+    "parameters": []
+  },
   "visualInteractions": [
     {
       "source": "vTrend01",

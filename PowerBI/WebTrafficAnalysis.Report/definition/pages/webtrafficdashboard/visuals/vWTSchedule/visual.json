@@ -148,6 +148,13 @@
                   "Value": "true"
                 }
               }
+            },
+            "displayGroupedTaskGridLines": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -238,7 +245,7 @@
             "list": {
               "expr": {
                 "Literal": {
-                  "Value": "'[\"SHSS PET Campaign - Q3 2025\",\"SHSS PET Campaign - Q3 2025\",\"SBM PET Campaign - Q3 2025\"]'"
+                  "Value": "'[]'"
                 }
               }
             }
@@ -251,7 +258,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "'\"8a5438e2-698a-4daf-be96-5d3ecd09889a\"'"
+                  "Value": "'\"20652c9b-cb87-466a-84da-1b5f3f74fe53\"'"
                 }
               }
             }
@@ -265,6 +272,19 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "taskCompletion": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -337,7 +357,92 @@
               }
             }
           ]
-        }
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "1556242b5be0b689407a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CampaignSpend"
+              }
+            },
+            "Property": "Campaign Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3783423a01c52747ce1a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CampaignSpend"
+              }
+            },
+            "Property": "Marketing Platform"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e0433c362e020bae9cb9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CampaignSpend"
+              }
+            },
+            "Property": "Start Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "89bcb7cb304598a6c7c1",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CampaignSpend"
+              }
+            },
+            "Property": "Campaign End Date"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8508124a26625c2e139a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CampaignSpend"
+              }
+            },
+            "Property": "Marketing Channel"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "21847a5db6903d056be3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CampaignSpend"
+              }
+            },
+            "Property": "Campaign Objective"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }

@@ -43,7 +43,7 @@
               },
               "queryRef": "Calendar.Month-Year",
               "nativeQueryRef": "Month-Year",
-              "active": false
+              "active": true
             }
           ]
         },
@@ -132,7 +132,20 @@
             "isPinned": true
           }
         ],
-        "root": {}
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "2024L"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
       }
     ],
     "visualContainerObjects": {
