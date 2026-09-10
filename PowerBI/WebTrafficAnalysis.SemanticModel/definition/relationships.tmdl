@@ -10,3 +10,12 @@ relationship Campaign_CampaignSpend
 	fromColumn: CampaignSpend.'Campaign Name for UTM'
 	toColumn: Campaign.'Campaign Name for UTM'
 
+
+
+relationship Calendar_STEPInterest
+	fromColumn: STEPInterest.RegDate
+	toColumn: Calendar.Date
+
+relationship Calendar_STEPApplicant
+	fromColumn: STEPApplicant.RegDate
+	toColumn: Calendar.Date

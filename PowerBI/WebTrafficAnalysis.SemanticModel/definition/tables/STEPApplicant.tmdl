@@ -1,0 +1,132 @@
+/// STEP "Course Applicant" events (STEP_CourseApplicant.csv), one row per course
+/// application (sign-up). Source: client CourseApplicant.xlsx, normalised to drop all
+/// PII (name / email / phone / employer / applicant background). RegDate = Registration
+/// time (fallback Course start date), related to Calendar.
+/// NOTE: this extract only covers 2024-10-01 .. 2025-01-27.
+table STEPApplicant
+	lineageTag: 55307c5e-5fd1-4e84-b016-a4501aea090c
+
+	measure 'Total Course Sign-Ups' = COUNTROWS(STEPApplicant)
+		formatString: #,0
+		lineageTag: 878444f4-5571-494d-915f-92f952f62bcc
+
+	/// Total STEP conversions = course sign-ups + register-interest events, both under
+	/// the current (e.g. date-slicer) filter context.
+	measure 'Total Conversions' = [Total Course Sign-Ups] + [Total Register Interests]
+		formatString: #,0
+		lineageTag: 19d5123c-35dc-49bb-9ec7-b4f1ea4a12de
+
+	/// Distinct courses appearing in applications for the current period (mockup:
+	/// "Unique Courses open for application during campaign period").
+	measure 'Unique Courses' = DISTINCTCOUNT(STEPApplicant[Course Code])
+		formatString: #,0
+		lineageTag: c140395c-45f2-44b3-a64f-ed8d70089b4e
+
+	/// Distinct course intakes appearing in applications for the current period.
+	measure 'Total Course Intakes' = DISTINCTCOUNT(STEPApplicant[Course Intake No])
+		formatString: #,0
+		lineageTag: cbf6dae3-e028-41a8-b70d-1d69a26d657d
+
+	/// Sign-ups whose application was Admitted (subset of Total Course Sign-Ups).
+	measure 'Sign-Ups (Admitted)' = CALCULATE([Total Course Sign-Ups], STEPApplicant[Application Status] = "Admitted")
+		formatString: #,0
+		lineageTag: 367ba1c9-efc7-475a-b152-050bbce5a7dd
+
+	column 'Application ID'
+		dataType: string
+		lineageTag: 63592f47-a877-4989-a199-288917ffd441
+		summarizeBy: none
+		sourceColumn: Application ID
+
+	column 'Course Category'
+		dataType: string
+		lineageTag: 582f5ddc-69b4-4906-a16a-8db37169184b
+		summarizeBy: none
+		sourceColumn: Course Category
+
+	column 'Course Type'
+		dataType: string
+		lineageTag: 30d8d4eb-611f-4e51-9606-5f55e69263cd
+		summarizeBy: none
+		sourceColumn: Course Type
+
+	column 'Course Code'
+		dataType: string
+		lineageTag: 2d68485a-f2ab-4aad-b0e4-248731bd2015
+		summarizeBy: none
+		sourceColumn: Course Code
+
+	column 'Course Name'
+		dataType: string
+		lineageTag: a5d618bf-169c-480c-a610-3ab7292ac780
+		summarizeBy: none
+		sourceColumn: Course Name
+
+	column 'Course Intake No'
+		dataType: string
+		lineageTag: 36b83c2c-46c1-4c93-a317-11eb83d1a96c
+		summarizeBy: none
+		sourceColumn: Course Intake No
+
+	column 'Course Start Date'
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: a0f15ec3-0196-4fed-a503-fbc68a8626d2
+		summarizeBy: none
+		sourceColumn: Course Start Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Course End Date'
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: 6f3319e4-70fd-465d-a941-8707b2ac29ef
+		summarizeBy: none
+		sourceColumn: Course End Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Course Intake Status'
+		dataType: string
+		lineageTag: d70fe9ac-1810-4c8e-a4da-3b57b77a20c1
+		summarizeBy: none
+		sourceColumn: Course Intake Status
+
+	column School
+		dataType: string
+		lineageTag: 0b38b916-27c2-438d-9920-8270c2dfaccb
+		summarizeBy: none
+		sourceColumn: School
+
+	column Branch
+		dataType: string
+		lineageTag: 2c1712cb-7ef7-43a3-8142-d541f0cc0ca8
+		summarizeBy: none
+		sourceColumn: Branch
+
+	column 'Application Status'
+		dataType: string
+		lineageTag: 91028ca5-8af5-453d-9662-176cca597648
+		summarizeBy: none
+		sourceColumn: Application Status
+
+	column RegDate
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: ad4e0422-90f6-4d50-b745-cd639cef3f95
+		summarizeBy: none
+		sourceColumn: RegDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition STEPApplicant = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(SourceFolder & "STEP_CourseApplicant.csv"), [Delimiter=",", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Application ID", type text}, {"Course Category", type text}, {"Course Type", type text}, {"Course Code", type text}, {"Course Name", type text}, {"Course Intake No", type text}, {"Course Start Date", type date}, {"Course End Date", type date}, {"Course Intake Status", type text}, {"School", type text}, {"Branch", type text}, {"Application Status", type text}, {"RegDate", type date}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,71 @@
+/// STEP "Register Interest" events (STEP_RegisterInterest.csv), one row per interest
+/// registration. Source: client RegisterInterest.xlsx, normalised to drop all PII
+/// (name / email / phone). RegDate = Date of Register of Interest, related to Calendar.
+/// NOTE: this extract only covers 2024-10-01 .. 2025-01-31.
+table STEPInterest
+	lineageTag: e1396955-660b-4061-982e-7de1b7d049b8
+
+	measure 'Total Register Interests' = COUNTROWS(STEPInterest)
+		formatString: #,0
+		lineageTag: 934a4ec4-d63f-49b3-aac3-5a10f424cf1c
+
+	measure 'Interest Courses' = DISTINCTCOUNT(STEPInterest[Interested Course Code])
+		formatString: #,0
+		lineageTag: 8ee5c7bf-793f-4f9e-b2eb-7092e19ecefe
+
+	column RegDate
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: 034bdfc2-c0f7-4af2-8187-aca9ec7c747f
+		summarizeBy: none
+		sourceColumn: RegDate
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Interested Course Code'
+		dataType: string
+		lineageTag: 11761478-81bf-48cb-9109-9bdf16ada6ac
+		summarizeBy: none
+		sourceColumn: Interested Course Code
+
+	column 'Interested Course Name'
+		dataType: string
+		lineageTag: aeaa5295-846a-4b2b-9a5b-b9e21737371f
+		summarizeBy: none
+		sourceColumn: Interested Course Name
+
+	column 'Course Category'
+		dataType: string
+		lineageTag: 5a2f0c3d-fce9-4b96-9037-7b4a0b61a793
+		summarizeBy: none
+		sourceColumn: Course Category
+
+	column 'Course Type'
+		dataType: string
+		lineageTag: 052b95ac-01e8-46d0-8999-dc5fd23e2933
+		summarizeBy: none
+		sourceColumn: Course Type
+
+	column 'Area of Interest'
+		dataType: string
+		lineageTag: f8b05ce5-0f73-4d48-aef4-c4b6114210f1
+		summarizeBy: none
+		sourceColumn: Area of Interest
+
+	column 'Sub-interest'
+		dataType: string
+		lineageTag: b2a4c057-eb7f-4ccf-9181-f96fe1182a95
+		summarizeBy: none
+		sourceColumn: Sub-interest
+
+	partition STEPInterest = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(SourceFolder & "STEP_RegisterInterest.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"RegDate", type date}, {"Interested Course Code", type text}, {"Interested Course Name", type text}, {"Course Category", type text}, {"Course Type", type text}, {"Area of Interest", type text}, {"Sub-interest", type text}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

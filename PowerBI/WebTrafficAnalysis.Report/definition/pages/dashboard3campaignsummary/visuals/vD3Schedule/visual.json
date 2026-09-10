@@ -1,0 +1,193 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "vD3Schedule",
+  "position": {
+    "x": 8,
+    "y": 528,
+    "z": 3000,
+    "height": 232,
+    "width": 1264,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "Gantt1448688115699",
+    "query": {
+      "queryState": {
+        "Parent": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Property": "Campaign Name"
+                }
+              },
+              "queryRef": "CampaignSpend.Campaign Name",
+              "nativeQueryRef": "Campaign Name"
+            }
+          ]
+        },
+        "Task": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Property": "Marketing Platform"
+                }
+              },
+              "queryRef": "CampaignSpend.Marketing Platform",
+              "nativeQueryRef": "Marketing Platform",
+              "active": true
+            }
+          ]
+        },
+        "StartDate": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Property": "Start Date"
+                }
+              },
+              "queryRef": "CampaignSpend.Start Date",
+              "nativeQueryRef": "Start Date"
+            }
+          ]
+        },
+        "EndDate": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Property": "Campaign End Date"
+                }
+              },
+              "queryRef": "CampaignSpend.Campaign End Date",
+              "nativeQueryRef": "Campaign End Date"
+            }
+          ]
+        },
+        "ExtraInformation": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Property": "Marketing Channel"
+                }
+              },
+              "queryRef": "CampaignSpend.Marketing Channel",
+              "nativeQueryRef": "Marketing Channel"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Property": "Campaign Objective"
+                }
+              },
+              "queryRef": "CampaignSpend.Campaign Objective",
+              "nativeQueryRef": "Campaign Objective"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "groupTasks": { "expr": { "Literal": { "Value": "true" } } }
+          }
+        }
+      ],
+      "subTasks": [
+        {
+          "properties": {
+            "inheritParentLegend": { "expr": { "Literal": { "Value": "true" } } },
+            "parentDurationByChildren": { "expr": { "Literal": { "Value": "true" } } }
+          }
+        }
+      ],
+      "dateType": [
+        {
+          "properties": {
+            "type": { "expr": { "Literal": { "Value": "'Month'" } } },
+            "showTodayLine": { "expr": { "Literal": { "Value": "false" } } }
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "position": { "expr": { "Literal": { "Value": "'Right'" } } }
+          }
+        }
+      ],
+      "taskLabels": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "width": { "expr": { "Literal": { "Value": "160D" } } }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Campaign Schedule — compare campaign timing against sign-ups / interests above (filtered to the selected dates)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e62cb5d58fc143a38a82",
+        "field": {
+          "Measure": {
+            "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+            "Property": "Active Campaign-Days"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            { "Name": "c", "Entity": "CampaignSpend", "Type": 0 }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Comparison": {
+                  "ComparisonKind": 2,
+                  "Left": {
+                    "Measure": {
+                      "Expression": { "SourceRef": { "Source": "c" } },
+                      "Property": "Active Campaign-Days"
+                    }
+                  },
+                  "Right": { "Literal": { "Value": "1L" } }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

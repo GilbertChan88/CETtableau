@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "vD3CategoryBar",
+  "position": {
+    "x": 648,
+    "y": 340,
+    "z": 2100,
+    "height": 180,
+    "width": 624,
+    "tabOrder": 2100
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": { "SourceRef": { "Entity": "STEPApplicant" } },
+                  "Property": "Course Category"
+                }
+              },
+              "queryRef": "STEPApplicant.Course Category",
+              "nativeQueryRef": "Course Category",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": { "SourceRef": { "Entity": "STEPApplicant" } },
+                  "Property": "Total Course Sign-Ups"
+                }
+              },
+              "queryRef": "STEPApplicant.Total Course Sign-Ups",
+              "nativeQueryRef": "Total Course Sign-Ups"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": { "SourceRef": { "Entity": "STEPApplicant" } },
+                "Property": "Total Course Sign-Ups"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "false" } } }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Course Sign-Ups by Course Category'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
