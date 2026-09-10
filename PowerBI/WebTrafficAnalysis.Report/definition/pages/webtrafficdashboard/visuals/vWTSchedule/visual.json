@@ -10,29 +10,10 @@
     "tabOrder": 7000
   },
   "visual": {
-    "visualType": "columnChart",
+    "visualType": "barChart",
     "query": {
       "queryState": {
         "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Calendar"
-                    }
-                  },
-                  "Property": "Month-Year"
-                }
-              },
-              "queryRef": "Calendar.Month-Year",
-              "nativeQueryRef": "Month-Year",
-              "active": true
-            }
-          ]
-        },
-        "Series": {
           "projections": [
             {
               "field": {
@@ -46,12 +27,73 @@
                 }
               },
               "queryRef": "CampaignSpend.Campaign Name",
-              "nativeQueryRef": "Campaign Name"
+              "nativeQueryRef": "Campaign Name",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Gantt Start Offset (Days)"
+                }
+              },
+              "queryRef": "CampaignSpend.Gantt Start Offset (Days)",
+              "nativeQueryRef": "Gantt Start Offset (Days)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Gantt Duration (Days)"
+                }
+              },
+              "queryRef": "CampaignSpend.Gantt Duration (Days)",
+              "nativeQueryRef": "Gantt Duration (Days)"
             }
           ]
         },
         "Tooltips": {
           "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Campaign Start Date"
+                }
+              },
+              "queryRef": "CampaignSpend.Campaign Start Date",
+              "nativeQueryRef": "Campaign Start Date"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Campaign End Date"
+                }
+              },
+              "queryRef": "CampaignSpend.Campaign End Date",
+              "nativeQueryRef": "Campaign End Date"
+            },
             {
               "field": {
                 "Column": {
@@ -67,43 +109,24 @@
               "nativeQueryRef": "Marketing Platform"
             }
           ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "CampaignSpend"
-                    }
-                  },
-                  "Property": "Active Campaign-Days"
-                }
-              },
-              "queryRef": "CampaignSpend.Active Campaign-Days",
-              "nativeQueryRef": "Active Campaign-Days"
-            }
-          ]
         }
       },
       "sortDefinition": {
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Calendar"
+                    "Entity": "CampaignSpend"
                   }
                 },
-                "Property": "Month-Year"
+                "Property": "Gantt Start Offset (Days)"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
@@ -113,14 +136,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "position": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Right'"
+                  "Value": "false"
                 }
               }
             }
@@ -139,6 +155,44 @@
             }
           }
         }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "CampaignSpend.Gantt Start Offset (Days)"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4C78A8'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "CampaignSpend.Gantt Duration (Days)"
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -148,7 +202,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Campaign Schedule — active campaign-days per month (shares the Traffic Trend date axis; coloured by Campaign)'"
+                  "Value": "'Campaign Schedule (Gantt) — bars span each campaign''s active dates, aligned to the Traffic Trend window'"
                 }
               }
             }

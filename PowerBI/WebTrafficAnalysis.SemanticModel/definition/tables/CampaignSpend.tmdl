@@ -80,6 +80,18 @@ table CampaignSpend
 		formatString: #,0
 		lineageTag: 45319db0-5f62-4719-a49c-2ffdbb62bae0
 
+	/// Campaign start date (earliest across the campaign's platform rows), surfaced in
+	/// the Campaign Schedule Gantt tooltip so the exact active-from date is readable.
+	measure 'Campaign Start Date' = MIN ( CampaignSpend[Start Date] )
+		formatString: dd/MM/yyyy
+		lineageTag: 0eb90106-6a33-4892-b57b-8d4829a78cb6
+
+	/// Campaign end date (latest across the campaign's platform rows), surfaced in the
+	/// Campaign Schedule Gantt tooltip so the exact active-to date is readable.
+	measure 'Campaign End Date' = MAX ( CampaignSpend[End Date] )
+		formatString: dd/MM/yyyy
+		lineageTag: 928dbfc7-58e6-4164-923e-0568ae1ec532
+
 	column Dept/Sch/Institute
 		dataType: string
 		lineageTag: d93eb94c-4906-499e-82a8-351f537823bb
