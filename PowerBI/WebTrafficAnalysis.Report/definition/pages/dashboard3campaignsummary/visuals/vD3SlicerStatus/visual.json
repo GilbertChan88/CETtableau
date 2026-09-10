@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD3SlicerStatus",
   "position": {
-    "x": 328,
+    "x": 320.00000000000006,
     "y": 48,
     "z": 100,
     "height": 56,
@@ -46,6 +46,24 @@
               }
             }
           }
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
         }
       ]
     },

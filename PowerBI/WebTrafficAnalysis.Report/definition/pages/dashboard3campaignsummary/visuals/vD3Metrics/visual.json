@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD3Metrics",
   "position": {
-    "x": 648,
-    "y": 140,
+    "x": 16,
+    "y": 144,
     "z": 700,
-    "height": 188,
-    "width": 624,
+    "height": 64,
+    "width": 992,
     "tabOrder": 700
   },
   "visual": {
@@ -18,7 +18,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "STEPApplicant" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "STEPApplicant"
+                    }
+                  },
                   "Property": "Total STEP Conversions"
                 }
               },
@@ -28,7 +32,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "STEPApplicant" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "STEPApplicant"
+                    }
+                  },
                   "Property": "Total Course Sign-Ups"
                 }
               },
@@ -38,7 +46,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "STEPInterest" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "STEPInterest"
+                    }
+                  },
                   "Property": "Total Register Interests"
                 }
               },
@@ -48,7 +60,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "STEPApplicant" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "STEPApplicant"
+                    }
+                  },
                   "Property": "Unique Courses"
                 }
               },
@@ -58,7 +74,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "STEPApplicant" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "STEPApplicant"
+                    }
+                  },
                   "Property": "Total Course Intakes"
                 }
               },

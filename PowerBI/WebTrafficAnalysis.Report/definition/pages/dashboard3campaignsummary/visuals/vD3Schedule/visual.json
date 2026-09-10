@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD3Schedule",
   "position": {
-    "x": 8,
-    "y": 528,
+    "x": 16,
+    "y": 447.99999999999994,
     "z": 3000,
-    "height": 232,
-    "width": 1264,
+    "height": 320.00000000000006,
+    "width": 1248,
     "tabOrder": 3000
   },
   "visual": {
@@ -18,7 +18,11 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
                   "Property": "Campaign Name"
                 }
               },
@@ -32,7 +36,11 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
                   "Property": "Marketing Platform"
                 }
               },
@@ -47,7 +55,11 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
                   "Property": "Start Date"
                 }
               },
@@ -61,7 +73,11 @@
             {
               "field": {
                 "Measure": {
-                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
                   "Property": "Campaign End Date"
                 }
               },
@@ -75,7 +91,11 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
                   "Property": "Marketing Channel"
                 }
               },
@@ -85,7 +105,11 @@
             {
               "field": {
                 "Column": {
-                  "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
                   "Property": "Campaign Objective"
                 }
               },
@@ -100,39 +124,119 @@
       "general": [
         {
           "properties": {
-            "groupTasks": { "expr": { "Literal": { "Value": "true" } } }
+            "groupTasks": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
           }
         }
       ],
       "subTasks": [
         {
           "properties": {
-            "inheritParentLegend": { "expr": { "Literal": { "Value": "true" } } },
-            "parentDurationByChildren": { "expr": { "Literal": { "Value": "true" } } }
+            "inheritParentLegend": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "parentDurationByChildren": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
           }
         }
       ],
       "dateType": [
         {
           "properties": {
-            "type": { "expr": { "Literal": { "Value": "'Month'" } } },
-            "showTodayLine": { "expr": { "Literal": { "Value": "false" } } }
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Month'"
+                }
+              }
+            },
+            "showTodayLine": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
           }
         }
       ],
       "legend": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "position": { "expr": { "Literal": { "Value": "'Right'" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Right'"
+                }
+              }
+            }
           }
         }
       ],
       "taskLabels": [
         {
           "properties": {
-            "show": { "expr": { "Literal": { "Value": "true" } } },
-            "width": { "expr": { "Literal": { "Value": "160D" } } }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "160D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "collapsedTasks": [
+        {
+          "properties": {
+            "list": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[\"ACI PET Campaign - Q2 2025\",\"ACI PET Campaign - Q2 2025\",\"NACE CET - B2B Campaign - Q1 2025\",\"NACE CET - B2B Campaign - Q1 2025\",\"NACE CET - B2C Campaign - Q2 2025\"]'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "collapsedTasksUpdateId": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "'\"bb6ecbdc-a42c-4d94-86a3-9c775b1c992f\"'"
+                }
+              }
+            }
           }
         }
       ]
@@ -160,7 +264,11 @@
         "name": "e62cb5d58fc143a38a82",
         "field": {
           "Measure": {
-            "Expression": { "SourceRef": { "Entity": "CampaignSpend" } },
+            "Expression": {
+              "SourceRef": {
+                "Entity": "CampaignSpend"
+              }
+            },
             "Property": "Active Campaign-Days"
           }
         },
@@ -168,7 +276,11 @@
         "filter": {
           "Version": 2,
           "From": [
-            { "Name": "c", "Entity": "CampaignSpend", "Type": 0 }
+            {
+              "Name": "c",
+              "Entity": "CampaignSpend",
+              "Type": 0
+            }
           ],
           "Where": [
             {
@@ -177,11 +289,19 @@
                   "ComparisonKind": 2,
                   "Left": {
                     "Measure": {
-                      "Expression": { "SourceRef": { "Source": "c" } },
+                      "Expression": {
+                        "SourceRef": {
+                          "Source": "c"
+                        }
+                      },
                       "Property": "Active Campaign-Days"
                     }
                   },
-                  "Right": { "Literal": { "Value": "1L" } }
+                  "Right": {
+                    "Literal": {
+                      "Value": "1L"
+                    }
+                  }
                 }
               }
             }

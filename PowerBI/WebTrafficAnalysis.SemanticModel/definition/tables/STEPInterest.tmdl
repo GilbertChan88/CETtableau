@@ -52,7 +52,7 @@ table STEPInterest
 		summarizeBy: none
 		sourceColumn: Area of Interest
 
-	column 'Sub-interest'
+	column Sub-interest
 		dataType: string
 		lineageTag: b2a4c057-eb7f-4ccf-9181-f96fe1182a95
 		summarizeBy: none
@@ -69,3 +69,4 @@ table STEPInterest
 				    Typed
 
 	annotation PBI_ResultType = Table
+

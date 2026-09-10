@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD3MetricsLabel",
   "position": {
-    "x": 648,
-    "y": 112,
+    "x": 16,
+    "y": 111.99999999999999,
     "z": 600,
-    "height": 24,
-    "width": 624,
+    "height": 32,
+    "width": 223.99999999999997,
     "tabOrder": 600
   },
   "visual": {

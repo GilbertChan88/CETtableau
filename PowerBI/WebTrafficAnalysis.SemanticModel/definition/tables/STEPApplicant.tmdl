@@ -130,3 +130,4 @@ table STEPApplicant
 				    Typed
 
 	annotation PBI_ResultType = Table
+
