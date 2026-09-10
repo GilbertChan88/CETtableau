@@ -61,6 +61,25 @@ table CampaignSpend
 		formatString: #,0
 		lineageTag: 7526389c-c5bc-476a-bc8c-faa0e0f1b839
 
+	/// Number of days a campaign was live within the CURRENT month bucket, for the
+	/// date-synced Campaign Schedule. The month window is harvested from
+	/// MIN/MAX(Calendar[Date]) so the visual sits on the SAME Month-Year date axis as
+	/// the Traffic Trend Analysis (and reacts to the same Date From/To slicer), letting
+	/// the client line campaigns up against traffic to spot impact. Blank in months where
+	/// the campaign is not running, so no bar segment is drawn. CampaignSpend has no
+	/// relationship to Calendar, hence the explicit date-overlap arithmetic.
+	measure 'Active Campaign-Days' =
+			VAR WinFrom = MIN ( Calendar[Date] )
+			VAR WinTo = MAX ( Calendar[Date] )
+			VAR CampStart = MIN ( CampaignSpend[Start Date] )
+			VAR CampEnd = MAX ( CampaignSpend[End Date] )
+			VAR Overlaps = CampStart <= WinTo && CampEnd >= WinFrom
+			VAR ClippedStart = IF ( CampStart < WinFrom, WinFrom, CampStart )
+			VAR ClippedEnd = IF ( CampEnd > WinTo, WinTo, CampEnd )
+			RETURN IF ( Overlaps, DATEDIFF ( ClippedStart, ClippedEnd, DAY ) + 1 )
+		formatString: #,0
+		lineageTag: 45319db0-5f62-4719-a49c-2ffdbb62bae0
+
 	column Dept/Sch/Institute
 		dataType: string
 		lineageTag: d93eb94c-4906-499e-82a8-351f537823bb
