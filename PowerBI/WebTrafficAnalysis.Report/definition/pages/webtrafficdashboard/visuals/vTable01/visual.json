@@ -3,10 +3,10 @@
   "name": "vTable01",
   "position": {
     "x": 0,
-    "y": 144,
+    "y": 128,
     "z": 2000,
-    "height": 224,
-    "width": 320,
+    "height": 160.00000000000003,
+    "width": 368,
     "tabOrder": 2000
   },
   "visual": {
@@ -99,6 +99,42 @@
         "isDefaultSort": true
       }
     },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Calendar.Year"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendar"
+                    }
+                  },
+                  "Property": "Year"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Calendar.Month-Year"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
     "visualContainerObjects": {
       "title": [
         {
@@ -106,7 +142,28 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Traffic Trend Table — Total Views & Users by Month'"
+                  "Value": "'Traffic Trend Table'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Heading6'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
                 }
               }
             }

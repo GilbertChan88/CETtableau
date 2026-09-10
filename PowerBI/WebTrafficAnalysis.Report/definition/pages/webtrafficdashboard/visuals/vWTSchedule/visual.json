@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vWTSchedule",
   "position": {
-    "x": 320,
-    "y": 378,
+    "x": 0,
+    "y": 528,
     "z": 7000,
-    "height": 200,
-    "width": 912,
+    "height": 240,
+    "width": 1280.0000000000002,
     "tabOrder": 7000
   },
   "visual": {
@@ -86,24 +86,6 @@
             }
           ]
         },
-        "Legend": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "CampaignSpend"
-                    }
-                  },
-                  "Property": "Campaign Name"
-                }
-              },
-              "queryRef": "CampaignSpend.Campaign Name",
-              "nativeQueryRef": "Campaign Name"
-            }
-          ]
-        },
         "ExtraInformation": {
           "projections": [
             {
@@ -136,6 +118,24 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "CampaignSpend"
+                  }
+                },
+                "Property": "Start Date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -231,6 +231,45 @@
             }
           }
         }
+      ],
+      "collapsedTasks": [
+        {
+          "properties": {
+            "list": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[\"SHSS PET Campaign - Q3 2025\",\"SHSS PET Campaign - Q3 2025\",\"SBM PET Campaign - Q3 2025\"]'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "collapsedTasksUpdateId": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "'\"8a5438e2-698a-4daf-be96-5d3ecd09889a\"'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "daysOff": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -240,7 +279,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Campaign Schedule (Gantt) — bars span each campaign''s active dates on a monthly axis; expand a campaign to see platforms'"
+                  "Value": "'Campaign Schedule  (expand a campaign to see platforms)'"
                 }
               }
             }

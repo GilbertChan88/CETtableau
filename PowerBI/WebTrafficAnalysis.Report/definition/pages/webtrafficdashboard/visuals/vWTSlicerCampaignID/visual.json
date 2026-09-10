@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vWTSlicerCampaignID",
   "position": {
-    "x": 624,
+    "x": 704,
     "y": 48,
     "z": 5000,
     "height": 64,

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vWTPagePerf",
   "position": {
-    "x": 8,
-    "y": 586,
+    "x": 432,
+    "y": 128,
     "z": 8000,
-    "height": 174,
-    "width": 1232,
+    "height": 160.00000000000003,
+    "width": 544,
     "tabOrder": 8000
   },
   "visual": {
@@ -124,9 +124,45 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "88.41019936665683D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "WebTraffic.Total Users"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "98.13454839083836D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "WebTraffic.Total Views"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
     },
     "visualContainerObjects": {
       "title": [
@@ -136,6 +172,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'Page Performance Details'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

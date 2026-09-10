@@ -3,82 +3,103 @@
 /// columns: Campaign, Dept, Objective, OOH Format, Site, Month, Reach, QR Code Scans,
 /// Impressions, Spend).
 table OOHPerf
+	lineageTag: 57e929bc-0e4a-48e6-b86a-c20155a128ac
 
 	measure 'OOH Reach' = SUM(OOHPerf[Reach])
 		formatString: #,0
+		lineageTag: 88481332-a595-498a-acf4-800ac1ce8578
 
 	measure 'OOH QR Scans' = SUM(OOHPerf[QR Code Scans])
 		formatString: #,0
+		lineageTag: eb047253-357f-42e8-964b-e6bc0cf074b1
 
 	measure 'OOH Impressions' = SUM(OOHPerf[Impressions])
 		formatString: #,0
+		lineageTag: f78206dc-9e6c-4988-952e-a8f21a319585
 
 	measure 'OOH Media Spend' = SUM(OOHPerf[Spend])
 		formatString: \$#,0
+		lineageTag: 5805dfaa-e1b9-466f-9178-a123fda335a5
 
 	/// Cost per QR scan = Spend / QR Code Scans
 	measure 'OOH Cost per Scan' = DIVIDE([OOH Media Spend], [OOH QR Scans])
 		formatString: \$#,0.00
+		lineageTag: b2712573-9750-4d0e-8481-85431805e0d7
 
 	/// Scan rate = QR Code Scans / Reach
 	measure 'OOH Scan Rate' = DIVIDE([OOH QR Scans], [OOH Reach])
 		formatString: 0.000%
+		lineageTag: 8cb5af0c-1447-4665-b22f-14223d6bbb86
 
 	measure 'OOH Campaigns' = DISTINCTCOUNT(OOHPerf[Campaign])
 		formatString: #,0
+		lineageTag: 0715f251-fae4-49a5-8f47-e01a8e7012f2
 
 	measure 'OOH Sites' = DISTINCTCOUNT(OOHPerf[Site])
 		formatString: #,0
+		lineageTag: 59dedc9c-3a30-4e71-9224-acad73d37d0f
 
 	column Campaign
 		dataType: string
+		lineageTag: adf01f26-24bb-4bbd-abf2-c95485dd2115
 		summarizeBy: none
 		sourceColumn: Campaign
 
-	column 'Dept/Sch/Institute'
+	column Dept/Sch/Institute
 		dataType: string
+		lineageTag: b36c8e50-e98a-423b-ba92-d9a8afe89278
 		summarizeBy: none
 		sourceColumn: Dept/Sch/Institute
 
 	column 'Marketing Objective'
 		dataType: string
+		lineageTag: 1c8893a7-aa08-42d0-bd92-94ad904e3b76
 		summarizeBy: none
 		sourceColumn: Marketing Objective
 
 	column 'OOH Format'
 		dataType: string
+		lineageTag: f2a20a01-3141-4a14-b18b-8c9a1a1c5166
 		summarizeBy: none
 		sourceColumn: OOH Format
 
 	column Site
 		dataType: string
+		lineageTag: 9153d00e-581d-4cf7-a266-9aedacf7da86
 		summarizeBy: none
 		sourceColumn: Site
 
 	column Month
 		dataType: dateTime
 		formatString: MMM yyyy
+		lineageTag: f51edd67-c33e-4b43-94f7-274a19354d9d
 		summarizeBy: none
 		sourceColumn: Month
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column Reach
 		dataType: int64
+		lineageTag: b8071850-4f3d-44b1-af56-6210813075fe
 		summarizeBy: sum
 		sourceColumn: Reach
 
 	column 'QR Code Scans'
 		dataType: int64
+		lineageTag: b8fd9356-ab53-4ed2-ac8d-60a9561498b5
 		summarizeBy: sum
 		sourceColumn: QR Code Scans
 
 	column Impressions
 		dataType: int64
+		lineageTag: 420f030c-66c5-4007-8fb7-a2c941f937c1
 		summarizeBy: sum
 		sourceColumn: Impressions
 
 	column Spend
 		dataType: double
 		formatString: \$#,0
+		lineageTag: 609f7da9-2fe5-4afd-b5af-1f554f30fb56
 		summarizeBy: sum
 		sourceColumn: Spend
 
@@ -91,3 +112,4 @@ table OOHPerf
 				    Typed = Table.TransformColumnTypes(Promoted, {{"Campaign", type text}, {"Dept/Sch/Institute", type text}, {"Marketing Objective", type text}, {"OOH Format", type text}, {"Site", type text}, {"Month", type date}, {"Reach", Int64.Type}, {"QR Code Scans", Int64.Type}, {"Impressions", Int64.Type}, {"Spend", type number}})
 				in
 				    Typed
+

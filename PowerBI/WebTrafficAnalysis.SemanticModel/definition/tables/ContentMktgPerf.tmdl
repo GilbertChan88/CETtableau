@@ -3,86 +3,108 @@
 /// (same columns: Campaign, Dept, Objective, Publisher, Month, Reach, Page Views,
 /// Avg Time on Page, Impressions, Clicks, Spend).
 table ContentMktgPerf
+	lineageTag: 60ba567e-69e3-4472-a8c6-95f396634a56
 
 	measure 'CM Reach' = SUM(ContentMktgPerf[Reach])
 		formatString: #,0
+		lineageTag: d2ce8877-5f57-41ca-95a7-fc6e715185ab
 
 	measure 'CM Page Views' = SUM(ContentMktgPerf[Page Views])
 		formatString: #,0
+		lineageTag: 99303dfc-5b10-4e3b-884a-2d57ce1ff3b8
 
 	/// Average time on page, weighted by page views (not an average of averages).
 	measure 'CM Avg Time on Page (s)' = DIVIDE(SUMX(ContentMktgPerf, ContentMktgPerf[Avg Time on Page (s)] * ContentMktgPerf[Page Views]), SUM(ContentMktgPerf[Page Views]))
 		formatString: #,0.0
+		lineageTag: bd1cd096-7aeb-407c-8cd2-f9788290ac43
 
 	measure 'CM Impressions' = SUM(ContentMktgPerf[Impressions])
 		formatString: #,0
+		lineageTag: 49c8547f-f3da-4a63-9520-ba78868c5086
 
 	measure 'CM Clicks' = SUM(ContentMktgPerf[Clicks])
 		formatString: #,0
+		lineageTag: 6a78b1b6-2a95-4802-a0b2-5bf0c8b38190
 
 	measure 'CM Media Spend' = SUM(ContentMktgPerf[Spend])
 		formatString: \$#,0
+		lineageTag: 43df22f8-38c5-4ab0-9260-1c54adc3d43f
 
 	measure 'CM Cost per View' = DIVIDE([CM Media Spend], [CM Page Views])
 		formatString: \$#,0.00
+		lineageTag: 6b13c132-e284-4da2-b2d2-52abf0b9c8fe
 
 	measure 'CM Campaigns' = DISTINCTCOUNT(ContentMktgPerf[Campaign])
 		formatString: #,0
+		lineageTag: e279ea33-19db-4036-8cc6-b93395b6aa4f
 
 	column Campaign
 		dataType: string
+		lineageTag: 7824176d-2f80-4c6e-abaf-53ad9de8a284
 		summarizeBy: none
 		sourceColumn: Campaign
 
-	column 'Dept/Sch/Institute'
+	column Dept/Sch/Institute
 		dataType: string
+		lineageTag: 94626399-3fa7-4838-8309-f16ac2ac5c3f
 		summarizeBy: none
 		sourceColumn: Dept/Sch/Institute
 
 	column 'Marketing Objective'
 		dataType: string
+		lineageTag: 8c48672e-5106-49d9-ba6e-fc0945f732ff
 		summarizeBy: none
 		sourceColumn: Marketing Objective
 
 	column Publisher
 		dataType: string
+		lineageTag: 6879384c-0490-4353-8aab-5d29fb9f6e27
 		summarizeBy: none
 		sourceColumn: Publisher
 
 	column Month
 		dataType: dateTime
 		formatString: MMM yyyy
+		lineageTag: f99cefbe-c4e3-44de-b7fe-2729e416ce65
 		summarizeBy: none
 		sourceColumn: Month
 
+		annotation UnderlyingDateTimeDataType = Date
+
 	column Reach
 		dataType: int64
+		lineageTag: cf1ec162-24ba-4df0-8c7d-b22235def836
 		summarizeBy: sum
 		sourceColumn: Reach
 
 	column 'Page Views'
 		dataType: int64
+		lineageTag: a97f05a5-705b-4a72-b3f4-cbe0ce5b1af5
 		summarizeBy: sum
 		sourceColumn: Page Views
 
 	column 'Avg Time on Page (s)'
 		dataType: double
+		lineageTag: 375a5651-6ebc-43f7-b864-d036e32dfc33
 		summarizeBy: none
 		sourceColumn: Avg Time on Page (s)
 
 	column Impressions
 		dataType: int64
+		lineageTag: c63465a3-4733-4c2e-aff0-d8d98a1b5d8c
 		summarizeBy: sum
 		sourceColumn: Impressions
 
 	column Clicks
 		dataType: int64
+		lineageTag: 5921fb5a-a762-4d5c-8859-cf861c22183c
 		summarizeBy: sum
 		sourceColumn: Clicks
 
 	column Spend
 		dataType: double
 		formatString: \$#,0
+		lineageTag: 2898a805-0988-4457-94bb-8226579972f2
 		summarizeBy: sum
 		sourceColumn: Spend
 
@@ -95,3 +117,4 @@ table ContentMktgPerf
 				    Typed = Table.TransformColumnTypes(Promoted, {{"Campaign", type text}, {"Dept/Sch/Institute", type text}, {"Marketing Objective", type text}, {"Publisher", type text}, {"Month", type date}, {"Reach", Int64.Type}, {"Page Views", Int64.Type}, {"Avg Time on Page (s)", type number}, {"Impressions", Int64.Type}, {"Clicks", Int64.Type}, {"Spend", type number}})
 				in
 				    Typed
+

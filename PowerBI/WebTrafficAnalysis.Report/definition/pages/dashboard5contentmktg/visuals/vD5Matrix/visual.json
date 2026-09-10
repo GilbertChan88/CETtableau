@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD5Matrix",
   "position": {
     "x": 8,
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "ContentMktgPerf.Publisher",
-              "nativeQueryRef": "Publisher"
+              "nativeQueryRef": "Publisher",
+              "active": true
             },
             {
               "field": {
@@ -41,7 +42,8 @@
                 }
               },
               "queryRef": "ContentMktgPerf.Campaign",
-              "nativeQueryRef": "Campaign"
+              "nativeQueryRef": "Campaign",
+              "active": false
             }
           ]
         },
