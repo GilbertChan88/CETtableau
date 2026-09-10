@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD4SlicerDate",
   "position": {
-    "x": 768,
+    "x": 0,
     "y": 48,
-    "z": 3,
-    "height": 80.000000000000014,
-    "width": 432,
-    "tabOrder": 3
+    "z": 3000,
+    "height": 64,
+    "width": 288,
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "slicer",
@@ -149,7 +149,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Duration (campaign start)'"
+                  "Value": "'Campaign From / To'"
                 }
               }
             },

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD5KPIPageViews",
   "position": {
     "x": 224,
     "y": 116,
-    "z": 21,
+    "z": 6000,
     "height": 80,
     "width": 208,
-    "tabOrder": 21
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "card",

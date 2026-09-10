@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD6SlicerDate",
   "position": {
     "x": 940,
     "y": 52,
-    "z": 10,
+    "z": 1000,
     "height": 56,
     "width": 220,
-    "tabOrder": 10
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "slicer",

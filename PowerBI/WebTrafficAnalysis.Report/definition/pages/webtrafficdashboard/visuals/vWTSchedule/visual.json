@@ -4,7 +4,7 @@
   "position": {
     "x": 0,
     "y": 528,
-    "z": 7000,
+    "z": 8000,
     "height": 240,
     "width": 1280.0000000000002,
     "tabOrder": 7000
@@ -359,90 +359,6 @@
           ]
         },
         "howCreated": "User"
-      },
-      {
-        "name": "1556242b5be0b689407a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "CampaignSpend"
-              }
-            },
-            "Property": "Campaign Name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "3783423a01c52747ce1a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "CampaignSpend"
-              }
-            },
-            "Property": "Marketing Platform"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "e0433c362e020bae9cb9",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "CampaignSpend"
-              }
-            },
-            "Property": "Start Date"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "89bcb7cb304598a6c7c1",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "CampaignSpend"
-              }
-            },
-            "Property": "Campaign End Date"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "8508124a26625c2e139a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "CampaignSpend"
-              }
-            },
-            "Property": "Marketing Channel"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "21847a5db6903d056be3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "CampaignSpend"
-              }
-            },
-            "Property": "Campaign Objective"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

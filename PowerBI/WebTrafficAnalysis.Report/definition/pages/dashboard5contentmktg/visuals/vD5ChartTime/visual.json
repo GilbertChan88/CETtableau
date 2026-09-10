@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD5ChartTime",
   "position": {
     "x": 844,
     "y": 204,
-    "z": 32,
+    "z": 11000,
     "height": 250,
     "width": 420,
-    "tabOrder": 32
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "barChart",
@@ -32,24 +32,6 @@
             }
           ]
         },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "ContentMktgPerf"
-                    }
-                  },
-                  "Property": "CM Avg Time on Page (s)"
-                }
-              },
-              "queryRef": "ContentMktgPerf.CM Avg Time on Page (s)",
-              "nativeQueryRef": "CM Avg Time on Page (s)"
-            }
-          ]
-        },
         "Series": {
           "projections": [
             {
@@ -65,6 +47,24 @@
               },
               "queryRef": "ContentMktgPerf.Publisher",
               "nativeQueryRef": "Publisher"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContentMktgPerf"
+                    }
+                  },
+                  "Property": "CM Avg Time on Page (s)"
+                }
+              },
+              "queryRef": "ContentMktgPerf.CM Avg Time on Page (s)",
+              "nativeQueryRef": "CM Avg Time on Page (s)"
             }
           ]
         }

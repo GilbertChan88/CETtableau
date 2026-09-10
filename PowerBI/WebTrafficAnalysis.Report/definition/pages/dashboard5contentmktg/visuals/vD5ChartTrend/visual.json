@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD5ChartTrend",
   "position": {
     "x": 436,
     "y": 204,
-    "z": 31,
+    "z": 10000,
     "height": 250,
     "width": 400,
-    "tabOrder": 31
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "columnChart",

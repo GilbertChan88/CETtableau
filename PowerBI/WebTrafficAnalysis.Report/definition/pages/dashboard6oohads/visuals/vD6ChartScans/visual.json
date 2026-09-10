@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.5.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD6ChartScans",
   "position": {
     "x": 8,
     "y": 204,
-    "z": 30,
+    "z": 9000,
     "height": 250,
     "width": 420,
-    "tabOrder": 30
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "columnChart",
@@ -32,24 +32,6 @@
             }
           ]
         },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "OOHPerf"
-                    }
-                  },
-                  "Property": "OOH QR Scans"
-                }
-              },
-              "queryRef": "OOHPerf.OOH QR Scans",
-              "nativeQueryRef": "OOH QR Scans"
-            }
-          ]
-        },
         "Series": {
           "projections": [
             {
@@ -65,6 +47,24 @@
               },
               "queryRef": "OOHPerf.OOH Format",
               "nativeQueryRef": "OOH Format"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OOHPerf"
+                    }
+                  },
+                  "Property": "OOH QR Scans"
+                }
+              },
+              "queryRef": "OOHPerf.OOH QR Scans",
+              "nativeQueryRef": "OOH QR Scans"
             }
           ]
         }
