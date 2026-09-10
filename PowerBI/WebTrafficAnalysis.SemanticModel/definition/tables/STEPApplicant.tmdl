@@ -12,7 +12,7 @@ table STEPApplicant
 
 	/// Total STEP conversions = course sign-ups + register-interest events, both under
 	/// the current (e.g. date-slicer) filter context.
-	measure 'Total Conversions' = [Total Course Sign-Ups] + [Total Register Interests]
+	measure 'Total STEP Conversions' = [Total Course Sign-Ups] + [Total Register Interests]
 		formatString: #,0
 		lineageTag: 19d5123c-35dc-49bb-9ec7-b4f1ea4a12de
 

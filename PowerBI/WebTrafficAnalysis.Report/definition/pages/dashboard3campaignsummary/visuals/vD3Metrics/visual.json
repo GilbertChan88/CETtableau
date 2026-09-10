@@ -19,11 +19,11 @@
               "field": {
                 "Measure": {
                   "Expression": { "SourceRef": { "Entity": "STEPApplicant" } },
-                  "Property": "Total Conversions"
+                  "Property": "Total STEP Conversions"
                 }
               },
-              "queryRef": "STEPApplicant.Total Conversions",
-              "nativeQueryRef": "Total Conversions"
+              "queryRef": "STEPApplicant.Total STEP Conversions",
+              "nativeQueryRef": "Total STEP Conversions"
             },
             {
               "field": {
