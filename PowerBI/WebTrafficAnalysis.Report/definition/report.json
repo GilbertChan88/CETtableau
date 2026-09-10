@@ -1,5 +1,8 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "publicCustomVisuals": [
+    "Gantt1448688115699"
+  ],
   "themeCollection": {
     "baseTheme": {
       "name": "CY24SU10",

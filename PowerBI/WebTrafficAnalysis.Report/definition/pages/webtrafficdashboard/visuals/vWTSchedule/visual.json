@@ -10,10 +10,10 @@
     "tabOrder": 7000
   },
   "visual": {
-    "visualType": "barChart",
+    "visualType": "Gantt1448688115699",
     "query": {
       "queryState": {
-        "Category": {
+        "Parent": {
           "projections": [
             {
               "field": {
@@ -27,59 +27,49 @@
                 }
               },
               "queryRef": "CampaignSpend.Campaign Name",
-              "nativeQueryRef": "Campaign Name",
+              "nativeQueryRef": "Campaign Name"
+            }
+          ]
+        },
+        "Task": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Marketing Platform"
+                }
+              },
+              "queryRef": "CampaignSpend.Marketing Platform",
+              "nativeQueryRef": "Marketing Platform",
               "active": true
             }
           ]
         },
-        "Y": {
+        "StartDate": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "CampaignSpend"
                     }
                   },
-                  "Property": "Gantt Start Offset (Days)"
+                  "Property": "Start Date"
                 }
               },
-              "queryRef": "CampaignSpend.Gantt Start Offset (Days)",
-              "nativeQueryRef": "Gantt Start Offset (Days)"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "CampaignSpend"
-                    }
-                  },
-                  "Property": "Gantt Duration (Days)"
-                }
-              },
-              "queryRef": "CampaignSpend.Gantt Duration (Days)",
-              "nativeQueryRef": "Gantt Duration (Days)"
+              "queryRef": "CampaignSpend.Start Date",
+              "nativeQueryRef": "Start Date"
             }
           ]
         },
-        "Tooltips": {
+        "EndDate": {
           "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "CampaignSpend"
-                    }
-                  },
-                  "Property": "Campaign Start Date"
-                }
-              },
-              "queryRef": "CampaignSpend.Campaign Start Date",
-              "nativeQueryRef": "Campaign Start Date"
-            },
             {
               "field": {
                 "Measure": {
@@ -93,6 +83,42 @@
               },
               "queryRef": "CampaignSpend.Campaign End Date",
               "nativeQueryRef": "Campaign End Date"
+            }
+          ]
+        },
+        "Legend": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Campaign Name"
+                }
+              },
+              "queryRef": "CampaignSpend.Campaign Name",
+              "nativeQueryRef": "Campaign Name"
+            }
+          ]
+        },
+        "ExtraInformation": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CampaignSpend"
+                    }
+                  },
+                  "Property": "Marketing Channel"
+                }
+              },
+              "queryRef": "CampaignSpend.Marketing Channel",
+              "nativeQueryRef": "Marketing Channel"
             },
             {
               "field": {
@@ -102,95 +128,107 @@
                       "Entity": "CampaignSpend"
                     }
                   },
-                  "Property": "Marketing Platform"
+                  "Property": "Campaign Objective"
                 }
               },
-              "queryRef": "CampaignSpend.Marketing Platform",
-              "nativeQueryRef": "Marketing Platform"
+              "queryRef": "CampaignSpend.Campaign Objective",
+              "nativeQueryRef": "Campaign Objective"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "CampaignSpend"
-                  }
-                },
-                "Property": "Gantt Start Offset (Days)"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "objects": {
+      "general": [
+        {
+          "properties": {
+            "groupTasks": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTasks": [
+        {
+          "properties": {
+            "inheritParentLegend": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "parentDurationByChildren": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dateType": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Month'"
+                }
+              }
+            },
+            "showTodayLine": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
       "legend": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Right'"
                 }
               }
             }
           }
         }
       ],
-      "labels": [
+      "taskLabels": [
         {
           "properties": {
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "160D"
                 }
               }
             }
-          }
-        }
-      ],
-      "dataPoint": [
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#FFFFFF'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "CampaignSpend.Gantt Start Offset (Days)"
-          }
-        },
-        {
-          "properties": {
-            "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#4C78A8'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "CampaignSpend.Gantt Duration (Days)"
           }
         }
       ]
@@ -202,7 +240,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Campaign Schedule (Gantt) — bars span each campaign''s active dates, aligned to the Traffic Trend window'"
+                  "Value": "'Campaign Schedule (Gantt) — bars span each campaign''s active dates on a monthly axis; expand a campaign to see platforms'"
                 }
               }
             }
