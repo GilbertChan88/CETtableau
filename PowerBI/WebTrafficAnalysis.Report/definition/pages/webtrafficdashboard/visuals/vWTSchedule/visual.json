@@ -290,6 +290,61 @@
             }
           }
         }
+      ],
+      "tooltipConfig": [
+        {
+          "properties": {
+            "dateFormat": {
+              "expr": {
+                "Literal": {
+                  "Value": "'dd/MM/yyyy'"
+                }
+              }
+            },
+            "taskDisplayName": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Marketing Platform'"
+                }
+              }
+            },
+            "showLegend": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showDuration": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showCompletion": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showTask": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showResource": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -300,6 +355,19 @@
               "expr": {
                 "Literal": {
                   "Value": "'Campaign Schedule  (expand a campaign to see platforms)'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

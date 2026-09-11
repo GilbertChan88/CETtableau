@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD6SlicerObjective",
   "position": {
-    "x": 524,
-    "y": 52,
+    "x": 784,
+    "y": 48,
     "z": 4000,
     "height": 56,
     "width": 200,

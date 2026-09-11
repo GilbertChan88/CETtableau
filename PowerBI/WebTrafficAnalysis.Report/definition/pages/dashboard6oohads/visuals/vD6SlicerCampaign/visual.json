@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "vD6SlicerCampaign",
   "position": {
-    "x": 8,
-    "y": 52,
+    "x": 304,
+    "y": 48,
     "z": 0,
-    "height": 56,
-    "width": 320,
+    "height": 48,
+    "width": 272,
     "tabOrder": 0
   },
   "visual": {
