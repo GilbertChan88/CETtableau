@@ -32,6 +32,24 @@
             }
           ]
         },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ContentMktgPerf"
+                    }
+                  },
+                  "Property": "Publisher"
+                }
+              },
+              "queryRef": "ContentMktgPerf.Publisher",
+              "nativeQueryRef": "Publisher"
+            }
+          ]
+        },
         "Y": {
           "projections": [
             {
@@ -70,6 +88,28 @@
         "isDefaultSort": true
       }
     },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Right'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
@@ -77,7 +117,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Page Views by Month'"
+                  "Value": "'Page Views by Month (coloured by Publisher)'"
                 }
               }
             }
