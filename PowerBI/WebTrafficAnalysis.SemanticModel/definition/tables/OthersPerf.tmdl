@@ -127,3 +127,4 @@ table OthersPerf
 				    Typed
 
 	annotation PBI_ResultType = Table
+

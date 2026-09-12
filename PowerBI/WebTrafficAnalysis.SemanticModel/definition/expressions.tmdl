@@ -5,3 +5,5 @@ expression SourceFolder = "C:\Work\CETMarketingKiro\" meta [IsParameterQuery=tru
 
 	annotation PBI_ResultType = Text
 
+	annotation PBI_NavigationStepName = Navigation
+
