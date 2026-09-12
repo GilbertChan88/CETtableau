@@ -34,7 +34,7 @@ with open(f"{ROOT}/Mock_ContentMarketing_Performance.csv","w",newline="") as f:
 # ---------------- OOH ----------------
 ooh_campaigns = [
     ("CET B2C Campaign - Q1 2025", "C&O", "Awareness",        ["2025-01-01","2025-02-01","2025-03-01"]),
-    ("SIT CET - B2B Campaign - Q2 2025", "SIT", "Lead Generation",["2025-04-01","2025-05-01"]),
+    ("SIT CET - B2B Campaign - Q2 2025", "SIT", "Conversion",["2025-04-01","2025-05-01"]),
     ("SBM PET Campaign - Q3 2025", "SBM", "Awareness",        ["2025-07-01","2025-08-01"]),
 ]
 placements = [
@@ -57,10 +57,11 @@ for camp, dept, obj, months in ooh_campaigns:
             qr = random.randint(80, 5000)
             impressions = int(reach * random.uniform(2.0, 5.0))
             spend = round(random.uniform(5000, 30000), 2)
-            ooh_rows.append([camp, dept, obj, fmt, site, m, reach, qr, impressions, spend])
+            avg_session = round(random.uniform(30, 180), 1)  # seconds
+            ooh_rows.append([camp, dept, obj, fmt, site, m, reach, qr, impressions, spend, avg_session])
 
 ooh_cols = ["Campaign","Dept/Sch/Institute","Marketing Objective","OOH Format","Site","Month",
-            "Reach","QR Code Scans","Impressions","Spend"]
+            "Reach","QR Code Scans","Impressions","Spend","Avg Session Duration (s)"]
 with open(f"{ROOT}/Mock_OOH_Performance.csv","w",newline="") as f:
     w=csv.writer(f); w.writerow(ooh_cols); w.writerows(ooh_rows)
 

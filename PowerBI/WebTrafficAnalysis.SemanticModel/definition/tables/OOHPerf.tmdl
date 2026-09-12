@@ -39,6 +39,11 @@ table OOHPerf
 		formatString: #,0
 		lineageTag: 59dedc9c-3a30-4e71-9224-acad73d37d0f
 
+	/// Average session duration (seconds), simple average across the dummy rows.
+	measure 'OOH Avg Session Duration (s)' = AVERAGE(OOHPerf[Avg Session Duration (s)])
+		formatString: #,0.0
+		lineageTag: 40e549d7-6fef-4076-8e5a-0fdddebe53d0
+
 	column Campaign
 		dataType: string
 		lineageTag: adf01f26-24bb-4bbd-abf2-c95485dd2115
@@ -103,13 +108,19 @@ table OOHPerf
 		summarizeBy: sum
 		sourceColumn: Spend
 
+	column 'Avg Session Duration (s)'
+		dataType: double
+		lineageTag: 5be4c0cc-b432-4876-866a-abcb73c5768c
+		summarizeBy: none
+		sourceColumn: Avg Session Duration (s)
+
 	partition OOHPerf = m
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents(SourceFolder & "Mock_OOH_Performance.csv"), [Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Source = Csv.Document(File.Contents(SourceFolder & "Mock_OOH_Performance.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
 				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    Typed = Table.TransformColumnTypes(Promoted, {{"Campaign", type text}, {"Dept/Sch/Institute", type text}, {"Marketing Objective", type text}, {"OOH Format", type text}, {"Site", type text}, {"Month", type date}, {"Reach", Int64.Type}, {"QR Code Scans", Int64.Type}, {"Impressions", Int64.Type}, {"Spend", type number}})
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Campaign", type text}, {"Dept/Sch/Institute", type text}, {"Marketing Objective", type text}, {"OOH Format", type text}, {"Site", type text}, {"Month", type date}, {"Reach", Int64.Type}, {"QR Code Scans", Int64.Type}, {"Impressions", Int64.Type}, {"Spend", type number}, {"Avg Session Duration (s)", type number}})
 				in
 				    Typed
 

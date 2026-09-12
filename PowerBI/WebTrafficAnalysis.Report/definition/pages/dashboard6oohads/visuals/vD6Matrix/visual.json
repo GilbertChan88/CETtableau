@@ -119,6 +119,20 @@
               },
               "queryRef": "OOHPerf.OOH Media Spend",
               "nativeQueryRef": "OOH Media Spend"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OOHPerf"
+                    }
+                  },
+                  "Property": "OOH Avg Session Duration (s)"
+                }
+              },
+              "queryRef": "OOHPerf.OOH Avg Session Duration (s)",
+              "nativeQueryRef": "OOH Avg Session Duration (s)"
             }
           ]
         }

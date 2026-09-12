@@ -1,31 +1,33 @@
-Campaign,Dept/Sch/Institute,Marketing Objective,OOH Format,Site,Month,Reach,QR Code Scans,Impressions,Spend
-CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),VivoCity,2025-01-01,604634,144,2420706,18865.06
-CET B2C Campaign - Q1 2025,C&O,Awareness,Bus Shelter Posters,Ang Mo Kio Hub,2025-01-01,745613,928,3591461,8357.28
-CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),Nex Megamall,2025-01-01,171035,956,723007,8886.2
-CET B2C Campaign - Q1 2025,C&O,Awareness,HDB Digital Display Panels,Toa Payoh Central,2025-01-01,345442,1805,1434564,10089.93
-CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),VivoCity,2025-02-01,715046,2242,2514264,11278.03
-CET B2C Campaign - Q1 2025,C&O,Awareness,Bus Shelter Posters,Ang Mo Kio Hub,2025-02-01,103266,836,403032,25733.7
-CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),Nex Megamall,2025-02-01,96228,109,288748,8270.49
-CET B2C Campaign - Q1 2025,C&O,Awareness,HDB Digital Display Panels,Toa Payoh Central,2025-02-01,324680,1403,1371348,18792.01
-CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),VivoCity,2025-03-01,498462,4674,1011383,6881.1
-CET B2C Campaign - Q1 2025,C&O,Awareness,Bus Shelter Posters,Ang Mo Kio Hub,2025-03-01,774586,1301,2816991,25864.88
-CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),Nex Megamall,2025-03-01,660805,4606,1615193,8186.14
-CET B2C Campaign - Q1 2025,C&O,Awareness,HDB Digital Display Panels,Toa Payoh Central,2025-03-01,373232,3067,1753049,24903.06
-SIT CET - B2B Campaign - Q2 2025,SIT,Lead Generation,HDB Digital Display Panels,Toa Payoh Central,2025-04-01,749330,922,2293726,18997.09
-SIT CET - B2B Campaign - Q2 2025,SIT,Lead Generation,Bus Shelter Posters,Orchard Road,2025-04-01,476117,1346,2274549,10918.43
-SIT CET - B2B Campaign - Q2 2025,SIT,Lead Generation,Digital Screens (Mall),Nex Megamall,2025-04-01,220395,1530,1023569,5619.66
-SIT CET - B2B Campaign - Q2 2025,SIT,Lead Generation,MRT Platform Screen Door,Punggol MRT Station,2025-04-01,398321,3452,1755283,26601.6
-SIT CET - B2B Campaign - Q2 2025,SIT,Lead Generation,HDB Digital Display Panels,Toa Payoh Central,2025-05-01,310222,2265,768604,22531.95
-SIT CET - B2B Campaign - Q2 2025,SIT,Lead Generation,Bus Shelter Posters,Orchard Road,2025-05-01,451124,397,2064244,10560.84
-SIT CET - B2B Campaign - Q2 2025,SIT,Lead Generation,Digital Screens (Mall),Nex Megamall,2025-05-01,532662,2944,1553014,24883.64
-SIT CET - B2B Campaign - Q2 2025,SIT,Lead Generation,MRT Platform Screen Door,Punggol MRT Station,2025-05-01,288651,1906,597794,9828.24
-SBM PET Campaign - Q3 2025,SBM,Awareness,Bus Shelter Posters,Ang Mo Kio Hub,2025-07-01,722642,4253,2311757,29528.74
-SBM PET Campaign - Q3 2025,SBM,Awareness,MRT Platform Screen Door,Punggol MRT Station,2025-07-01,612262,2792,2949701,7883.54
-SBM PET Campaign - Q3 2025,SBM,Awareness,HDB Digital Display Panels,Bedok Central,2025-07-01,323903,1542,1211970,29588.76
-SBM PET Campaign - Q3 2025,SBM,Awareness,MRT Platform Screen Door,Jurong East MRT Station,2025-07-01,90115,968,341510,13642.18
-SBM PET Campaign - Q3 2025,SBM,Awareness,HDB Digital Display Panels,Toa Payoh Central,2025-07-01,378914,3654,1446931,17785.58
-SBM PET Campaign - Q3 2025,SBM,Awareness,Bus Shelter Posters,Ang Mo Kio Hub,2025-08-01,453906,4803,1166645,6109.66
-SBM PET Campaign - Q3 2025,SBM,Awareness,MRT Platform Screen Door,Punggol MRT Station,2025-08-01,507239,93,1805649,25162.77
-SBM PET Campaign - Q3 2025,SBM,Awareness,HDB Digital Display Panels,Bedok Central,2025-08-01,770221,1694,2382035,6749.35
-SBM PET Campaign - Q3 2025,SBM,Awareness,MRT Platform Screen Door,Jurong East MRT Station,2025-08-01,746503,2784,2888568,21584.69
-SBM PET Campaign - Q3 2025,SBM,Awareness,HDB Digital Display Panels,Toa Payoh Central,2025-08-01,180679,2540,636237,21672.32
+Campaign,Dept/Sch/Institute,Marketing Objective,OOH Format,Site,Month,Reach,QR Code Scans,Impressions,Spend,Avg Session Duration (s)
+CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),VivoCity,2025-01-01,604634,144,2420706,18865.06,169.8
+CET B2C Campaign - Q1 2025,C&O,Awareness,Bus Shelter Posters,Ang Mo Kio Hub,2025-01-01,158618,1180,443083,27242.82,141.4
+CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),Nex Megamall,2025-01-01,212998,2311,606036,10265.74,81.4
+CET B2C Campaign - Q1 2025,C&O,Awareness,HDB Digital Display Panels,Toa Payoh Central,2025-01-01,770892,2242,2710631,11278.03,166.2
+CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),VivoCity,2025-02-01,103266,836,403032,25733.7,36.6
+CET B2C Campaign - Q1 2025,C&O,Awareness,Bus Shelter Posters,Ang Mo Kio Hub,2025-02-01,399759,1151,1563593,11548.88,141.2
+CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),Nex Megamall,2025-02-01,628478,3583,2314508,7796.85,171.8
+CET B2C Campaign - Q1 2025,C&O,Awareness,HDB Digital Display Panels,Toa Payoh Central,2025-02-01,774586,1301,2816991,25864.88,117.4
+CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),VivoCity,2025-03-01,205287,3600,489062,12706.46,164.8
+CET B2C Campaign - Q1 2025,C&O,Awareness,Bus Shelter Posters,Ang Mo Kio Hub,2025-03-01,91832,3011,241539,11238.24,45.4
+CET B2C Campaign - Q1 2025,C&O,Awareness,Digital Screens (Mall),Nex Megamall,2025-03-01,637080,3409,3135396,23736.94,168.9
+CET B2C Campaign - Q1 2025,C&O,Awareness,HDB Digital Display Panels,Toa Payoh Central,2025-03-01,298237,1411,1469896,25269.29,162.2
+SIT CET - B2B Campaign - Q2 2025,SIT,Conversion,MRT Platform Screen Door,Jurong East MRT Station,2025-04-01,752448,2112,2107168,24684.36,46.2
+SIT CET - B2B Campaign - Q2 2025,SIT,Conversion,HDB Digital Display Panels,Toa Payoh Central,2025-04-01,90605,3935,241670,25414.67,99.0
+SIT CET - B2B Campaign - Q2 2025,SIT,Conversion,HDB Digital Display Panels,Bedok Central,2025-04-01,370015,1944,987485,21500.83,89.8
+SIT CET - B2B Campaign - Q2 2025,SIT,Conversion,Bus Shelter Posters,Orchard Road,2025-04-01,342136,648,1676694,11978.12,126.2
+SIT CET - B2B Campaign - Q2 2025,SIT,Conversion,MRT Platform Screen Door,Jurong East MRT Station,2025-05-01,469093,4472,1404206,5690.01,161.6
+SIT CET - B2B Campaign - Q2 2025,SIT,Conversion,HDB Digital Display Panels,Toa Payoh Central,2025-05-01,323903,1542,1211970,29588.76,35.7
+SIT CET - B2B Campaign - Q2 2025,SIT,Conversion,HDB Digital Display Panels,Bedok Central,2025-05-01,675550,3639,2051686,24660.7,95.5
+SIT CET - B2B Campaign - Q2 2025,SIT,Conversion,Bus Shelter Posters,Orchard Road,2025-05-01,586265,1027,1850009,19414.7,68.2
+SBM PET Campaign - Q3 2025,SBM,Awareness,HDB Digital Display Panels,Bedok Central,2025-07-01,502248,653,2434206,28019.27,123.5
+SBM PET Campaign - Q3 2025,SBM,Awareness,MRT Platform Screen Door,Hougang MRT Station,2025-07-01,745612,1100,3101196,12508.06,76.4
+SBM PET Campaign - Q3 2025,SBM,Awareness,Bus Shelter Posters,Ang Mo Kio Hub,2025-07-01,478231,2752,1533783,12391.38,49.1
+SBM PET Campaign - Q3 2025,SBM,Awareness,Digital Screens (Mall),Nex Megamall,2025-07-01,490869,3185,1979161,27570.14,122.3
+SBM PET Campaign - Q3 2025,SBM,Awareness,MRT Platform Screen Door,Punggol MRT Station,2025-07-01,365568,3406,1332060,5010.15,73.0
+SBM PET Campaign - Q3 2025,SBM,Awareness,MRT Platform Screen Door,Jurong East MRT Station,2025-07-01,500770,4831,1912933,13056.23,96.3
+SBM PET Campaign - Q3 2025,SBM,Awareness,HDB Digital Display Panels,Bedok Central,2025-08-01,758446,1830,2679985,24843.38,174.0
+SBM PET Campaign - Q3 2025,SBM,Awareness,MRT Platform Screen Door,Hougang MRT Station,2025-08-01,227934,774,649921,21596.35,122.9
+SBM PET Campaign - Q3 2025,SBM,Awareness,Bus Shelter Posters,Ang Mo Kio Hub,2025-08-01,147923,2004,594411,10616.02,59.9
+SBM PET Campaign - Q3 2025,SBM,Awareness,Digital Screens (Mall),Nex Megamall,2025-08-01,75611,458,206760,16878.41,157.5
+SBM PET Campaign - Q3 2025,SBM,Awareness,MRT Platform Screen Door,Punggol MRT Station,2025-08-01,126365,3810,409842,20744.13,59.2
+SBM PET Campaign - Q3 2025,SBM,Awareness,MRT Platform Screen Door,Jurong East MRT Station,2025-08-01,780180,3225,2717469,11099.61,128.4
