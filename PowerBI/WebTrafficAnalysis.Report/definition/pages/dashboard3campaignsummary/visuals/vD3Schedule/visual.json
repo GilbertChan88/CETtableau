@@ -220,7 +220,7 @@
             "list": {
               "expr": {
                 "Literal": {
-                  "Value": "'[\"ACI PET Campaign - Q2 2025\",\"ACI PET Campaign - Q2 2025\",\"NACE CET - B2B Campaign - Q1 2025\",\"NACE CET - B2B Campaign - Q1 2025\",\"NACE CET - B2C Campaign - Q2 2025\"]'"
+                  "Value": "'[\"ACI PET Campaign - Q2 2025\",\"ACI PET Campaign - Q2 2025\",\"NACE CET - B2B Campaign - Q1 2025\",\"NACE CET - B2B Campaign - Q1 2025\",\"NACE CET - B2C Campaign - Q2 2025\",\"NACE PET Campaign - Q3 2025\",\"SIT CET - B2B Campaign - Q2 2025\",\"SIT CET - B2B Campaign - Q2 2025\",\"SIT CET - B2B Campaign - Q2 2025\",\"SIT CET - B2B Campaign - Q3 2025\",\"SIT CET - B2B Campaign - Q3 2025\",\"SIT CET - B2B Campaign - Q3 2025\",\"SIT PET Campaign - Q2 2025\",\"SIT PET Campaign - Q2 2025\"]'"
                 }
               }
             }
@@ -233,7 +233,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "'\"bb6ecbdc-a42c-4d94-86a3-9c775b1c992f\"'"
+                  "Value": "'\"6debf20b-a89d-4ed9-9c1b-db4424ed753e\"'"
                 }
               }
             }
