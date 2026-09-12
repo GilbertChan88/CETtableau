@@ -468,7 +468,7 @@
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
-      <column caption='Campaign Duration (days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
+      <column caption='Duration (Days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [Start Date], [End Date])' />
       </column>
       <column caption='Gantt Position (Top)' datatype='real' name='[Calculation_3296071988386656259]' role='measure' type='quantitative'>
@@ -1973,11 +1973,8 @@
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
-      <column caption='Avg Session Duration (sec)' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
+      <column caption='True Avg Session Duration' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
         <calculation class='tableau' formula='SUM([Average session duration] * [Sessions]) / SUM([Sessions])' />
-      </column>
-      <column caption='Avg Session Duration (min)' datatype='real' name='[Calculation_D1DURMIN01]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='ROUND([Calculation_3296071987586428928] / 60, 1)' />
       </column>
       <column caption='In Campaign Period' datatype='boolean' name='[Calculation_D1CAMPPERIOD01]' role='dimension' type='nominal'>
         <calculation class='tableau' formula='[Date] &gt;= [Start Date] AND [Date] &lt;= [End Date]' />
@@ -2166,7 +2163,7 @@
             </column>
           </datasource-dependencies>
           <datasource-dependencies datasource='federated.1ndc0xs0yux68k1e2bmmz07xy1lf'>
-            <column caption='Campaign Duration (days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
+            <column caption='Duration (Days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [Start Date], [End Date])' />
             </column>
             <column caption='In Range (Campaign)' datatype='boolean' name='[Calculation_D3RANGEC01]' role='dimension' type='nominal'>
@@ -2541,7 +2538,7 @@
           </datasources>
           <datasource-dependencies datasource='federated.0bkpira1pza2b3133tu8b1gkoqit'>
             <column datatype='real' name='[Average session duration]' role='measure' type='quantitative' />
-            <column caption='Avg Session Duration (sec)' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
+            <column caption='True Avg Session Duration' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='SUM([Average session duration] * [Sessions]) / SUM([Sessions])' />
             </column>
             <column datatype='string' name='[Campaign ID]' role='dimension' type='nominal' />
@@ -3484,61 +3481,6 @@
       </table>
       <simple-id uuid='{C804E6AC-3719-4A7F-A0DE-A2CF560C7A19}' />
     </worksheet>
-    <worksheet name='Avg Session Duration KPI'>
-      <layout-options>
-        <title>
-          <formatted-text>
-            <run>Avg Session Duration&#10;</run>
-            <run fontsize='9'>Visitor-weighted average, shown as minutes and seconds.</run>
-          </formatted-text>
-        </title>
-      </layout-options>
-      <table>
-        <view>
-          <datasources>
-            <datasource caption='Web Traffic Analysis' name='federated.0bkpira1pza2b3133tu8b1gkoqit' />
-          </datasources>
-          <datasource-dependencies datasource='federated.0bkpira1pza2b3133tu8b1gkoqit'>
-            <column datatype='real' name='[Average session duration]' role='measure' type='quantitative' />
-            <column caption='Avg Session Duration (sec)' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='SUM([Average session duration] * [Sessions]) / SUM([Sessions])' />
-            </column>
-            <column caption='Avg Session Duration (min sec)' datatype='string' name='[Calculation_D1DURSTR01]' role='measure' type='nominal'>
-              <calculation class='tableau' formula='STR(INT([Calculation_3296071987586428928] / 60)) + &quot;min &quot; + STR(INT([Calculation_3296071987586428928]) % 60) + &quot;s&quot;' />
-            </column>
-            <column datatype='integer' name='[Sessions]' role='measure' type='quantitative' />
-            <column-instance column='[Calculation_D1DURSTR01]' derivation='User' name='[usr:Calculation_D1DURSTR01:nk]' pivot='key' type='nominal' />
-          </datasource-dependencies>
-          <aggregation value='true' />
-        </view>
-        <style />
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Text' />
-            <encodings>
-              <text column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_D1DURSTR01:nk]' />
-            </encodings>
-            <customized-label>
-              <formatted-text>
-                <run fontalignment='1' fontname='Benton Sans Book' fontsize='11'>Avg Session Duration&#10;</run>
-                <run bold='true' fontalignment='1' fontsize='24'><![CDATA[<[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_D1DURSTR01:nk]>]]></run>
-              </formatted-text>
-            </customized-label>
-            <style>
-              <style-rule element='mark'>
-                <format attr='mark-labels-show' value='true' />
-              </style-rule>
-            </style>
-          </pane>
-        </panes>
-        <rows />
-        <cols />
-      </table>
-      <simple-id uuid='{A1D10001-000A-4000-8000-00000000000A}' />
-    </worksheet>
     <worksheet name='Page Performance Details'>
       <layout-options>
         <title>
@@ -3565,11 +3507,8 @@
           </datasource-dependencies>
           <datasource-dependencies datasource='federated.0bkpira1pza2b3133tu8b1gkoqit'>
             <column datatype='real' name='[Average session duration]' role='measure' type='quantitative' />
-            <column caption='Avg Session Duration (sec)' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
+            <column caption='True Avg Session Duration' datatype='real' name='[Calculation_3296071987586428928]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='SUM([Average session duration] * [Sessions]) / SUM([Sessions])' />
-            </column>
-            <column caption='Avg Session Duration (min)' datatype='real' name='[Calculation_D1DURMIN01]' role='measure' type='quantitative'>
-              <calculation class='tableau' formula='ROUND([Calculation_3296071987586428928] / 60, 1)' />
             </column>
             <column caption='In Range (Traffic)' datatype='boolean' name='[Calculation_D1RANGET01]' role='dimension' type='nominal'>
               <calculation class='tableau' formula='[Date] &gt;= [Parameters].[Parameter 2] AND [Date] &lt;= [Parameters].[Parameter 3]' />
@@ -3588,20 +3527,20 @@
             <column-instance column='[Page path and screen class]' derivation='None' name='[none:Page path and screen class:nk]' pivot='key' type='nominal' />
             <column-instance column='[Total users]' derivation='Sum' name='[sum:Total users:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Calculation_D1DURMIN01]' derivation='User' name='[usr:Calculation_D1DURMIN01:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_3296071987586428928]' derivation='User' name='[usr:Calculation_3296071987586428928:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]'>
             <groupfilter function='union' user:op='manual'>
               <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]&quot;' />
               <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_D1DURMIN01:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_3296071987586428928:qk]&quot;' />
             </groupfilter>
           </filter>
           <manual-sort column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[:Measure Names]' direction='ASC'>
             <dictionary>
               <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Views:qk]&quot;</bucket>
               <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[sum:Total users:qk]&quot;</bucket>
-              <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_D1DURMIN01:qk]&quot;</bucket>
+              <bucket>&quot;[federated.0bkpira1pza2b3133tu8b1gkoqit].[usr:Calculation_3296071987586428928:qk]&quot;</bucket>
             </dictionary>
           </manual-sort>
           <filter class='categorical' column='[federated.0bkpira1pza2b3133tu8b1gkoqit].[none:Calculation_D1RANGET01:nk]'>
@@ -5133,7 +5072,7 @@
             <datasource caption='Mock + Live Data' name='federated.1ndc0xs0yux68k1e2bmmz07xy1lf' />
           </datasources>
           <datasource-dependencies datasource='federated.1ndc0xs0yux68k1e2bmmz07xy1lf'>
-            <column caption='Campaign Duration (days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
+            <column caption='Duration (Days)' datatype='integer' name='[Calculation_3296071987911081986]' role='measure' type='quantitative'>
               <calculation class='tableau' formula='DATEDIFF(&apos;day&apos;, [Start Date], [End Date])' />
             </column>
             <column caption='Gantt Position (Top)' datatype='real' name='[Calculation_3296071988386656259]' role='measure' type='quantitative'>
@@ -6492,29 +6431,6 @@
         </edge>
       </cards>
       <simple-id uuid='{8B2C3D4E-5F6A-4B7C-9D8E-1F2A3B4C5D6E}' />
-    </window>
-    <window class='worksheet' name='Avg Session Duration KPI'>
-      <cards>
-        <edge name='left'>
-          <strip size='106'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='20'>
-            <card type='title' />
-          </strip>
-        </edge>
-      </cards>
-      <simple-id uuid='{A1D10001-000B-4000-8000-00000000000B}' />
     </window>
     <window class='worksheet' name='Campaign Schedule'>
       <cards>
