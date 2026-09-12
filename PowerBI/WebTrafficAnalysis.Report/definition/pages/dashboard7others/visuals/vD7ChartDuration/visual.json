@@ -1,0 +1,44 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "vD7ChartDuration",
+  "position": { "x": 844, "y": 204, "z": 10200, "height": 250, "width": 420, "tabOrder": 10200 },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Month" } },
+              "queryRef": "OthersPerf.Month",
+              "nativeQueryRef": "Month",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Others Avg Session Duration (s)" } },
+              "queryRef": "OthersPerf.Others Avg Session Duration (s)",
+              "nativeQueryRef": "Others Avg Session Duration (s)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": { "Column": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Month" } },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Avg Session Duration (s) by Month (DUMMY)'" } } } } } ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

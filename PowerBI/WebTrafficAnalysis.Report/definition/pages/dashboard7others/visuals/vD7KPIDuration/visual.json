@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "vD7KPIDuration",
+  "position": { "x": 656, "y": 116, "z": 6300, "height": 80, "width": 208, "tabOrder": 6300 },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Others Avg Session Duration (s)" } },
+              "queryRef": "OthersPerf.Others Avg Session Duration (s)",
+              "nativeQueryRef": "Others Avg Session Duration (s)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "labels": [ { "properties": { "fontSize": { "expr": { "Literal": { "Value": "24D" } } } } } ]
+    },
+    "visualContainerObjects": {
+      "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Avg Session Duration (s)'" } } } } } ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

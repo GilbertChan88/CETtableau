@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "vD7SlicerDept",
+  "position": { "x": 670, "y": 48, "z": 4000, "height": 56, "width": 160, "tabOrder": 4000 },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Dept/Sch/Institute" } },
+              "queryRef": "OthersPerf.Dept/Sch/Institute",
+              "nativeQueryRef": "Dept/Sch/Institute",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [ { "properties": { "mode": { "expr": { "Literal": { "Value": "'Dropdown'" } } } } } ]
+    },
+    "visualContainerObjects": {
+      "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Dept / Sch / Institute'" } } } } } ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

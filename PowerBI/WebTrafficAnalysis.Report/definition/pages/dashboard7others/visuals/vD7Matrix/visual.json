@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "vD7Matrix",
+  "position": { "x": 8, "y": 466, "z": 12000, "height": 302, "width": 1256, "tabOrder": 12000 },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Channel" } },
+              "queryRef": "OthersPerf.Channel",
+              "nativeQueryRef": "Channel",
+              "active": true
+            },
+            {
+              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Campaign" } },
+              "queryRef": "OthersPerf.Campaign",
+              "nativeQueryRef": "Campaign",
+              "active": false
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Others Reach" } },
+              "queryRef": "OthersPerf.Others Reach",
+              "nativeQueryRef": "Others Reach"
+            },
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Others QR Scans" } },
+              "queryRef": "OthersPerf.Others QR Scans",
+              "nativeQueryRef": "Others QR Scans"
+            },
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Others Cost per Scan" } },
+              "queryRef": "OthersPerf.Others Cost per Scan",
+              "nativeQueryRef": "Others Cost per Scan"
+            },
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Others Avg Session Duration (s)" } },
+              "queryRef": "OthersPerf.Others Avg Session Duration (s)",
+              "nativeQueryRef": "Others Avg Session Duration (s)"
+            },
+            {
+              "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Others Media Spend" } },
+              "queryRef": "OthersPerf.Others Media Spend",
+              "nativeQueryRef": "Others Media Spend"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": { "Measure": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Others Reach" } },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Performance by channel & campaign (DUMMY data)'" } } } } } ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

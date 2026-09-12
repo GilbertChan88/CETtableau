@@ -1,0 +1,129 @@
+/// DUMMY / mock "Others" channel performance data (Mock_Others_Performance.csv) for
+/// Dashboard 7 (Campaign Performance by Others). Covers the non Digital-Ads /
+/// Content-Marketing / OOH channels (Admail, Brochures, etc.). Replace with the real
+/// "Others" performance export when it arrives (same columns: Campaign ID, Campaign,
+/// Dept, Objective, Channel, Month, Reach, QR Code Scans, Impressions,
+/// Avg Session Duration (s), Spend).
+table OthersPerf
+	lineageTag: cfe6d6e0-640a-42fb-a94b-f8beff34a0ed
+
+	measure 'Others Reach' = SUM(OthersPerf[Reach])
+		formatString: #,0
+		lineageTag: 4351d089-47a9-4e62-99a5-1ce1ccb7f68c
+
+	measure 'Others QR Scans' = SUM(OthersPerf[QR Code Scans])
+		formatString: #,0
+		lineageTag: 5bb3d61f-6771-46cc-a102-acc91fd6411e
+
+	measure 'Others Impressions' = SUM(OthersPerf[Impressions])
+		formatString: #,0
+		lineageTag: f2999383-3a34-4934-88de-59a09e281f73
+
+	measure 'Others Media Spend' = SUM(OthersPerf[Spend])
+		formatString: \$#,0
+		lineageTag: e0d1417a-8925-49d9-b278-4a92f2e53e06
+
+	/// Cost per QR scan = Spend / QR Code Scans
+	measure 'Others Cost per Scan' = DIVIDE([Others Media Spend], [Others QR Scans])
+		formatString: \$#,0.00
+		lineageTag: 60e823a2-b860-4bc2-8345-a0e4bf2eb51c
+
+	/// Average session duration (seconds), simple average across the dummy rows.
+	measure 'Others Avg Session Duration (s)' = AVERAGE(OthersPerf[Avg Session Duration (s)])
+		formatString: #,0.0
+		lineageTag: d22f7ef5-7cdb-442e-848e-fe2e034af5be
+
+	/// Scan rate = QR Code Scans / Reach
+	measure 'Others Scan Rate' = DIVIDE([Others QR Scans], [Others Reach])
+		formatString: 0.000%
+		lineageTag: e26555c5-8495-4f78-a37c-96daa5cc147f
+
+	measure 'Others Campaigns' = DISTINCTCOUNT(OthersPerf[Campaign])
+		formatString: #,0
+		lineageTag: bc2f3fc7-34c6-4833-bbe3-2d1d7b67aad1
+
+	measure 'Others Channels' = DISTINCTCOUNT(OthersPerf[Channel])
+		formatString: #,0
+		lineageTag: 03964c9b-da8a-4a03-a3da-6d4ceb87ae85
+
+	column 'Campaign ID'
+		dataType: string
+		lineageTag: aaad0ea5-d449-40d5-a0e3-0cb42d8512b9
+		summarizeBy: none
+		sourceColumn: Campaign ID
+
+	column Campaign
+		dataType: string
+		lineageTag: baedcb5e-0256-4bde-843c-fade1d0e99a8
+		summarizeBy: none
+		sourceColumn: Campaign
+
+	column Dept/Sch/Institute
+		dataType: string
+		lineageTag: b8e41e4b-6cbe-481b-a3e5-9d52f68b637a
+		summarizeBy: none
+		sourceColumn: Dept/Sch/Institute
+
+	column 'Marketing Objective'
+		dataType: string
+		lineageTag: 3f075cf3-eac7-46ca-adef-799f53b14997
+		summarizeBy: none
+		sourceColumn: Marketing Objective
+
+	column Channel
+		dataType: string
+		lineageTag: 7a1f929b-d05c-4d6f-b8d2-334f6d6d4b17
+		summarizeBy: none
+		sourceColumn: Channel
+
+	column Month
+		dataType: dateTime
+		formatString: MMM yyyy
+		lineageTag: d03ad42f-1aa1-4789-9dcd-e7876359bc2e
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Reach
+		dataType: int64
+		lineageTag: 32134d4c-4834-4bd6-ade5-094826ab35d2
+		summarizeBy: sum
+		sourceColumn: Reach
+
+	column 'QR Code Scans'
+		dataType: int64
+		lineageTag: 652d7854-9252-433d-9711-26cf0c438932
+		summarizeBy: sum
+		sourceColumn: QR Code Scans
+
+	column Impressions
+		dataType: int64
+		lineageTag: 07e8736f-b8d5-461b-87a1-1c147f126969
+		summarizeBy: sum
+		sourceColumn: Impressions
+
+	column 'Avg Session Duration (s)'
+		dataType: double
+		lineageTag: 924b0310-9bb6-461f-bacf-d0d2c3c8f39c
+		summarizeBy: none
+		sourceColumn: Avg Session Duration (s)
+
+	column Spend
+		dataType: double
+		formatString: \$#,0
+		lineageTag: 13bce91b-d0de-4755-a42f-231126ef6c7e
+		summarizeBy: sum
+		sourceColumn: Spend
+
+	partition OthersPerf = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(SourceFolder & "Mock_Others_Performance.csv"), [Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"Campaign ID", type text}, {"Campaign", type text}, {"Dept/Sch/Institute", type text}, {"Marketing Objective", type text}, {"Channel", type text}, {"Month", type date}, {"Reach", Int64.Type}, {"QR Code Scans", Int64.Type}, {"Impressions", Int64.Type}, {"Avg Session Duration (s)", type number}, {"Spend", type number}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

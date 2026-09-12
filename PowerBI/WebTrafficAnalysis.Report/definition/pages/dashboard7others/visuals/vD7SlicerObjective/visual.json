@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "vD7SlicerObjective",
+  "position": { "x": 840, "y": 48, "z": 5000, "height": 56, "width": 200, "tabOrder": 5000 },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": { "Column": { "Expression": { "SourceRef": { "Entity": "OthersPerf" } }, "Property": "Marketing Objective" } },
+              "queryRef": "OthersPerf.Marketing Objective",
+              "nativeQueryRef": "Marketing Objective",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [ { "properties": { "mode": { "expr": { "Literal": { "Value": "'Dropdown'" } } } } } ]
+    },
+    "visualContainerObjects": {
+      "title": [ { "properties": { "text": { "expr": { "Literal": { "Value": "'Marketing Objective'" } } } } } ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
