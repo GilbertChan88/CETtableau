@@ -5,8 +5,8 @@
     "x": 304,
     "y": 48,
     "z": 0,
-    "height": 48,
-    "width": 272,
+    "height": 64,
+    "width": 256,
     "tabOrder": 0
   },
   "visual": {
@@ -42,6 +42,19 @@
               "expr": {
                 "Literal": {
                   "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Campaign Name'"
                 }
               }
             }

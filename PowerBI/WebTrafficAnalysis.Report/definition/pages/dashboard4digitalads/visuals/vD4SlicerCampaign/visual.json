@@ -69,7 +69,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Campaign'"
+                  "Value": "'Campaign Name'"
                 }
               }
             },
